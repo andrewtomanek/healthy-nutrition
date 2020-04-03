@@ -1,0 +1,19 @@
+# dependencies
+/node_modules
+
+# testing
+__snapshots__
+
+# production
+/build
+
+netlify
+node_modules
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+yarn.lock
+package-lock.json
+dist/
+.netlify/
+__snapshots__/

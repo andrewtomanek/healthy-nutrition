@@ -1,5 +1,9 @@
+export interface ValidationErrors {email:"Required Email" | "Invalid email address";
+  password:"Required Password"|"Password must be at least 6 characters";
+} ;
+
 export default function validateAuth(values) {
-  let errors = {};
+  let errors:ValidationErrors;
   // Email Errors
   if (!values.email) {
     errors.email = "Required Email";

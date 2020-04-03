@@ -37,43 +37,43 @@ const FormLimit = props => {
         <InputField
           type="number"
           value={itemPrice}
-          onChange={e => setPrice(e.target.value)}
+          onChange={e => setPrice(Number(e.target.value))}
         />
         <InputLabel>Kalorie</InputLabel>
         <InputField
           type="number"
           value={itemCalories}
-          onChange={e => setCalories(e.target.value)}
+          onChange={e => setCalories(Number(e.target.value))}
         />
         <InputLabel>Tuky</InputLabel>
         <InputField
           type="number"
           value={itemFat}
-          onChange={e => setFat(e.target.value)}
+          onChange={e => setFat(Number(e.target.value))}
         />
         <InputLabel>Sacharidy</InputLabel>
         <InputField
           type="number"
           value={itemSacharidy}
-          onChange={e => setSacharidy(e.target.value)}
+          onChange={e => setSacharidy(Number(e.target.value))}
         />
         <InputLabel>Vláknina</InputLabel>
         <InputField
           type="number"
           value={itemFiber}
-          onChange={e => setFiber(e.target.value)}
+          onChange={e => setFiber(Number(e.target.value))}
         />
         <InputLabel>Bílkoviny</InputLabel>
         <InputField
           type="number"
           value={itemProtein}
-          onChange={e => setProtein(e.target.value)}
+          onChange={e => setProtein(Number(e.target.value))}
         />
         <InputLabel>Množství</InputLabel>
         <InputField
           type="number"
           value={itemQuantity}
-          onChange={e => setQuantity(e.target.value)}
+          onChange={e => setQuantity(Number(e.target.value))}
         />
         <SubmitButton type="submit">Uložit</SubmitButton>
       </InputBox>

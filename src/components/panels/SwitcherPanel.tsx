@@ -1,6 +1,6 @@
 import React from "react";
 import CalculatePanel from "./CalculatePanel";
-import {BasicButton} from '../../styles/elements.js'
+import {BasicButton} from '../../styles/elements'
 import styled from "styled-components";
 
 const SwitchPanel = styled.div`

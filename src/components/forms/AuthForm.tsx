@@ -2,7 +2,7 @@ import React, { useState, useCallback, useContext, useEffect } from "react";
 import app from "../../auth/base";
 import { withRouter } from "react-router";
 import { AuthContext } from "../../auth/Auth";
-import validateAuth from "../../auth/validateAuth";
+import validateAuth, { ValidationErrors } from "../../auth/validateAuth";
 import styled from "styled-components";
 
 const LoginForm = styled.form`
@@ -58,7 +58,7 @@ const AuthForm = ({ history, register }) => {
     email: "",
     password: ""
   });
-  const [errors, setErrors] = useState({});
+  const [errors, setErrors] = useState<ValidationErrors>(null);
   const [isSubmitting, setSubmitting] = useState(false);
   const { currentUser } = useContext(AuthContext);
 

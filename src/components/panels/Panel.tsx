@@ -5,9 +5,9 @@ import {
   applyFilterPicked,
   applyFilterWord,
   displayInformation
-} from "../store/redux";
+} from "../../store/actions";
 import database from "../../data/db";
-import {BasicButton,ControlPanel,SelectField,SelectOption} from '../../styles/elements.js'
+import {BasicButton,ControlPanel,SelectField,SelectOption} from '../../styles/elements'
 
 const Panel = props => {
   const [unFiltered, setUnFiltered] = useState(database);
@@ -21,7 +21,7 @@ const Panel = props => {
     "vláknina"
   ]);
   const [sortDirection] = useState(["low", "high"]);
-  const [selectedSortType, setSortString] = useState(1);
+  const [selectedSortType, setSortString] = useState("1");
   const [selectedSortBy, setSortBy] = useState("high");
 
   const resetFilter = newArray => {

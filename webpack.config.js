@@ -24,6 +24,17 @@ module.exports = {
         test: /\.tsx?/,
         exclude: /\.test.tsx?$/,
         loader: "ts-loader"
+      },
+      {
+        test: /\.(png|jpg)$/,
+        use: [
+          {
+            loader: 'url-loader',
+            options: {
+              mimetype: 'image/png'
+            }
+          }
+        ]
       }
     ]
   },

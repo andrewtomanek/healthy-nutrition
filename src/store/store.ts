@@ -1,11 +1,10 @@
 import { createStore, applyMiddleware } from "redux";
 import { compose } from "redux";
 import createSagaMiddleware from "redux-saga";
-import { rootReducer } from "./reducers";
-import rootSaga from "./sagas";
+import  rootReducer  from "./reducers/rootReducer";
+import { watchStoreBuilder } from "./sagas/mainSaga";
 
-const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
-
+const composeEnhancers = window['__REDUX_DEVTOOLS_EXTENSION_COMPOSE__'] as typeof compose || compose;
 const sagaMiddleware = createSagaMiddleware();
 
 export default function configureStore() {
@@ -14,7 +13,7 @@ export default function configureStore() {
     composeEnhancers(applyMiddleware(sagaMiddleware))
   );
 
-  sagaMiddleware.run(rootSaga);
+  sagaMiddleware.run(watchStoreBuilder);
 
   return store;
 }

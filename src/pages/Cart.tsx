@@ -81,7 +81,7 @@ const Cart = props => {
             basicButtons={false}
           />
         ) : (
-          <EmptyCart showResetButton={false} />
+          <EmptyCart showResetButton={false}  />
         )}
         <Footer />
       </PageLayout>

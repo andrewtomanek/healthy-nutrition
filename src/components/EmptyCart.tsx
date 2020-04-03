@@ -24,7 +24,12 @@ const EmptyText = styled.p`
   min-height: 20vh;
 `;
 
-export default function EmptyCart({ resetFilter, showResetButton }) {
+type Props = {
+  showResetButton: boolean;
+  resetFilter?: ()  => void;
+}
+
+  const EmptyCart: React.FC<Props> = ({ resetFilter, showResetButton }) =>{
   return (
     <EmptyContainer>
       {showResetButton ? (
@@ -37,3 +42,5 @@ export default function EmptyCart({ resetFilter, showResetButton }) {
     </EmptyContainer>
   );
 }
+
+export default EmptyCart

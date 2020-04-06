@@ -14,6 +14,7 @@ import {
   applyCartRefresh
 } from "../store/actions/storageActions";
 import database from "../data/db";
+import { FoodUnit } from "./Home";
 import { CSSTransition } from "react-transition-group";
 import { PageLayout } from "../styles/elements";
 
@@ -47,16 +48,16 @@ const Cart = props => {
     setShowLimit(!showLimit);
   };
 
-  const moveToStorage = item => {
+  const moveToStorage = (item:FoodUnit) => {
     props.addToStorage(item);
     props.deleteStorageAction(item.id);
   };
 
-  const pickItem = id => {
+  const pickItem = (id: number) => {
     props.toggleCartComplete(id);
   };
 
-  const removeItem = id => {
+  const removeItem = (id: number) => {
     props.deleteCartAction(id);
   };
 

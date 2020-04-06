@@ -52,8 +52,8 @@ export default function BarStripe({ item }) {
         style={{
           width: (item[1] / item[2]) * 100 + "%",
           background: `hsla(${
-            ((item[1] / item[2]) * 100).toFixed(0) < 100
-              ? 100 - ((item[1] / item[2]) * 100).toFixed(0)
+            Number(((item[1] / item[2]) * 100).toFixed(0))
+              ? 100 -  Number(((item[1] / item[2]) * 100).toFixed(0))
               : 0
           },  70%, 50%, 1)`
         }}

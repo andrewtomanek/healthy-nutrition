@@ -1,6 +1,7 @@
 import React from "react";
 import CardBox from "../components/CardBox";
 import { CSSTransition, TransitionGroup } from "react-transition-group";
+import { FoodUnit } from "../pages/Home";
 import styled from "styled-components";
 
 const ListContainer = styled.section`
@@ -48,7 +49,20 @@ const ListContainer = styled.section`
   }
 `;
 
-export default function ItemsList({
+type ListProps = {
+  foods: FoodUnit[];
+  basicButtons  : boolean;
+  minusToCart?  : (id: number)  => void;
+  updateNumber?  : (item:FoodUnit,id: number)  => void;
+  plusToCart?  : (item:FoodUnit)  => void;
+  moveToCart?  : (item:FoodUnit)  => void;
+  moveToStorage?  : (item:FoodUnit)  => void;
+  pickItem  : (id: number)  => void;
+  removeFromStorage?  : (id: number)  => void;
+  removeItem?  : (id: number)  => void;
+}
+
+  const ItemsList: React.FC<ListProps> = ({
   foods,
   minusToCart,
   updateNumber,
@@ -59,7 +73,7 @@ export default function ItemsList({
   removeFromStorage,
   removeItem,
   basicButtons
-}) {
+}) =>{
   return (
     <ListContainer>
       <TransitionGroup component={null}>
@@ -90,3 +104,5 @@ export default function ItemsList({
     </ListContainer>
   );
 }
+
+export default ItemsList

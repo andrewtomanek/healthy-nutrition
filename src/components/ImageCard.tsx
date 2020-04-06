@@ -30,6 +30,8 @@ function importAll(r) {
   transform: translateX(-20%);
   `;
 
+  console.log(JSON.stringify(images[item.image + ".jpg"]));
+
     return (
         <PictureContainer>
         <PictureCard

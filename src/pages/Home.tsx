@@ -25,6 +25,19 @@ import {
 import database from "../data/db";
 import { PageLayout, ControlsLayout } from "../styles/elements";
 
+export interface FoodUnit {
+  bílkoviny: number;
+  cena: number;
+  id: number;
+  image: string;
+  kalorie: number;
+  množství: number;
+  picked: boolean;
+  sacharidy: number;
+  tuky: number;
+  vláknina: number;
+}
+
 const Home = props => {
   const [showFilters, setShowFilters] = useState(false);
   const [showInput, setShowInput] = useState(false);
@@ -82,20 +95,20 @@ const Home = props => {
     setHideCards(!hideCards);
   };
 
-  const minusToCart = id => {
+  const minusToCart = (id: number) => {
     props.deleteCartAction(id);
   };
 
-  const plusToCart = item => {
+  const plusToCart = (item:FoodUnit) => {
     props.addToCart(item);
   };
 
-  const moveToCart = item => {
+  const moveToCart = (item:FoodUnit) => {
     props.addToCart(item);
     props.deleteFoodAction(item.id);
   };
 
-  const pickItem = id => {
+  const pickItem = (id: number) => {
     props.toggleFoodComplete(id);
   };
 
@@ -103,7 +116,7 @@ const Home = props => {
     props.updateQuantity([item, id]);
   };
 
-  const removeFromStorage = id => {
+  const removeFromStorage = (id: number) => {
     props.deleteFoodAction(id);
   };
 

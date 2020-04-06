@@ -13,7 +13,7 @@ import {
 
 const CartForm = props => {
   const [itemName, setName] = useState("");
-  const [itemCheckbox, setCheckbox] = useState<boolean>(false);
+  const [itemCheckbox, setCheckbox] = useState("false");
   const [itemPrice, setPrice] = useState(0);
   const [itemCalories, setCalories] = useState(0);
   const [itemFat, setFat] = useState(0);
@@ -41,7 +41,7 @@ const CartForm = props => {
     };
     props.addFoodAction(inputObject);
     setName("");
-    setCheckbox(false);
+    setCheckbox("false");
     setPrice(0);
     setCalories(0);
     setFat(0);
@@ -100,7 +100,7 @@ const CartForm = props => {
         <InputCheckBox
           type="checkbox"
           value={itemCheckbox}
-          onChange={e => setCheckbox(Boolean(e.target.value))}
+          onChange={e => setCheckbox(e.target.value)}
         />
         <InputLabel>Název</InputLabel>
         <InputTextField

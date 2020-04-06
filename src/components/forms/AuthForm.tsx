@@ -1,6 +1,7 @@
 import React, { useState, useCallback, useContext, useEffect } from "react";
 import app from "../../auth/base";
 import { withRouter } from "react-router";
+import { RouteComponentProps} from 'react-router-dom'
 import { AuthContext } from "../../auth/Auth";
 import validateAuth, { ValidationErrors } from "../../auth/validateAuth";
 import styled from "styled-components";
@@ -53,7 +54,14 @@ const LoginButton = styled.button`
   }
 `;
 
-const AuthForm = ({ history, register }) => {
+interface PropsFromState {
+  register: boolean;
+}
+
+// Combine both state + dispatch props - as well as any props we want to pass - in a union type.
+type AllProps = PropsFromState & RouteComponentProps
+
+const AuthForm: React.FC<AllProps> = ({ history, register }) => {
   const [values, setValues] = useState({
     email: "",
     password: ""

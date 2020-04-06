@@ -17,10 +17,11 @@ const store = createStore(
 );
 
 sagaMiddleware.run(watchStoreBuilder);
+console.log(process.env.REACT_APP_FIREBASE_KEY);
 
 ReactDOM.render(
   <Provider store={store}>
     <App />
   </Provider>,
-  document.getElementById("root")
+  document.getElementById("app-root")
 );

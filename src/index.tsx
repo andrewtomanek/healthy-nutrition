@@ -8,7 +8,8 @@ import { watchStoreBuilder } from "./store/sagas/mainSaga";
 
 import App from "./App";
 
-const composeEnhancers = window['__REDUX_DEVTOOLS_EXTENSION_COMPOSE__'] as typeof compose || compose;
+const composeEnhancers =
+  (window["__REDUX_DEVTOOLS_EXTENSION_COMPOSE__"] as typeof compose) || compose;
 const sagaMiddleware = createSagaMiddleware();
 
 const store = createStore(
@@ -17,7 +18,6 @@ const store = createStore(
 );
 
 sagaMiddleware.run(watchStoreBuilder);
-console.log(process.env.REACT_APP_FIREBASE_KEY);
 
 ReactDOM.render(
   <Provider store={store}>

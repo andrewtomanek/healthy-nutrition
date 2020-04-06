@@ -14,7 +14,7 @@ const BarContainer = styled.div`
   border-radius: 0rem 0rem 0.3rem 0.3rem;
 `;
 
-const BarBox = props => {
+const BarBox = (props) => {
   const [barData, setbarData] = useState([]);
   const [barInitValues, setBarInitValues] = useState({
     množství: 10,
@@ -23,7 +23,7 @@ const BarBox = props => {
     kalorie: 2000,
     sacharidy: 130,
     tuky: 70,
-    vláknina: 38
+    vláknina: 38,
   });
 
   useEffect(() => {
@@ -39,8 +39,8 @@ const BarBox = props => {
         kalorie: 0,
         sacharidy: 0,
         tuky: 0,
-        vláknina: 0
-      }
+        vláknina: 0,
+      },
     ];
     let map = new Map();
     let set = new Set();
@@ -64,7 +64,7 @@ const BarBox = props => {
         }
       }
     }
-    let mapEntriesArray = [];
+    let mapEntriesArray: Array<[string, number]> = [];
     for (let entry of map.entries()) {
       mapEntriesArray.push(entry);
     }
@@ -82,7 +82,7 @@ const BarBox = props => {
     }
   }, [props.updateItemSum, barInitValues]);
 
-  const updateBarValues = initObject => {
+  const updateBarValues = (initObject) => {
     setBarInitValues(initObject);
   };
 
@@ -104,14 +104,14 @@ const BarBox = props => {
   );
 };
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state) => ({
   foods: state.foods,
   cart: state.cart,
-  updateItemSum: state.updateItemSum
+  updateItemSum: state.updateItemSum,
 });
 
 const mapDispatchToProps = {
-  updateCalculateSum
+  updateCalculateSum,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(BarBox);

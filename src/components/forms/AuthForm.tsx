@@ -1,7 +1,7 @@
 import React, { useState, useCallback, useContext, useEffect } from "react";
 import app from "../../auth/base";
 import { withRouter } from "react-router";
-import { RouteComponentProps} from 'react-router-dom'
+import { RouteComponentProps } from "react-router-dom";
 import { AuthContext } from "../../auth/Auth";
 import validateAuth, { ValidationErrors } from "../../auth/validateAuth";
 import styled from "styled-components";
@@ -59,18 +59,21 @@ interface PropsFromState {
 }
 
 // Combine both state + dispatch props - as well as any props we want to pass - in a union type.
-type AllProps = PropsFromState & RouteComponentProps
+type AllProps = PropsFromState & RouteComponentProps;
 
 const AuthForm: React.FC<AllProps> = ({ history, register }) => {
   const [values, setValues] = useState({
     email: "",
-    password: ""
+    password: "",
   });
-  const [errors, setErrors] = useState<ValidationErrors>(null);
+  const [errors, setErrors] = useState<ValidationErrors>({
+    email: null,
+    password: null,
+  });
   const [isSubmitting, setSubmitting] = useState(false);
   const { currentUser } = useContext(AuthContext);
 
-  const logIn = async event => {
+  const logIn = async (event) => {
     const { email, password } = event.target.elements;
     try {
       await app.auth().signInWithEmailAndPassword(email.value, password.value);
@@ -79,7 +82,7 @@ const AuthForm: React.FC<AllProps> = ({ history, register }) => {
     }
   };
 
-  const signUp = async event => {
+  const signUp = async (event) => {
     const { email, password } = event.target.elements;
     try {
       await app
@@ -107,7 +110,7 @@ const AuthForm: React.FC<AllProps> = ({ history, register }) => {
     }
   }, [history, currentUser]);
 
-  const handleSubmit = event => {
+  const handleSubmit = (event) => {
     event.preventDefault();
     setSubmitting(true);
     if (register) {
@@ -118,12 +121,12 @@ const AuthForm: React.FC<AllProps> = ({ history, register }) => {
   };
 
   const handleChange = useCallback(
-    event => {
+    (event) => {
       const validationErrors = validateAuth(values);
       setErrors(validationErrors);
       setValues({
         ...values,
-        [event.target.name]: event.target.value
+        [event.target.name]: event.target.value,
       });
     },
     [errors, isSubmitting]
@@ -167,7 +170,8 @@ const AuthForm: React.FC<AllProps> = ({ history, register }) => {
       <LoginButton
         disabled={
           !(
-            Object.keys(errors).length === 0 &&
+            errors.email === null &&
+            errors.password === null &&
             !(values.email === "" && values.password === "")
           )
         }

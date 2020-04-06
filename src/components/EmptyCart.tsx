@@ -1,5 +1,5 @@
 import React from "react";
-import { BasicButton} from "../styles/elements";
+import { BasicButton } from "../styles/elements";
 import styled from "styled-components";
 
 const EmptyContainer = styled.div`
@@ -26,21 +26,19 @@ const EmptyText = styled.p`
 
 type Props = {
   showResetButton: boolean;
-  resetFilter?: ()  => void;
-}
+  resetFilter?: () => void;
+};
 
-  const EmptyCart: React.FC<Props> = ({ resetFilter, showResetButton }) =>{
+const EmptyCart: React.FC<Props> = ({ resetFilter, showResetButton }) => {
   return (
     <EmptyContainer>
-      {showResetButton ? (
-        <BasicButton onClick={() => resetFilter()}>
-          Znovu
-        </BasicButton>
+      {showResetButton && resetFilter ? (
+        <BasicButton onClick={() => resetFilter()}>Znovu</BasicButton>
       ) : (
         <EmptyText>Žádné položky</EmptyText>
       )}
     </EmptyContainer>
   );
-}
+};
 
-export default EmptyCart
+export default EmptyCart;

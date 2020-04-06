@@ -11,21 +11,21 @@ import {
   deleteCartAction,
   deleteStorageAction,
   applyFilterReset,
-  applyCartRefresh
+  applyCartRefresh,
 } from "../store/actions/storageActions";
 import database from "../data/db";
 import { FoodUnit } from "./Home";
 import { CSSTransition } from "react-transition-group";
 import { PageLayout } from "../styles/elements";
 
-const Cart = props => {
+const Cart = (props) => {
   const [showLimit, setShowLimit] = useState(false);
   const [inProp, setInProp] = useState(false);
 
   useEffect(() => {
     let inventory = localStorage.getItem("inventory");
     let cartSession = localStorage.getItem("cart");
-    let initialArray = [];
+    let initialArray: FoodUnit[] = [];
     for (let i = 0; i < 5; i++) {
       initialArray.push(database[i]);
     }
@@ -48,7 +48,7 @@ const Cart = props => {
     setShowLimit(!showLimit);
   };
 
-  const moveToStorage = (item:FoodUnit) => {
+  const moveToStorage = (item: FoodUnit) => {
     props.addToStorage(item);
     props.deleteStorageAction(item.id);
   };
@@ -82,7 +82,7 @@ const Cart = props => {
             basicButtons={false}
           />
         ) : (
-          <EmptyCart showResetButton={false}  />
+          <EmptyCart showResetButton={false} />
         )}
         <Footer />
       </PageLayout>
@@ -90,11 +90,11 @@ const Cart = props => {
   );
 };
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state) => ({
   foods: state.foods,
   cart: state.cart,
   allItemSum: state.allItemSum,
-  updateItemSum: state.updateItemSum
+  updateItemSum: state.updateItemSum,
 });
 
 const mapDispatchToProps = {
@@ -103,7 +103,7 @@ const mapDispatchToProps = {
   deleteCartAction,
   deleteStorageAction,
   applyFilterReset,
-  applyCartRefresh
+  applyCartRefresh,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Cart);

@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
 import app from "./base";
 
-export const AuthContext = React.createContext(null);
+export const AuthContext = React.createContext<any>(null);
 
 export const AuthProvider = ({ children }) => {
-  const [currentUser, setCurrentUser] = useState(null);
+  const [currentUser, setCurrentUser] = useState<any>(null);
 
   useEffect(() => {
     app.auth().onAuthStateChanged(setCurrentUser);

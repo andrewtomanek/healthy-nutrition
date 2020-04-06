@@ -20,7 +20,7 @@ import {
   updateQuantity,
   toggleFoodComplete,
   deleteFoodAction,
-  deleteCartAction
+  deleteCartAction,
 } from "../store/actions/storageActions";
 import database from "../data/db";
 import { PageLayout, ControlsLayout } from "../styles/elements";
@@ -38,7 +38,7 @@ export interface FoodUnit {
   vláknina: number;
 }
 
-const Home = props => {
+const Home = (props) => {
   const [showFilters, setShowFilters] = useState(false);
   const [showInput, setShowInput] = useState(false);
   const [showLimit, setShowLimit] = useState(false);
@@ -49,7 +49,7 @@ const Home = props => {
   useEffect(() => {
     let inventory = localStorage.getItem("inventory");
     let cartSession = localStorage.getItem("cart");
-    let initialArray = [];
+    let initialArray: FoodUnit[] = [];
     for (let i = 0; i < 5; i++) {
       initialArray.push(database[i]);
     }
@@ -99,11 +99,11 @@ const Home = props => {
     props.deleteCartAction(id);
   };
 
-  const plusToCart = (item:FoodUnit) => {
+  const plusToCart = (item: FoodUnit) => {
     props.addToCart(item);
   };
 
-  const moveToCart = (item:FoodUnit) => {
+  const moveToCart = (item: FoodUnit) => {
     props.addToCart(item);
     props.deleteFoodAction(item.id);
   };
@@ -121,7 +121,7 @@ const Home = props => {
   };
 
   const resetFilter = () => {
-    let initialArray = [];
+    let initialArray: FoodUnit[] = [];
     for (let i = 0; i < 5; i++) {
       initialArray.push(database[i]);
     }
@@ -196,10 +196,10 @@ const Home = props => {
   );
 };
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state) => ({
   foods: state.foods,
   cart: state.cart,
-  allItemSum: state.allItemSum
+  allItemSum: state.allItemSum,
 });
 
 const mapDispatchToProps = {
@@ -211,7 +211,7 @@ const mapDispatchToProps = {
   updateQuantity,
   deleteFoodAction,
   deleteCartAction,
-  fillStorage
+  fillStorage,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Home);

@@ -1,7 +1,7 @@
 import React from "react";
 import CardBox from "../components/CardBox";
 import { CSSTransition, TransitionGroup } from "react-transition-group";
-import { FoodUnit } from "../pages/Home";
+import { FoodUnit } from "../store/reducers/rootReducer";
 import styled from "styled-components";
 
 const ListContainer = styled.section`

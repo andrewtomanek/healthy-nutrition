@@ -1,6 +1,26 @@
 import * as actionTypes from "../actions/actionTypes";
 import database from "../../data/db.json";
 
+export interface FoodUnit {
+  bílkoviny: number;
+  cena: number;
+  id: number;
+  image: string;
+  kalorie: number;
+  množství: number;
+  picked: boolean;
+  sacharidy: number;
+  tuky: number;
+  vláknina: number;
+}
+
+export interface State {
+  cart: FoodUnit[];
+  foods: FoodUnit[];
+    allItemSum?: null;
+  updateItemSum: FoodUnit[];
+}
+
 let inventory = localStorage.getItem("inventory");
 let cartSession = localStorage.getItem("cart");
 
@@ -21,7 +41,7 @@ if (cartSession) {
   initialCart = [];
 }
 
-const initialState = {
+const initialState:State = {
   foods: initialArray,
   cart: initialCart,
   allItemSum: null,

@@ -22,21 +22,10 @@ import {
   deleteFoodAction,
   deleteCartAction,
 } from "../store/actions/storageActions";
+import { FoodUnit } from "../store/reducers/rootReducer";
 import database from "../data/db";
 import { PageLayout, ControlsLayout } from "../styles/elements";
 
-export interface FoodUnit {
-  bílkoviny: number;
-  cena: number;
-  id: number;
-  image: string;
-  kalorie: number;
-  množství: number;
-  picked: boolean;
-  sacharidy: number;
-  tuky: number;
-  vláknina: number;
-}
 
 const Home = (props) => {
   const [showFilters, setShowFilters] = useState(false);

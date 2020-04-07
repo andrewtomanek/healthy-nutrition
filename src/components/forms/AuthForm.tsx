@@ -58,7 +58,6 @@ interface PropsFromState {
   register: boolean;
 }
 
-// Combine both state + dispatch props - as well as any props we want to pass - in a union type.
 type AllProps = PropsFromState & RouteComponentProps;
 
 const AuthForm: React.FC<AllProps> = ({ history, register }) => {

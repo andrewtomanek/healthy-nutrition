@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
+import { Dispatch } from 'redux'
 import { updateCalculateSum } from "../store/actions/storageActions";
 import FormLimit from "./forms/FormLimit";
 import BarStripe from "./panels/BarStripe";
 import { CSSTransition } from "react-transition-group";
+import { FoodUnit,State } from "../store/reducers/rootReducer";
 import styled from "styled-components";
 
 const BarContainer = styled.div`
@@ -14,8 +16,13 @@ const BarContainer = styled.div`
   border-radius: 0rem 0rem 0.3rem 0.3rem;
 `;
 
-const BarBox = (props) => {
-  const [barData, setbarData] = useState([]);
+type AppProps = {
+showLimit:  boolean;
+updateItemSum:FoodUnit[];
+}
+
+const BarBox : React.FC<AppProps& StateProps & DispatchProps> = (props) => {
+  const [barData, setbarData] = useState<FoodUnit[]>([]);
   const [barInitValues, setBarInitValues] = useState({
     množství: 10,
     cena: 200,
@@ -72,7 +79,7 @@ const BarBox = (props) => {
   }, [props.cart, barInitValues]);
 
   useEffect(() => {
-    let oldArray = props.updateItemSum;
+    let oldArray:FoodUnit[] = props.updateItemSum;
     let objectArray = Object.values(barInitValues);
     if (oldArray) {
       for (var i = 0; i < oldArray.length; i++) {
@@ -104,14 +111,24 @@ const BarBox = (props) => {
   );
 };
 
-const mapStateToProps = (state) => ({
+interface StateProps {
+  cart: FoodUnit[];
+foods: FoodUnit[];
+}
+
+interface DispatchProps {
+  updateCalculateSum: (mapEntriesArray:[string, number][])=> [string, number][];
+
+}
+
+const mapStateToProps = (state: State) => ({
   foods: state.foods,
   cart: state.cart,
   updateItemSum: state.updateItemSum,
 });
 
-const mapDispatchToProps = {
-  updateCalculateSum,
-};
+const mapDispatchToProps = (dispatch: Dispatch) => ({
+  updateCalculateSum: (mapEntriesArray:[string, number][])=> dispatch(updateCalculateSum(mapEntriesArray)),
+})
 
-export default connect(mapStateToProps, mapDispatchToProps)(BarBox);
+export default connect<StateProps, DispatchProps>(mapStateToProps, mapDispatchToProps)(BarBox);

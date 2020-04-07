@@ -3,7 +3,7 @@ import app from "./base";
 
 export const AuthContext = React.createContext<any>(null);
 
-export const AuthProvider = ({ children }) => {
+export const AuthProvider: React.FC<{}>  = ({ children }) => {
   const [currentUser, setCurrentUser] = useState<any>(null);
 
   useEffect(() => {

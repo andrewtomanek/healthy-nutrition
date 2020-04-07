@@ -156,7 +156,7 @@ export const applycalculateSum = sum => {
   };
 };
 
-export const updateCalculateSum = sum => {
+export const updateCalculateSum = (sum: [string, number][]) => {
   return {
     type: actionTypes.UPDATE_CALCULATE_SUM,
     payload: sum

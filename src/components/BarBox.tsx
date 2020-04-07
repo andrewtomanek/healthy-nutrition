@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
-import { Dispatch } from 'redux'
+import { Dispatch } from "redux";
 import { updateCalculateSum } from "../store/actions/storageActions";
 import FormLimit from "./forms/FormLimit";
 import BarStripe from "./panels/BarStripe";
 import { CSSTransition } from "react-transition-group";
-import { FoodUnit,State } from "../store/reducers/rootReducer";
+import { FoodUnit, State,BarData } from "../store/reducers/rootReducer";
+import { InputNumbers } from "./forms/FormLimit";
 import styled from "styled-components";
 
 const BarContainer = styled.div`
@@ -17,12 +18,12 @@ const BarContainer = styled.div`
 `;
 
 type AppProps = {
-showLimit:  boolean;
-updateItemSum:FoodUnit[];
-}
+  showLimit: boolean;
+  updateItemSum: BarData;
+};
 
-const BarBox : React.FC<AppProps& StateProps & DispatchProps> = (props) => {
-  const [barData, setbarData] = useState<FoodUnit[]>([]);
+const BarBox: React.FC<AppProps & StateProps & DispatchProps> = (props) => {
+  const [barData, setbarData] = useState<BarData>([]);
   const [barInitValues, setBarInitValues] = useState({
     množství: 10,
     cena: 200,
@@ -79,7 +80,7 @@ const BarBox : React.FC<AppProps& StateProps & DispatchProps> = (props) => {
   }, [props.cart, barInitValues]);
 
   useEffect(() => {
-    let oldArray:FoodUnit[] = props.updateItemSum;
+    let oldArray: BarData = props.updateItemSum;
     let objectArray = Object.values(barInitValues);
     if (oldArray) {
       for (var i = 0; i < oldArray.length; i++) {
@@ -89,7 +90,7 @@ const BarBox : React.FC<AppProps& StateProps & DispatchProps> = (props) => {
     }
   }, [props.updateItemSum, barInitValues]);
 
-  const updateBarValues = (initObject) => {
+  const updateBarValues = (initObject: InputNumbers) => {
     setBarInitValues(initObject);
   };
 
@@ -113,12 +114,14 @@ const BarBox : React.FC<AppProps& StateProps & DispatchProps> = (props) => {
 
 interface StateProps {
   cart: FoodUnit[];
-foods: FoodUnit[];
+  foods: FoodUnit[];
+  updateItemSum: BarData;
 }
 
 interface DispatchProps {
-  updateCalculateSum: (mapEntriesArray:[string, number][])=> [string, number][];
-
+  updateCalculateSum: (
+    mapEntriesArray: [string, number][]
+  ) => [string, number][];
 }
 
 const mapStateToProps = (state: State) => ({
@@ -127,8 +130,12 @@ const mapStateToProps = (state: State) => ({
   updateItemSum: state.updateItemSum,
 });
 
-const mapDispatchToProps = (dispatch: Dispatch) => ({
-  updateCalculateSum: (mapEntriesArray:[string, number][])=> dispatch(updateCalculateSum(mapEntriesArray)),
-})
+const mapDispatchToProps = (dispatch: Dispatch): any => ({
+  updateCalculateSum: (sum: [string, number][]) =>
+    dispatch(updateCalculateSum(sum)),
+});
 
-export default connect<StateProps, DispatchProps>(mapStateToProps, mapDispatchToProps)(BarBox);
+export default connect<StateProps, DispatchProps, AppProps, State>(
+  mapStateToProps,
+  mapDispatchToProps
+)(BarBox);

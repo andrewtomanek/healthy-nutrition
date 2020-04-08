@@ -5,7 +5,7 @@ import { updateCalculateSum } from "../store/actions/storageActions";
 import FormLimit from "./forms/FormLimit";
 import BarStripe from "./panels/BarStripe";
 import { CSSTransition } from "react-transition-group";
-import { FoodUnit, State,BarData } from "../store/reducers/rootReducer";
+import { FoodUnit, State, BarData } from "../store/reducers/rootReducer";
 import { InputNumbers } from "./forms/FormLimit";
 import styled from "styled-components";
 
@@ -118,9 +118,7 @@ interface StateProps {
 }
 
 interface DispatchProps {
-  updateCalculateSum: (
-    sum: [string, number][]
-  ) => [string, number][];
+  updateCalculateSum: (sum: [string, number][]) => [string, number][];
 }
 
 const mapStateToProps = (state: State) => ({
@@ -131,7 +129,7 @@ const mapStateToProps = (state: State) => ({
 
 const mapDispatchToProps = (dispatch: Dispatch): any => ({
   updateCalculateSum: (sum: [string, number][]) =>
-    dispatch(updateCalculateSum(sum)),
+    dispatch(updateCalculateSum(sum))
 });
 
 export default connect<StateProps, DispatchProps, AppProps, State>(

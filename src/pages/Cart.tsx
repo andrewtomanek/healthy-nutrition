@@ -4,6 +4,7 @@ import ItemsList from "../components/ItemsList";
 import BarBox from "../components/BarBox";
 import EmptyCart from "../components/EmptyCart";
 import Footer from "../components/Footer";
+import { Dispatch } from "redux";
 import { connect } from "react-redux";
 import {
   addToStorage,
@@ -13,12 +14,12 @@ import {
   applyFilterReset,
   applyCartRefresh,
 } from "../store/actions/storageActions";
+import { FoodUnit, State } from "../store/reducers/rootReducer";
 import database from "../data/db";
-import { FoodUnit } from "../store/reducers/rootReducer";
 import { CSSTransition } from "react-transition-group";
 import { PageLayout } from "../styles/elements";
 
-const Cart = (props) => {
+const Cart : React.FC<StateProps & DispatchProps> = (props) => {
   const [showLimit, setShowLimit] = useState(false);
   const [inProp, setInProp] = useState(false);
 
@@ -90,20 +91,34 @@ const Cart = (props) => {
   );
 };
 
-const mapStateToProps = (state) => ({
+interface StateProps {
+  cart: FoodUnit[];
+  foods: FoodUnit[];
+  allItemSum?: null;
+}
+
+interface DispatchProps {
+  addToStorage:(item: FoodUnit)=>void;
+  toggleCartComplete:(id: number)=>void;
+  deleteCartAction:(id: number)=>void;
+  deleteStorageAction:(id: number)=>void;
+  applyFilterReset:(initialArray: FoodUnit[])=>void;
+  applyCartRefresh:(cartSession:string)=>void;
+}
+
+const mapStateToProps = (state: State) => ({
   foods: state.foods,
   cart: state.cart,
-  allItemSum: state.allItemSum,
-  updateItemSum: state.updateItemSum,
+  allItemSum: state.allItemSum
 });
 
-const mapDispatchToProps = {
-  addToStorage,
-  toggleCartComplete,
-  deleteCartAction,
-  deleteStorageAction,
-  applyFilterReset,
-  applyCartRefresh,
-};
+const mapDispatchToProps = (dispatch: Dispatch): any => ({
+  addToStorage: (item: FoodUnit) =>  dispatch(addToStorage(item)),
+  toggleCartComplete: (id: number) =>  dispatch(toggleCartComplete(id)),
+  deleteCartAction: (id: number) =>  dispatch(deleteCartAction(id)),
+  deleteStorageAction: (id: number) =>  dispatch(deleteStorageAction(id)),
+  applyFilterReset: (initialArray: FoodUnit[]) =>  dispatch(applyFilterReset(initialArray)),
+  applyCartRefresh: (cartSession:string) =>  dispatch(applyCartRefresh(cartSession))
+});
 
 export default connect(mapStateToProps, mapDispatchToProps)(Cart);

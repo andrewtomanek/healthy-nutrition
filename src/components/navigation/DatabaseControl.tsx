@@ -1,6 +1,8 @@
 import React, { useEffect, useState, useContext } from "react";
 import { connect } from "react-redux";
+import { Dispatch } from "redux";
 import { initInventory, saveToStore } from "../../store/actions/storageActions";
+import { FoodUnit, State } from "../../store/reducers/rootReducer";
 import { AuthContext } from "../../auth/Auth";
 import app from "../../auth/base";
 import { AuthButton } from "../../styles/elements";
@@ -30,13 +32,29 @@ const LoginStatus = styled.p`
   }
 `;
 
-const DatabaseControl = props => {
-  const [currentToken, setCurrentToken] = useState('');
-  const [currentUid, setCurrentUid] = useState('');
+type AuthObject = {
+  token: string;
+  uid: string;
+};
+
+type UserObject = {
+  token: string;
+  email: string;
+  uid: string;
+  cart: FoodUnit[];
+  foods: FoodUnit[];
+  allItemSum?: null;
+};
+
+const DatabaseControl: React.FC< StateProps & DispatchProps> = (
+  props
+) => {
+  const [currentToken, setCurrentToken] = useState("");
+  const [currentUid, setCurrentUid] = useState("");
   useEffect(() => {
-    app.auth().onAuthStateChanged(function(user) {
+    app.auth().onAuthStateChanged(function (user) {
       if (user) {
-        user.getIdToken().then(function(idToken) {
+        user.getIdToken().then(function (idToken) {
           setCurrentToken(idToken);
         });
         setCurrentUid(user.uid);
@@ -46,24 +64,31 @@ const DatabaseControl = props => {
 
   const { currentUser } = useContext(AuthContext);
   const fetchData = () => {
-    let authData = {};
+    let authData: AuthObject = { token: "", uid: "" };
     authData = {
       token: currentToken,
-      uid: currentUid
+      uid: currentUid,
     };
     props.initInventory(authData);
   };
 
   const saveData = () => {
     if (!props.foods) return;
-    let userData = {};
+    let userData: UserObject = {
+      token: "",
+      email: "",
+      uid: "",
+      foods: [],
+      cart: [],
+      allItemSum: null,
+    };
     userData = {
       token: currentToken,
       email: currentUser.email,
       uid: currentUid,
       foods: props.foods,
       cart: props.cart,
-      allItemSum: props.allItemSum
+      allItemSum: props.allItemSum,
     };
     props.saveToStore(userData);
   };
@@ -83,15 +108,26 @@ const DatabaseControl = props => {
   );
 };
 
-const mapStateToProps = state => ({
+interface StateProps {
+  cart: FoodUnit[];
+  foods: FoodUnit[];
+  allItemSum?: null;
+};
+
+interface DispatchProps {
+  initInventory: (authData: AuthObject) =>void;
+  saveToStore: (userData: UserObject) => void;
+}
+
+const mapStateToProps = (state: State) => ({
   foods: state.foods,
   cart: state.cart,
-  allItemSum: state.allItemSum
+  allItemSum: state.allItemSum,
 });
 
-const mapDispatchToProps = {
-  initInventory,
-  saveToStore
-};
+const mapDispatchToProps = (dispatch: Dispatch): any => ({
+  initInventory: (authData: AuthObject) => dispatch(initInventory(authData)),
+  saveToStore: (userData: UserObject) => dispatch(saveToStore(userData)),
+});
 
 export default connect(mapStateToProps, mapDispatchToProps)(DatabaseControl);

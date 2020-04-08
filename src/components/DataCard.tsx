@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import { FoodUnit } from "../store/reducers/rootReducer";
 
 const TextBox = styled.div`
   display: grid;
@@ -30,9 +31,14 @@ const TextField = styled.p`
   }
 `;
 
-export default function DataCard({ item, ...props }) {
+type AppProps = {
+  item: FoodUnit;
+  pickItem?: (id: number) => void;
+};
+
+const DataCard: React.FC<AppProps> = ({ item, pickItem }) => {
   return (
-    <TextBox onClick={() => props.pickItem(item.id)}>
+    <TextBox onClick={pickItem && (() => pickItem(item.id))}>
       <TextField>Název: {item.image}</TextField>
       <TextField>Cena: {item.cena.toFixed(0)}</TextField>
       <TextField>Kalorie: {item.kalorie.toFixed(0)}</TextField>
@@ -43,4 +49,6 @@ export default function DataCard({ item, ...props }) {
       <TextField>Množství: {item.množství.toFixed(0)}</TextField>
     </TextBox>
   );
-}
+};
+
+export default DataCard;

@@ -14,11 +14,13 @@ export interface FoodUnit {
   vláknina: number;
 }
 
+export type BarData = [string, number, number][];
+
 export interface State {
   cart: FoodUnit[];
   foods: FoodUnit[];
     allItemSum?: null;
-  updateItemSum: FoodUnit[];
+  updateItemSum: BarData;
 }
 
 let inventory = localStorage.getItem("inventory");

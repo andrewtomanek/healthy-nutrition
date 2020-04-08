@@ -19,7 +19,6 @@ const BarContainer = styled.div`
 
 type AppProps = {
   showLimit: boolean;
-  updateItemSum: BarData;
 };
 
 const BarBox: React.FC<AppProps & StateProps & DispatchProps> = (props) => {
@@ -120,7 +119,7 @@ interface StateProps {
 
 interface DispatchProps {
   updateCalculateSum: (
-    mapEntriesArray: [string, number][]
+    sum: [string, number][]
   ) => [string, number][];
 }
 

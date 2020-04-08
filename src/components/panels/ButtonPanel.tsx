@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
+import { FoodUnit } from "../../store/reducers/rootReducer";
 import { BasicButton, GreenButton, RedButton } from "../../styles/elements";
 
 const UnitInput = styled.input`
@@ -21,7 +22,31 @@ const UnitInput = styled.input`
   }
 `;
 
-export default function ButtonPanel({ item, basicButtons, ...props }) {
+type AppProps = {
+  item: FoodUnit;
+  basicButtons: boolean;
+  minusToCart?: (id: number) => void;
+  updateNumber?: (item: FoodUnit, id: number) => void;
+  plusToCart?: (item: FoodUnit) => void;
+  moveToCart?: (item: FoodUnit) => void;
+  moveToStorage?: (item: FoodUnit) => void;
+  pickItem?: (id: number) => void;
+  removeFromStorage?: (id: number) => void;
+  removeItem?: (id: number) => void;
+};
+
+const ButtonPanel: React.FC<AppProps> = ({
+  item,
+  basicButtons,
+  pickItem,
+  moveToCart,
+  moveToStorage,
+  removeFromStorage,
+  removeItem,
+  minusToCart,
+  plusToCart,
+  updateNumber,
+}) => {
   const [itemQuantity, setQuantity] = useState(1);
   const [oldItem, setOldItem] = useState(item);
 
@@ -44,7 +69,7 @@ export default function ButtonPanel({ item, basicButtons, ...props }) {
     setOldItem(item);
   }, [item]);
 
-  const handleInput = e => {
+  const handleInput = (e) => {
     let currentValue = e.target.value;
     setQuantity(e.target.value);
     let newItem = {
@@ -56,46 +81,54 @@ export default function ButtonPanel({ item, basicButtons, ...props }) {
       sacharidy: +((oldItem.sacharidy / oldItem.množství) * currentValue),
       vláknina: +((oldItem.vláknina / oldItem.množství) * currentValue),
       bílkoviny: +((oldItem.bílkoviny / oldItem.množství) * currentValue),
-      množství: +currentValue
+      množství: +currentValue,
     };
-    props.updateNumber(newItem, item.id);
+    if (updateNumber) updateNumber(newItem, item.id);
   };
 
   return (
     <ControlsContainer>
       {basicButtons ? (
-        <BasicButton onClick={() => props.moveToCart(item)}>
+        <BasicButton onClick={moveToCart && (() => moveToCart(item))}>
           {"\u{1F6D2}"}
         </BasicButton>
       ) : (
-        <BasicButton onClick={() => props.moveToStorage(item)}>
+        <BasicButton onClick={moveToStorage && (() => moveToStorage(item))}>
           {"\u{1F5D1}"}
         </BasicButton>
       )}
-      <BasicButton onClick={() => props.pickItem(item.id)}>
+      <BasicButton onClick={pickItem && (() => pickItem(item.id))}>
         {"\u{2714}"}
       </BasicButton>
       {basicButtons ? (
-        <BasicButton onClick={() => props.removeFromStorage(item.id)}>
+        <BasicButton
+          onClick={removeFromStorage && (() => removeFromStorage(item.id))}
+        >
           {"\u{274C}"}
         </BasicButton>
       ) : (
-        <BasicButton onClick={() => props.removeItem(item.id)}>
+        <BasicButton onClick={removeItem && (() => removeItem(item.id))}>
           {"\u{274C}"}
         </BasicButton>
       )}
       {basicButtons && (
         <>
-          <RedButton onClick={() => props.minusToCart(item.id)}>-</RedButton>
+          <RedButton onClick={minusToCart && (() => minusToCart(item.id))}>
+            -
+          </RedButton>
           <UnitInput
             type="number"
             min="1"
             value={itemQuantity}
-            onChange={e => handleInput(e)}
+            onChange={(e) => handleInput(e)}
           />
-          <GreenButton onClick={() => props.plusToCart(item)}>+</GreenButton>
+          <GreenButton onClick={plusToCart && (() => plusToCart(item))}>
+            +
+          </GreenButton>
         </>
       )}
     </ControlsContainer>
   );
-}
+};
+
+export default ButtonPanel;

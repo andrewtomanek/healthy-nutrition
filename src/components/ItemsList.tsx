@@ -57,7 +57,7 @@ type ListProps = {
   plusToCart?  : (item:FoodUnit)  => void;
   moveToCart?  : (item:FoodUnit)  => void;
   moveToStorage?  : (item:FoodUnit)  => void;
-  pickItem  : (id: number)  => void;
+  pickItem?  : (id: number)  => void;
   removeFromStorage?  : (id: number)  => void;
   removeItem?  : (id: number)  => void;
 }
@@ -77,7 +77,7 @@ type ListProps = {
   return (
     <ListContainer>
       <TransitionGroup component={null}>
-        {foods.map((item, index) => (
+        {foods.map((item) => (
           <CSSTransition
             key={item.id}
             appear={true}
@@ -86,7 +86,6 @@ type ListProps = {
           >
             <CardBox
               key={item.id}
-              index={index}
               item={item}
               minusToCart={minusToCart}
               updateNumber={updateNumber}

@@ -14,7 +14,7 @@ import {
   applyCartRefresh,
 } from "../store/actions/storageActions";
 import database from "../data/db";
-import { FoodUnit } from "./Home";
+import { FoodUnit } from "../store/reducers/rootReducer";
 import { CSSTransition } from "react-transition-group";
 import { PageLayout } from "../styles/elements";
 

@@ -2,7 +2,6 @@ export {
   initInventory,
   setInventory,
   fetchInventoryFailed,
-  saveToStoreStart,
   saveToStoreSuccess,
   saveToStoreFail,
   fillStorage,

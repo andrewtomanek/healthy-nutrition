@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import { FoodUnit } from "../../store/reducers/rootReducer";
 
 const BarContainer = styled.div`
   display: grid;
@@ -45,7 +46,11 @@ const BarLabel = styled.p`
 }
 `;
 
-export default function BarStripe({ item }) {
+type AppProps = {
+  item: FoodUnit;
+};
+
+const BarStripe: React.FC<AppProps> = ({ item }) => {
   return (
     <BarContainer>
       <ColorBar
@@ -65,4 +70,6 @@ export default function BarStripe({ item }) {
       </BarTextBox>
     </BarContainer>
   );
-}
+};
+
+export default BarStripe;

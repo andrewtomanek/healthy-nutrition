@@ -1,166 +1,163 @@
 import * as actionTypes from "./actionTypes";
 import { FoodUnit } from "../reducers/rootReducer";
+import {
+  AuthObject,
+  UserObject,
+} from "../../components/navigation/DatabaseControl";
 
-
-export const initInventory = authData => {
+export const initInventory = (authData: AuthObject) => {
   return {
     type: actionTypes.INIT_INVENTORY,
-    authData: authData
+    authData: authData,
   };
 };
 
-export const setInventory = inventory => {
+export const setInventory = (uid: string) => {
   return {
     type: actionTypes.SET_INVENTORY,
-    payload: inventory
+    payload: uid,
   };
 };
 
 export const fetchInventoryFailed = () => {
   return {
-    type: actionTypes.FETCH_INVENTORY_FAILED
+    type: actionTypes.FETCH_INVENTORY_FAILED,
   };
 };
-export const saveToStore = userData => {
+export const saveToStore = (userData: UserObject) => {
   return {
     type: actionTypes.SAVE_INVENTORY,
-    payload: userData
+    payload: userData,
   };
 };
 
-export const saveToStoreStart = () => {
-  return {
-    type: actionTypes.SAVE_INVENTORY_START
-  };
-};
-
-export const saveToStoreSuccess = inventory => {
+export const saveToStoreSuccess = (userData: UserObject) => {
   return {
     type: actionTypes.SAVE_INVENTORY_SUCCESS,
-    payload: inventory
+    payload: userData,
   };
 };
 
-export const saveToStoreFail = error => {
+export const saveToStoreFail = (error:{}) => {
   return {
     type: actionTypes.SAVE_INVENTORY_FAIL,
-    payload: error
+    payload: error,
   };
 };
 
-export const fillStorage = (item:FoodUnit) => {
+export const fillStorage = (item: FoodUnit) => {
   return {
     type: actionTypes.FILL_STORAGE,
-    payload: item
+    payload: item,
   };
 };
-export const addFoodAction = (item:FoodUnit) => {
+export const addFoodAction = (item: FoodUnit) => {
   return {
     type: actionTypes.ADD_FOOD,
-    payload: item
+    payload: item,
   };
 };
 
-export const addToCart = (item:FoodUnit) => {
+export const addToCart = (item: FoodUnit) => {
   return {
     type: actionTypes.ADD_TO_CART,
-    payload: item
+    payload: item,
   };
 };
 
-export const addToStorage = (item:FoodUnit) => {
+export const addToStorage = (item: FoodUnit) => {
   return {
     type: actionTypes.ADD_TO_STORAGE,
-    payload: item
+    payload: item,
   };
 };
 
-export const toggleFoodComplete = (id : number) => {
+export const toggleFoodComplete = (id: number) => {
   return {
     type: actionTypes.TOGGLE_FOOD,
-    payload: id
+    payload: id,
   };
 };
 
-export const updateQuantity =( quantity:[FoodUnit, number]) => {
+export const updateQuantity = (quantity: [FoodUnit, number]) => {
   return {
     type: actionTypes.UPDATE__QUANTITY,
-    payload: quantity
+    payload: quantity,
   };
 };
 
-export const deleteFoodAction = (id : number) => {
+export const deleteFoodAction = (id: number) => {
   return {
     type: actionTypes.DELETE_FOOD,
-    payload: id
+    payload: id,
   };
 };
 
-export const toggleCartComplete = (id : number) => {
+export const toggleCartComplete = (id: number) => {
   return {
     type: actionTypes.TOGGLE_CART,
-    payload: id
+    payload: id,
   };
 };
 
-export const deleteCartAction = (id : number) => {
+export const deleteCartAction = (id: number) => {
   return {
     type: actionTypes.DELETE_CART,
-    payload: id
+    payload: id,
   };
 };
 
-export const deleteStorageAction = (item:FoodUnit) => {
+export const deleteStorageAction = (item: FoodUnit) => {
   return {
     type: actionTypes.DELETE_STORAGE,
-    payload: item
+    payload: item,
   };
 };
 
 export const applyFilterReset = (initialArray: FoodUnit[]) => {
   return {
     type: actionTypes.APPLY_FILTER_RESET,
-    payload: initialArray
+    payload: initialArray,
   };
 };
 
-export const applyCartRefresh = (cartSession:string) => {
+export const applyCartRefresh = (cartSession: string) => {
   return {
     type: actionTypes.APPLY_CART_REFRESH,
-    payload: cartSession
+    payload: cartSession,
   };
 };
 
 export const applyFilterPicked = (sortBool: boolean) => {
   return {
     type: actionTypes.APPLY_FILTER_PICKED,
-    payload: sortBool
+    payload: sortBool,
   };
 };
 
 export const applyFilterWord = (filteredData: [FoodUnit[], FoodUnit[]]) => {
   return {
     type: actionTypes.APPLY_FILTER_WORD,
-    payload: filteredData
+    payload: filteredData,
   };
 };
 
 export const displayInformation = () => {
   return {
-    type: actionTypes.DISPLAY_INFO
+    type: actionTypes.DISPLAY_INFO,
   };
 };
 
 export const applycalculateSum = (sum: [string, number][]) => {
   return {
     type: actionTypes.APPLY_CALCULATE_SUM,
-    payload: sum
+    payload: sum,
   };
 };
 
 export const updateCalculateSum = (sum: [string, number][]) => {
   return {
     type: actionTypes.UPDATE_CALCULATE_SUM,
-    payload: sum
+    payload: sum,
   };
 };

@@ -30,7 +30,7 @@ const FormLimit: React.FC<AppProps> = (props) => {
   const [itemProtein, setProtein] = useState(56);
   const [itemQuantity, setQuantity] = useState(10);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const inputObject = {
       bílkoviny: +itemProtein,

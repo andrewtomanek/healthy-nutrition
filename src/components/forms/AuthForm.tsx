@@ -58,6 +58,10 @@ interface PropsFromState {
   register: boolean;
 }
 
+type LoginObject = {
+  target: { elements: { email: { value: "" }; password: { value: "" } } };
+};
+
 type AllProps = PropsFromState & RouteComponentProps;
 
 const AuthForm: React.FC<AllProps> = ({ history, register }) => {
@@ -72,7 +76,9 @@ const AuthForm: React.FC<AllProps> = ({ history, register }) => {
   const [isSubmitting, setSubmitting] = useState(false);
   const { currentUser } = useContext(AuthContext);
 
-  const logIn = async (event) => {
+  const logIn = async (
+    event: React.FormEvent<HTMLFormElement> & Partial<LoginObject>
+  ) => {
     const { email, password } = event.target.elements;
     try {
       await app.auth().signInWithEmailAndPassword(email.value, password.value);
@@ -81,7 +87,9 @@ const AuthForm: React.FC<AllProps> = ({ history, register }) => {
     }
   };
 
-  const signUp = async (event) => {
+  const signUp = async (
+    event: React.FormEvent<HTMLFormElement> & LoginObject
+  ) => {
     const { email, password } = event.target.elements;
     try {
       await app
@@ -109,7 +117,7 @@ const AuthForm: React.FC<AllProps> = ({ history, register }) => {
     }
   }, [history, currentUser]);
 
-  const handleSubmit = (event) => {
+  const handleSubmit = (event: React.FormEvent<HTMLFormElement> | any) => {
     event.preventDefault();
     setSubmitting(true);
     if (register) {

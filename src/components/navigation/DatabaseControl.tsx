@@ -32,23 +32,21 @@ const LoginStatus = styled.p`
   }
 `;
 
-type AuthObject = {
+export interface AuthObject {
   token: string;
   uid: string;
-};
+}
 
-type UserObject = {
+export interface UserObject {
   token: string;
   email: string;
   uid: string;
   cart: FoodUnit[];
   foods: FoodUnit[];
   allItemSum?: null;
-};
+}
 
-const DatabaseControl: React.FC< StateProps & DispatchProps> = (
-  props
-) => {
+const DatabaseControl: React.FC<StateProps & DispatchProps> = (props) => {
   const [currentToken, setCurrentToken] = useState("");
   const [currentUid, setCurrentUid] = useState("");
   useEffect(() => {
@@ -112,10 +110,10 @@ interface StateProps {
   cart: FoodUnit[];
   foods: FoodUnit[];
   allItemSum?: null;
-};
+}
 
 interface DispatchProps {
-  initInventory: (authData: AuthObject) =>void;
+  initInventory: (authData: AuthObject) => void;
   saveToStore: (userData: UserObject) => void;
 }
 

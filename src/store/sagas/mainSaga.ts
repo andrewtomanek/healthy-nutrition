@@ -33,7 +33,6 @@ export function* purchaseStoreSaga(action) {
       }.json?auth=${action.payload.token}`,
       action.payload
     );
-    console.log(response.data);
     yield put(actions.saveToStoreSuccess(response.data));
   } catch (error) {
     yield put(actions.saveToStoreFail(error));

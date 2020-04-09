@@ -33,7 +33,6 @@ const FilterPanel: React.FC<StateProps & DispatchProps> = (props) => {
 interface StateProps {
   cart: FoodUnit[];
   foods: FoodUnit[];
-  allItemSum?: null;
 }
 
 interface DispatchProps {

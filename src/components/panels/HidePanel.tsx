@@ -1,7 +1,12 @@
 import React from "react";
 import { SwitchButton, SwitchContainer } from "../../styles/elements";
 
-export default function HidePanel({ hideCards, toggleCards }) {
+type AppProps = {
+  hideCards:boolean;
+  toggleCards: () => void;
+};
+
+const HidePanel: React.FC<AppProps> = ({ hideCards, toggleCards })=> {
   return (
     <SwitchContainer>
       <SwitchButton onClick={toggleCards}>
@@ -12,3 +17,5 @@ export default function HidePanel({ hideCards, toggleCards }) {
     </SwitchContainer>
   );
 }
+
+export default  HidePanel

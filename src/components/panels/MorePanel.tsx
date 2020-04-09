@@ -1,7 +1,11 @@
 import React from "react";
 import { SwitchButton, SwitchContainer } from "../../styles/elements";
 
-export default function MorePanel({ displayMore }) {
+type AppProps = {
+  displayMore: () => void;
+};
+
+const MorePanel: React.FC<AppProps> = ({ displayMore }) =>{
   return (
     <SwitchContainer>
       <SwitchButton onClick={() => displayMore()}>
@@ -10,3 +14,4 @@ export default function MorePanel({ displayMore }) {
     </SwitchContainer>
   );
 }
+export default MorePanel

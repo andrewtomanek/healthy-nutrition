@@ -1,6 +1,5 @@
 import React from "react";
 import styled from "styled-components";
-import { FoodUnit } from "../../store/reducers/rootReducer";
 
 const BarContainer = styled.div`
   display: grid;
@@ -47,7 +46,7 @@ const BarLabel = styled.p`
 `;
 
 type AppProps = {
-  item: FoodUnit;
+  item: [string, number, number];
 };
 
 const BarStripe: React.FC<AppProps> = ({ item }) => {

@@ -69,7 +69,7 @@ const ButtonPanel: React.FC<AppProps> = ({
     setOldItem(item);
   }, [item]);
 
-  const handleInput = (e) => {
+  const handleInput = (e:any) => {
     let currentValue = e.target.value;
     setQuantity(e.target.value);
     let newItem = {

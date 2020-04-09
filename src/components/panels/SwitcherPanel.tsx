@@ -12,27 +12,34 @@ const SwitchPanel = styled.div`
   background: hsla(40,80%,70%,1);
 `;
 
-export default function SwitcherPanel(props) {
+type AppProps = {
+  cartControls:boolean;
+  revealFilters: () => void;
+  revealInput: () => void;
+  revealLimit: () => void;
+};
+
+const SwitcherPanel: React.FC<AppProps> = ({cartControls,revealFilters,revealInput,revealLimit,}) =>{
   return (
     <SwitchPanel>
-      {!props.cartControls ? (
+      {!cartControls ? (
         <>
           <BasicButton
-            onClick={() => props.revealFilters()}
+            onClick={() => revealFilters()}
           >
             Vyfiltrovat
           </BasicButton>
-          <BasicButton onClick={() => props.revealInput()}>
+          <BasicButton onClick={() => revealInput()}>
             Přidat
           </BasicButton>
-          <BasicButton onClick={() => props.revealLimit()}>
+          <BasicButton onClick={() => revealLimit()}>
             Limit
           </BasicButton>
         </>
       ) : (
         <>
           <CalculatePanel />
-          <BasicButton onClick={() => props.revealLimit()}>
+          <BasicButton onClick={() => revealLimit()}>
             Limit
           </BasicButton>
         </>
@@ -40,3 +47,5 @@ export default function SwitcherPanel(props) {
     </SwitchPanel>
   );
 }
+
+export default SwitcherPanel

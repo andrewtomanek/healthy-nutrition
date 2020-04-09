@@ -38,7 +38,7 @@ export const saveToStoreSuccess = (userData: UserObject) => {
   };
 };
 
-export const saveToStoreFail = (error:{}) => {
+export const saveToStoreFail = (error: {}) => {
   return {
     type: actionTypes.SAVE_INVENTORY_FAIL,
     payload: error,
@@ -107,10 +107,10 @@ export const deleteCartAction = (id: number) => {
   };
 };
 
-export const deleteStorageAction = (item: FoodUnit) => {
+export const deleteStorageAction = (id: number) => {
   return {
     type: actionTypes.DELETE_STORAGE,
-    payload: item,
+    payload: id,
   };
 };
 
@@ -148,7 +148,7 @@ export const displayInformation = () => {
   };
 };
 
-export const applycalculateSum = (sum: [string, number][]) => {
+export const applycalculateSum = (sum: number) => {
   return {
     type: actionTypes.APPLY_CALCULATE_SUM,
     payload: sum,

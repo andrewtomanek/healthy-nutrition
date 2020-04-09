@@ -129,7 +129,7 @@ const mapStateToProps = (state: State) => ({
 
 const mapDispatchToProps = (dispatch: Dispatch): any => ({
   updateCalculateSum: (sum: [string, number][]) =>
-    dispatch(updateCalculateSum(sum))
+    dispatch(updateCalculateSum(sum)),
 });
 
 export default connect<StateProps, DispatchProps, AppProps, State>(

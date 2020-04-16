@@ -3,6 +3,20 @@ import styled from "styled-components";
 import { FoodUnit } from "../../store/reducers/rootReducer";
 import { BasicButton, GreenButton, RedButton } from "../../styles/elements";
 
+const ControlsContainer = styled.div`
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  align-content: end;
+  justify-content: center;
+  grid-area: 2 / 1 / 3 / 1;
+  z-index: 4;
+  height: 100%;
+  width: 100%;
+  font-size: 1rem;
+  font-weight: 900;
+  color: #fff;
+`;
+
 const UnitInput = styled.input`
   width: 80%;
   margin: 0;
@@ -50,26 +64,11 @@ const ButtonPanel: React.FC<AppProps> = ({
   const [itemQuantity, setQuantity] = useState(1);
   const [oldItem, setOldItem] = useState(item);
 
-  const ControlsContainer = styled.div`
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    align-content: end;
-    justify-content: center;
-    grid-area: 2 / 1 / 3 / 1;
-    z-index: 4;
-    height: 100%;
-    width: 100%;
-    font-size: 1rem;
-    font-weight: 900;
-    color: #fff;
-    grid-template-rows: ${() => (basicButtons ? "1fr 1fr" : "1fr")};
-  `;
-
   useEffect(() => {
     setOldItem(item);
   }, [item]);
 
-  const handleInput = (e:any) => {
+  const handleInput = (e: any) => {
     let currentValue = e.target.value;
     setQuantity(e.target.value);
     let newItem = {
@@ -87,7 +86,9 @@ const ButtonPanel: React.FC<AppProps> = ({
   };
 
   return (
-    <ControlsContainer>
+    <ControlsContainer
+      style={{ gridTemplateRows: basicButtons ? "1fr 1fr" : "1fr" }}
+    >
       {basicButtons ? (
         <BasicButton onClick={moveToCart && (() => moveToCart(item))}>
           {"\u{1F6D2}"}

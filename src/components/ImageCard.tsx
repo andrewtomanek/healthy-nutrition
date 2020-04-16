@@ -2,10 +2,22 @@ import React from "react";
 import styled from "styled-components";
 import { FoodUnit } from "../store/reducers/rootReducer";
 
+const PictureContainer = styled.div`
+  grid-area: 1 / 1 / 3 / 1;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+`;
 
-function importAll(r:any) {
+const PictureCard = styled.img`
+  height: 70%;
+  width: 140%;
+  transform: translateX(-20%);
+`;
+
+function importAll(r: any) {
   let images = {};
-  r.keys().map((item:string) => {
+  r.keys().map((item: string) => {
     return (images[item.replace("./", "")] = r(item));
   });
   return images;
@@ -19,27 +31,16 @@ type AppProps = {
   item: FoodUnit;
 };
 
-const ImageCard: React.FC<AppProps> =({ item })=> {
-  const PictureContainer = styled.div`
-    z-index: ${() => (item.picked ? "1" : "3")};
-    grid-area: 1 / 1 / 3 / 1;
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
-  `;
-
-  const PictureCard = styled.img`
-    filter: ${() => (item.picked ? "hue-rotate(180deg)" : "")};
-    height: 70%;
-    width: 140%;
-    transform: translateX(-20%);
-  `;
-
+const ImageCard: React.FC<AppProps> = ({ item }) => {
   return (
-    <PictureContainer>
-      <PictureCard src={images[item.image + ".jpg"].default} alt={item.image} />
+    <PictureContainer style={{ zIndex: item.picked ? 1 : 3 }}>
+      <PictureCard
+        src={images[item.image + ".jpg"].default}
+        alt={item.image}
+        style={{ filter: item.picked ? `hue-rotate(180deg)` : `hue-rotate(0deg)` }}
+      />
     </PictureContainer>
   );
-}
+};
 
-export default ImageCard
+export default ImageCard;

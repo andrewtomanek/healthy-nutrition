@@ -9,19 +9,11 @@ import { FoodUnit, State, BarData } from "../store/reducers/rootReducer";
 import { InputNumbers } from "./forms/FormLimit";
 import styled from "styled-components";
 
-const BarContainer = styled.div`
-  margin: 0;
-  padding: 0.2rem 0rem;
-  width: 95%;
-  background-color: hsla(54, 60%, 70%, 1);
-  border-radius: 0rem 0rem 0.3rem 0.3rem;
-`;
-
-type AppProps = {
+type Props = {
   showLimit: boolean;
 };
 
-const BarBox: React.FC<AppProps & StateProps & DispatchProps> = (props) => {
+const BarBox = (props: Props & StateProps & DispatchProps) => {
   const [barData, setbarData] = useState<BarData>([]);
   const [barInitValues, setBarInitValues] = useState({
     množství: 10,
@@ -132,7 +124,15 @@ const mapDispatchToProps = (dispatch: Dispatch): any => ({
     dispatch(updateCalculateSum(sum)),
 });
 
-export default connect<StateProps, DispatchProps, AppProps, State>(
+export default connect<StateProps, DispatchProps, Props, State>(
   mapStateToProps,
   mapDispatchToProps
 )(BarBox);
+
+const BarContainer = styled.div`
+  margin: 0;
+  padding: 0.2rem 0rem;
+  width: 95%;
+  background-color: hsla(54, 60%, 70%, 1);
+  border-radius: 0rem 0rem 0.3rem 0.3rem;
+`;

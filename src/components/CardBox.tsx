@@ -18,21 +18,21 @@ const CardContainer = styled.div`
   width: 100%;
 `;
 
-type AppProps = {
+type Props = {
   item: FoodUnit;
-  basicButtons  : boolean;
-  minusToCart?  : (id: number)  => void;
-  updateNumber?  : (item:FoodUnit,id: number)  => void;
-  plusToCart?  : (item:FoodUnit)  => void;
-  moveToCart?  : (item:FoodUnit)  => void;
-  moveToStorage?  : (item:FoodUnit)  => void;
-  pickItem?  : (id: number)  => void;
-  removeFromStorage?  : (id: number)  => void;
-  removeItem?  : (id: number)  => void;
+  basicButtons: boolean;
+  minusToCart?: (id: number) => void;
+  updateNumber?: (item: FoodUnit, id: number) => void;
+  plusToCart?: (item: FoodUnit) => void;
+  moveToCart?: (item: FoodUnit) => void;
+  moveToStorage?: (item: FoodUnit) => void;
+  pickItem?: (id: number) => void;
+  removeFromStorage?: (id: number) => void;
+  removeItem?: (id: number) => void;
   children?: React.ReactNode;
 };
 
-const CardBox: React.FC<AppProps> = ({
+const CardBox = ({
   item,
   basicButtons,
   pickItem,
@@ -43,7 +43,7 @@ const CardBox: React.FC<AppProps> = ({
   minusToCart,
   plusToCart,
   updateNumber,
-}) => {
+}: Props) => {
   return (
     <CardContainer>
       <DataCard item={item} pickItem={pickItem} />

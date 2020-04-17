@@ -6,54 +6,6 @@ import { AuthContext } from "../../auth/Auth";
 import validateAuth, { ValidationErrors } from "../../auth/validateAuth";
 import styled from "styled-components";
 
-const LoginForm = styled.form`
-  display: grid;
-  grid-auto-flow: row;
-  justify-content: center;
-  align-items: center;
-  grid-gap: 2rem;
-`;
-
-const ErrorText = styled.p`
-  color: red;
-  font-size: 0.9rem;
-  font-weight: 400;
-  margin: 0;
-`;
-
-const ErrorSpan = styled.span`
-  color: red;
-  font-size: 0.9rem;
-  font-weight: 400;
-  margin: 0;
-  opacity: 0;
-`;
-
-const LoginButton = styled.button`
-  font-size: 1rem;
-  padding: 0.3rem;
-  font-weight: 700;
-  font-size: 2rem;
-  background-color: var(--green);
-  border: 0.2rem solid white;
-  color: white;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  animation: floating-text 500ms ease-in-out;
-  :disabled {
-    animation: none;
-    border: 0.2rem solid grey;
-    background-color: white;
-    color: grey;
-    cursor: not-allowed;
-  }
-  &:hover {
-    color: var(--orange);
-    border: 0.2rem solid var(--orange);
-    background-color: white;
-  }
-`;
-
 interface PropsFromState {
   register: boolean;
 }
@@ -62,9 +14,10 @@ type LoginObject = {
   target: { elements: { email: { value: "" }; password: { value: "" } } };
 };
 
-type AllProps = PropsFromState & RouteComponentProps;
-
-const AuthForm: React.FC<AllProps> = ({ history, register }) => {
+const AuthForm = ({
+  history,
+  register,
+}: PropsFromState & RouteComponentProps) => {
   const [values, setValues] = useState({
     email: "",
     password: "",
@@ -191,3 +144,51 @@ const AuthForm: React.FC<AllProps> = ({ history, register }) => {
 };
 
 export default withRouter(AuthForm);
+
+const LoginForm = styled.form`
+  display: grid;
+  grid-auto-flow: row;
+  justify-content: center;
+  align-items: center;
+  grid-gap: 2rem;
+`;
+
+const ErrorText = styled.p`
+  color: red;
+  font-size: 0.9rem;
+  font-weight: 400;
+  margin: 0;
+`;
+
+const ErrorSpan = styled.span`
+  color: red;
+  font-size: 0.9rem;
+  font-weight: 400;
+  margin: 0;
+  opacity: 0;
+`;
+
+const LoginButton = styled.button`
+  font-size: 1rem;
+  padding: 0.3rem;
+  font-weight: 700;
+  font-size: 2rem;
+  background-color: var(--green);
+  border: 0.2rem solid white;
+  color: white;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  animation: floating-text 500ms ease-in-out;
+  :disabled {
+    animation: none;
+    border: 0.2rem solid grey;
+    background-color: white;
+    color: grey;
+    cursor: not-allowed;
+  }
+  &:hover {
+    color: var(--orange);
+    border: 0.2rem solid var(--orange);
+    background-color: white;
+  }
+`;

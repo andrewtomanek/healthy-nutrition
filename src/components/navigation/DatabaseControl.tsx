@@ -8,30 +8,6 @@ import app from "../../auth/base";
 import { AuthButton } from "../../styles/elements";
 import styled from "styled-components";
 
-const DataContainer = styled.div`
-  width: 95%;
-  display: grid;
-  grid-gap: 0.1rem 0.3rem;
-  grid-auto-flow: column;
-  align-content: center;
-  align-items: center;
-  padding: 0.2rem 0.3rem;
-`;
-
-const LoginStatus = styled.p`
-  padding: 0.1rem 0.5rem;
-  font-size: 1.1rem;
-  font-weight: 900;
-  background-color: var(--yellow);
-  color: hsla(80, 100%, 30%, 1);
-  border-radius: 0.5rem;
-  border: 0.2rem solid var(--green);
-  @media all and (max-width: 480px) {
-    padding: 0rem 0.5rem;
-    font-size: 2rem;
-  }
-`;
-
 export interface AuthObject {
   token: string;
   uid: string;
@@ -46,7 +22,7 @@ export interface UserObject {
   allItemSum?: null;
 }
 
-const DatabaseControl: React.FC<StateProps & DispatchProps> = (props) => {
+const DatabaseControl = (props: StateProps & DispatchProps) => {
   const [currentToken, setCurrentToken] = useState("");
   const [currentUid, setCurrentUid] = useState("");
   useEffect(() => {
@@ -123,9 +99,33 @@ const mapStateToProps = (state: State) => ({
   allItemSum: state.allItemSum,
 });
 
-const mapDispatchToProps = (dispatch: Dispatch): any => ({
+const mapDispatchToProps = (dispatch: Dispatch) => ({
   initInventory: (authData: AuthObject) => dispatch(initInventory(authData)),
   saveToStore: (userData: UserObject) => dispatch(saveToStore(userData)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(DatabaseControl);
+
+const DataContainer = styled.div`
+  width: 95%;
+  display: grid;
+  grid-gap: 0.1rem 0.3rem;
+  grid-auto-flow: column;
+  align-content: center;
+  align-items: center;
+  padding: 0.2rem 0.3rem;
+`;
+
+const LoginStatus = styled.p`
+  padding: 0.1rem 0.5rem;
+  font-size: 1.1rem;
+  font-weight: 900;
+  background-color: var(--yellow);
+  color: hsla(80, 100%, 30%, 1);
+  border-radius: 0.5rem;
+  border: 0.2rem solid var(--green);
+  @media all and (max-width: 480px) {
+    padding: 0rem 0.5rem;
+    font-size: 2rem;
+  }
+`;

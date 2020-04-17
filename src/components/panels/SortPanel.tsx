@@ -13,7 +13,7 @@ import {
   SelectOption,
 } from "../../styles/elements";
 
-const SortPanel: React.FC<StateProps & DispatchProps> = (props) => {
+const SortPanel = (props: StateProps & DispatchProps) => {
   const [sortTypes] = useState([
     "bílkoviny",
     "cena",
@@ -91,7 +91,7 @@ const mapStateToProps = (state: State) => ({
   cart: state.cart,
 });
 
-const mapDispatchToProps = (dispatch: Dispatch): any => ({
+const mapDispatchToProps = (dispatch: Dispatch) => ({
   applyFilterWord: (filteredData: [FoodUnit[], FoodUnit[]]) =>
     dispatch(applyFilterWord(filteredData)),
   displayInformation: () => dispatch(displayInformation()),

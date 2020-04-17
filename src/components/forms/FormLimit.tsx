@@ -17,11 +17,11 @@ export type InputNumbers = {
   vláknina: number;
 };
 
-type AppProps = {
+type Props = {
   updateBarValues(inputObject: InputNumbers): void;
 };
 
-const FormLimit: React.FC<AppProps> = (props) => {
+const FormLimit = (props: Props) => {
   const [itemPrice, setPrice] = useState(200);
   const [itemCalories, setCalories] = useState(2000);
   const [itemFat, setFat] = useState(70);

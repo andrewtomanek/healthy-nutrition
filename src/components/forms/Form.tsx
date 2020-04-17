@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { connect } from "react-redux";
 import { Dispatch } from "redux";
-import { FoodUnit} from "../../store/reducers/rootReducer";
+import { FoodUnit } from "../../store/reducers/rootReducer";
 import { addFoodAction } from "../../store/actions/storageActions";
 import {
   InputContainer,
@@ -13,7 +13,7 @@ import {
   SubmitButton,
 } from "../../styles/elements";
 
-const CartForm: React.FC<DispatchProps> = (props) => {
+const CartForm = (props: DispatchProps) => {
   const [itemName, setName] = useState("");
   const [itemCheckbox, setCheckbox] = useState("false");
   const [itemPrice, setPrice] = useState(0);
@@ -120,7 +120,7 @@ interface DispatchProps {
   addFoodAction: (item: FoodUnit) => void;
 }
 
-const mapDispatchToProps = (dispatch: Dispatch): any => ({
+const mapDispatchToProps = (dispatch: Dispatch) => ({
   addFoodAction: (item: FoodUnit) => dispatch(addFoodAction(item)),
 });
 

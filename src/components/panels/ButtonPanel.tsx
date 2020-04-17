@@ -3,40 +3,7 @@ import styled from "styled-components";
 import { FoodUnit } from "../../store/reducers/rootReducer";
 import { BasicButton, GreenButton, RedButton } from "../../styles/elements";
 
-const ControlsContainer = styled.div`
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  align-content: end;
-  justify-content: center;
-  grid-area: 2 / 1 / 3 / 1;
-  z-index: 4;
-  height: 100%;
-  width: 100%;
-  font-size: 1rem;
-  font-weight: 900;
-  color: #fff;
-`;
-
-const UnitInput = styled.input`
-  width: 80%;
-  margin: 0;
-  padding: 0.1rem 0.3rem;
-  font-size: 1rem;
-  font-weight: 600;
-  text-align: center;
-  background-color: var(--green);
-  color: #fff;
-  ::-webkit-inner-spin-button {
-    -webkit-appearance: none;
-    margin: 0;
-  }
-  ::-webkit-outer-spin-button {
-    -webkit-appearance: none;
-    margin: 0;
-  }
-`;
-
-type AppProps = {
+type Props = {
   item: FoodUnit;
   basicButtons: boolean;
   minusToCart?: (id: number) => void;
@@ -49,7 +16,7 @@ type AppProps = {
   removeItem?: (id: number) => void;
 };
 
-const ButtonPanel: React.FC<AppProps> = ({
+const ButtonPanel = ({
   item,
   basicButtons,
   pickItem,
@@ -60,7 +27,7 @@ const ButtonPanel: React.FC<AppProps> = ({
   minusToCart,
   plusToCart,
   updateNumber,
-}) => {
+}: Props) => {
   const [itemQuantity, setQuantity] = useState(1);
   const [oldItem, setOldItem] = useState(item);
 
@@ -133,3 +100,36 @@ const ButtonPanel: React.FC<AppProps> = ({
 };
 
 export default ButtonPanel;
+
+const ControlsContainer = styled.div`
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  align-content: end;
+  justify-content: center;
+  grid-area: 2 / 1 / 3 / 1;
+  z-index: 4;
+  height: 100%;
+  width: 100%;
+  font-size: 1rem;
+  font-weight: 900;
+  color: #fff;
+`;
+
+const UnitInput = styled.input`
+  width: 80%;
+  margin: 0;
+  padding: 0.1rem 0.3rem;
+  font-size: 1rem;
+  font-weight: 600;
+  text-align: center;
+  background-color: var(--green);
+  color: #fff;
+  ::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+  ::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+`;

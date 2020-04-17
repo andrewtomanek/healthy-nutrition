@@ -10,7 +10,7 @@ import {
   SelectOption,
 } from "../../styles/elements";
 
-const CalculatePanel: React.FC<StateProps & DispatchProps> = (props) => {
+const CalculatePanel = (props: StateProps & DispatchProps) => {
   const [sumTypes] = useState([
     "bílkoviny",
     "cena",
@@ -25,9 +25,11 @@ const CalculatePanel: React.FC<StateProps & DispatchProps> = (props) => {
 
   const calculateSum = () => {
     let sum = 0;
+
     for (let item of props.cart) {
       sum += item[selectedSumType];
     }
+
     setSumResult(sum);
     props.applycalculateSum(sum);
   };
@@ -67,7 +69,7 @@ const mapStateToProps = (state: State) => ({
   allItemSum: state.allItemSum,
 });
 
-const mapDispatchToProps = (dispatch: Dispatch): any => ({
+const mapDispatchToProps = (dispatch: Dispatch) => ({
   applycalculateSum: (sum: number) => dispatch(applycalculateSum(sum)),
 });
 

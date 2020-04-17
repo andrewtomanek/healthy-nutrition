@@ -3,20 +3,20 @@ import { Dispatch } from "redux";
 import { connect } from "react-redux";
 import {
   applyFilterReset,
-  applyFilterPicked
+  applyFilterPicked,
 } from "../../store/actions/storageActions";
 import { FoodUnit, State } from "../../store/reducers/rootReducer";
 import database from "../../data/db";
 import { BasicButton, ControlPanel } from "../../styles/elements";
 
-const FilterPanel: React.FC<StateProps & DispatchProps> = (props) => {
+const FilterPanel = (props: StateProps & DispatchProps) => {
   const [unFiltered, setUnFiltered] = useState(database);
 
-  const resetFilter = (newArray:FoodUnit[]) => {
+  const resetFilter = (newArray: FoodUnit[]) => {
     setUnFiltered(newArray);
     props.applyFilterReset(unFiltered);
   };
-  const filterPicked = (sortBool:boolean) => {
+  const filterPicked = (sortBool: boolean) => {
     if (unFiltered < props.foods) setUnFiltered(props.foods);
     props.applyFilterPicked(sortBool);
   };
@@ -36,18 +36,20 @@ interface StateProps {
 }
 
 interface DispatchProps {
-  applyFilterReset:(initialArray: FoodUnit[])=>void;
-  applyFilterPicked:(sortBool: boolean) =>void;
+  applyFilterReset: (initialArray: FoodUnit[]) => void;
+  applyFilterPicked: (sortBool: boolean) => void;
 }
 
 const mapStateToProps = (state: State) => ({
   foods: state.foods,
-  cart: state.cart
+  cart: state.cart,
 });
 
-const mapDispatchToProps = (dispatch: Dispatch): any => ({
-  applyFilterReset: (initialArray: FoodUnit[]) =>  dispatch(applyFilterReset(initialArray)),
-  applyFilterPicked: (sortBool: boolean) =>  dispatch(applyFilterPicked(sortBool))
+const mapDispatchToProps = (dispatch: Dispatch) => ({
+  applyFilterReset: (initialArray: FoodUnit[]) =>
+    dispatch(applyFilterReset(initialArray)),
+  applyFilterPicked: (sortBool: boolean) =>
+    dispatch(applyFilterPicked(sortBool)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(FilterPanel);

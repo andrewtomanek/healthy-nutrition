@@ -1,6 +1,34 @@
 import React from "react";
 import styled from "styled-components";
 
+type Props = {
+  item: [string, number, number];
+};
+
+const BarStripe = ({ item }: Props) => {
+  return (
+    <BarContainer>
+      <ColorBar
+        style={{
+          width: (item[1] / item[2]) * 100 + "%",
+          background: `hsla(${
+            Number(((item[1] / item[2]) * 100).toFixed(0)) < 100
+              ? 100 - Number(((item[1] / item[2]) * 100).toFixed(0))
+              : 0
+          },  70%, 50%, 1)`,
+        }}
+      />
+      <BarTextBox>
+        <BarLabel>{item[0]}</BarLabel>
+        <BarLabel>{item[1].toFixed(0)}</BarLabel> <BarLabel>{item[2]}</BarLabel>
+        <BarLabel>{((item[1] / item[2]) * 100).toFixed(0) + "%"}</BarLabel>
+      </BarTextBox>
+    </BarContainer>
+  );
+};
+
+export default BarStripe;
+
 const BarContainer = styled.div`
   display: grid;
   align-content: center;
@@ -44,31 +72,3 @@ const BarLabel = styled.p`
   background-color: transparent;
 }
 `;
-
-type AppProps = {
-  item: [string, number, number];
-};
-
-const BarStripe: React.FC<AppProps> = ({ item }) => {
-  return (
-    <BarContainer>
-      <ColorBar
-        style={{
-          width: (item[1] / item[2]) * 100 + "%",
-          background: `hsla(${
-            Number(((item[1] / item[2]) * 100).toFixed(0)) < 100
-              ? 100 - Number(((item[1] / item[2]) * 100).toFixed(0))
-              : 0
-          },  70%, 50%, 1)`,
-        }}
-      />
-      <BarTextBox>
-        <BarLabel>{item[0]}</BarLabel>
-        <BarLabel>{item[1].toFixed(0)}</BarLabel> <BarLabel>{item[2]}</BarLabel>
-        <BarLabel>{((item[1] / item[2]) * 100).toFixed(0) + "%"}</BarLabel>
-      </BarTextBox>
-    </BarContainer>
-  );
-};
-
-export default BarStripe;

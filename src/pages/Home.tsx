@@ -26,8 +26,7 @@ import { FoodUnit, State } from "../store/reducers/rootReducer";
 import database from "../data/db";
 import { PageLayout, ControlsLayout } from "../styles/elements";
 
-
-const Home : React.FC<StateProps & DispatchProps> = (props) => {
+const Home = (props: StateProps & DispatchProps) => {
   const [showFilters, setShowFilters] = useState(false);
   const [showInput, setShowInput] = useState(false);
   const [showLimit, setShowLimit] = useState(false);
@@ -102,7 +101,7 @@ const Home : React.FC<StateProps & DispatchProps> = (props) => {
   };
 
   const updateNumber = (item: FoodUnit, id: number) => {
-    const quantityData:[FoodUnit, number] = [item, id]
+    const quantityData: [FoodUnit, number] = [item, id];
     props.updateQuantity(quantityData);
   };
 
@@ -193,14 +192,14 @@ interface StateProps {
 }
 
 interface DispatchProps {
-  applyFilterReset:(initialArray: FoodUnit[])=>void;
-  applyCartRefresh:(cartSession:string)=>void;
-  addToCart:(item: FoodUnit)=>void;
-  toggleFoodComplete:(id: number)=>void;
-  updateQuantity:(quantityData:[FoodUnit, number])=>void;
-  deleteFoodAction:(id: number)=>void;
-  deleteCartAction:(id: number)=>void;
-  fillStorage:(item: FoodUnit)=>void;
+  applyFilterReset: (initialArray: FoodUnit[]) => void;
+  applyCartRefresh: (cartSession: string) => void;
+  addToCart: (item: FoodUnit) => void;
+  toggleFoodComplete: (id: number) => void;
+  updateQuantity: (quantityData: [FoodUnit, number]) => void;
+  deleteFoodAction: (id: number) => void;
+  deleteCartAction: (id: number) => void;
+  fillStorage: (item: FoodUnit) => void;
 }
 
 const mapStateToProps = (state: State) => ({
@@ -209,15 +208,18 @@ const mapStateToProps = (state: State) => ({
   allItemSum: state.allItemSum,
 });
 
-const mapDispatchToProps = (dispatch: Dispatch): any => ({
-  applyFilterReset: (initialArray: FoodUnit[]) =>  dispatch(applyFilterReset(initialArray)),
-  applyCartRefresh: (cartSession:string) =>  dispatch(applyCartRefresh(cartSession)),
-  addToCart: (item: FoodUnit) =>  dispatch(addToCart(item)),
-  toggleFoodComplete: (id: number) =>  dispatch(toggleFoodComplete(id)),
-  updateQuantity: (quantityData:[FoodUnit, number]) =>  dispatch(updateQuantity(quantityData)),
-  deleteFoodAction: (id: number) =>  dispatch(deleteFoodAction(id)),
-  deleteCartAction: (id: number) =>  dispatch(deleteCartAction(id)),
-  fillStorage: (item: FoodUnit) =>  dispatch(fillStorage(item)),
+const mapDispatchToProps = (dispatch: Dispatch) => ({
+  applyFilterReset: (initialArray: FoodUnit[]) =>
+    dispatch(applyFilterReset(initialArray)),
+  applyCartRefresh: (cartSession: string) =>
+    dispatch(applyCartRefresh(cartSession)),
+  addToCart: (item: FoodUnit) => dispatch(addToCart(item)),
+  toggleFoodComplete: (id: number) => dispatch(toggleFoodComplete(id)),
+  updateQuantity: (quantityData: [FoodUnit, number]) =>
+    dispatch(updateQuantity(quantityData)),
+  deleteFoodAction: (id: number) => dispatch(deleteFoodAction(id)),
+  deleteCartAction: (id: number) => dispatch(deleteCartAction(id)),
+  fillStorage: (item: FoodUnit) => dispatch(fillStorage(item)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Home);

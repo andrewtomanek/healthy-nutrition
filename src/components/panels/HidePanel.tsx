@@ -1,12 +1,12 @@
 import React from "react";
 import { SwitchButton, SwitchContainer } from "../../styles/elements";
 
-type AppProps = {
-  hideCards:boolean;
+type Props = {
+  hideCards: boolean;
   toggleCards: () => void;
 };
 
-const HidePanel: React.FC<AppProps> = ({ hideCards, toggleCards })=> {
+const HidePanel = ({ hideCards, toggleCards }: Props) => {
   return (
     <SwitchContainer>
       <SwitchButton onClick={toggleCards}>
@@ -16,6 +16,6 @@ const HidePanel: React.FC<AppProps> = ({ hideCards, toggleCards })=> {
       </SwitchButton>
     </SwitchContainer>
   );
-}
+};
 
-export default  HidePanel
+export default HidePanel;

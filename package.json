@@ -1,7 +1,6 @@
 {
-  "name": "react-sagas-typescript",
+  "name": "healthy-nutrition",
   "version": "1.0.0",
-  "description": "React sagas Api using Connected React Router with TypeScript",
   "main": "src/index.tsx",
   "scripts": {
     "start": "webpack-dev-server",

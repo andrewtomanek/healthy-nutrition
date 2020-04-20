@@ -2,6 +2,7 @@ import React from "react";
 import DataCard from "./DataCard";
 import ImageCard from "./ImageCard";
 import ButtonPanel from "./panels/ButtonPanel";
+import { FoodUnit } from "../store/reducers/rootReducer";
 import styled from "styled-components";
 
 const CardContainer = styled.div`
@@ -17,12 +18,48 @@ const CardContainer = styled.div`
   width: 100%;
 `;
 
-const CardBox = ({ item, basicButtons, ...props }) => {
+type Props = {
+  item: FoodUnit;
+  basicButtons: boolean;
+  minusToCart?: (id: number) => void;
+  updateNumber?: (item: FoodUnit, id: number) => void;
+  plusToCart?: (item: FoodUnit) => void;
+  moveToCart?: (item: FoodUnit) => void;
+  moveToStorage?: (item: FoodUnit) => void;
+  pickItem?: (id: number) => void;
+  removeFromStorage?: (id: number) => void;
+  removeItem?: (id: number) => void;
+  children?: React.ReactNode;
+};
+
+const CardBox = ({
+  item,
+  basicButtons,
+  pickItem,
+  moveToCart,
+  moveToStorage,
+  removeFromStorage,
+  removeItem,
+  minusToCart,
+  plusToCart,
+  updateNumber,
+}: Props) => {
   return (
     <CardContainer>
-      <DataCard item={item} {...props} />
+      <DataCard item={item} pickItem={pickItem} />
       <ImageCard item={item} />
-      <ButtonPanel item={item} basicButtons={basicButtons} {...props} />
+      <ButtonPanel
+        item={item}
+        basicButtons={basicButtons}
+        pickItem={pickItem}
+        moveToCart={moveToCart}
+        moveToStorage={moveToStorage}
+        removeFromStorage={removeFromStorage}
+        removeItem={removeItem}
+        minusToCart={minusToCart}
+        plusToCart={plusToCart}
+        updateNumber={updateNumber}
+      />
     </CardContainer>
   );
 };

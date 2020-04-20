@@ -8,29 +8,29 @@ export function* watchStoreBuilder() {
   yield takeLatest(actionTypes.SAVE_INVENTORY, purchaseStoreSaga);
 }
 
-export function* initInventorySaga(action) {
+type SagaAction = { payload: { token: string; uid: string }; type: string };
+
+export function* initInventorySaga(action: SagaAction) {
   const queryParams =
     "?auth=" +
-    action.authData.token +
+    action.payload.token +
     '&orderBy="uid"&equalTo="' +
-    action.authData.uid +
+    action.payload.uid +
     '"';
   try {
     const response = yield axios.get(
       "https://strava-b193a.firebaseio.com/storage.json" + queryParams
     );
-    yield put(actions.setInventory(response.data[action.authData.uid]));
+    yield put(actions.setInventory(response.data[action.payload.uid]));
   } catch (error) {
     yield put(actions.fetchInventoryFailed());
   }
 }
 
-export function* purchaseStoreSaga(action) {
+export function* purchaseStoreSaga(action: SagaAction) {
   try {
     const response = yield axios.put(
-      `https://strava-b193a.firebaseio.com/storage/${
-        action.payload.uid
-      }.json?auth=${action.payload.token}`,
+      `https://strava-b193a.firebaseio.com/storage/${action.payload.uid}.json?auth=${action.payload.token}`,
       action.payload
     );
     yield put(actions.saveToStoreSuccess(response.data));

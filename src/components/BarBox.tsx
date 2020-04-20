@@ -1,21 +1,20 @@
 import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
+import { Dispatch } from "redux";
 import { updateCalculateSum } from "../store/actions/storageActions";
 import FormLimit from "./forms/FormLimit";
 import BarStripe from "./panels/BarStripe";
 import { CSSTransition } from "react-transition-group";
+import { FoodUnit, State, BarData } from "../store/reducers/rootReducer";
+import { InputNumbers } from "./forms/FormLimit";
 import styled from "styled-components";
 
-const BarContainer = styled.div`
-  margin: 0;
-  padding: 0.2rem 0rem;
-  width: 95%;
-  background-color: hsla(54, 60%, 70%, 1);
-  border-radius: 0rem 0rem 0.3rem 0.3rem;
-`;
+type Props = {
+  showLimit: boolean;
+};
 
-const BarBox = (props) => {
-  const [barData, setbarData] = useState([]);
+const BarBox = (props: Props & StateProps & DispatchProps) => {
+  const [barData, setbarData] = useState<BarData>([]);
   const [barInitValues, setBarInitValues] = useState({
     množství: 10,
     cena: 200,
@@ -72,7 +71,7 @@ const BarBox = (props) => {
   }, [props.cart, barInitValues]);
 
   useEffect(() => {
-    let oldArray = props.updateItemSum;
+    let oldArray: BarData = props.updateItemSum;
     let objectArray = Object.values(barInitValues);
     if (oldArray) {
       for (var i = 0; i < oldArray.length; i++) {
@@ -82,7 +81,7 @@ const BarBox = (props) => {
     }
   }, [props.updateItemSum, barInitValues]);
 
-  const updateBarValues = (initObject) => {
+  const updateBarValues = (initObject: InputNumbers) => {
     setBarInitValues(initObject);
   };
 
@@ -104,14 +103,36 @@ const BarBox = (props) => {
   );
 };
 
-const mapStateToProps = (state) => ({
+interface StateProps {
+  cart: FoodUnit[];
+  foods: FoodUnit[];
+  updateItemSum: BarData;
+}
+
+interface DispatchProps {
+  updateCalculateSum: (sum: [string, number][]) => [string, number][];
+}
+
+const mapStateToProps = (state: State) => ({
   foods: state.foods,
   cart: state.cart,
   updateItemSum: state.updateItemSum,
 });
 
-const mapDispatchToProps = {
-  updateCalculateSum,
-};
+const mapDispatchToProps = (dispatch: Dispatch): any => ({
+  updateCalculateSum: (sum: [string, number][]) =>
+    dispatch(updateCalculateSum(sum)),
+});
 
-export default connect(mapStateToProps, mapDispatchToProps)(BarBox);
+export default connect<StateProps, DispatchProps, Props, State>(
+  mapStateToProps,
+  mapDispatchToProps
+)(BarBox);
+
+const BarContainer = styled.div`
+  margin: 0;
+  padding: 0.2rem 0rem;
+  width: 95%;
+  background-color: hsla(54, 60%, 70%, 1);
+  border-radius: 0rem 0rem 0.3rem 0.3rem;
+`;

@@ -1,17 +1,19 @@
 import React, { useState } from "react";
+import { Dispatch } from "redux";
 import { connect } from "react-redux";
 import {
   applyFilterWord,
-  displayInformation
+  displayInformation,
 } from "../../store/actions/storageActions";
+import { FoodUnit, State } from "../../store/reducers/rootReducer";
 import {
   BasicButton,
   ControlPanel,
   SelectField,
-  SelectOption
+  SelectOption,
 } from "../../styles/elements";
 
-const SortPanel = props => {
+const SortPanel = (props: StateProps & DispatchProps) => {
   const [sortTypes] = useState([
     "bílkoviny",
     "cena",
@@ -19,27 +21,27 @@ const SortPanel = props => {
     "množství",
     "sacharidy",
     "tuky",
-    "vláknina"
+    "vláknina",
   ]);
   const [sortDirection] = useState(["Nejnižší", "Nejvyšší"]);
   const [selectedSortType, setSortString] = useState("kalorie");
   const [selectedSortBy, setSortBy] = useState("Nejvyšší");
 
   const selectFilter = () => {
-    let foodArray = [];
-    let cartArray = [];
+    let foodArray: FoodUnit[] = [];
+    let cartArray: FoodUnit[] = [];
     if (selectedSortBy === "Nejnižší") {
-      foodArray = props.foods.sort((a, b) =>
+      foodArray = props.foods.sort((a: FoodUnit, b: FoodUnit) =>
         a[selectedSortType] > b[selectedSortType] ? 1 : -1
       );
-      cartArray = props.cart.sort((a, b) =>
+      cartArray = props.cart.sort((a: FoodUnit, b: FoodUnit) =>
         a[selectedSortType] > b[selectedSortType] ? 1 : -1
       );
     } else if (selectedSortBy === "Nejvyšší") {
-      foodArray = props.foods.sort((a, b) =>
+      foodArray = props.foods.sort((a: FoodUnit, b: FoodUnit) =>
         a[selectedSortType] < b[selectedSortType] ? 1 : -1
       );
-      cartArray = props.cart.sort((a, b) =>
+      cartArray = props.cart.sort((a: FoodUnit, b: FoodUnit) =>
         a[selectedSortType] < b[selectedSortType] ? 1 : -1
       );
     }
@@ -51,7 +53,7 @@ const SortPanel = props => {
       <BasicButton onClick={() => props.displayInformation()}>Data</BasicButton>
       <SelectField
         value={selectedSortType}
-        onChange={e => setSortString(e.target.value)}
+        onChange={(e) => setSortString(e.target.value)}
       >
         {sortTypes.map((item, index) => (
           <SelectOption key={index} value={item}>
@@ -61,7 +63,7 @@ const SortPanel = props => {
       </SelectField>
       <SelectField
         value={selectedSortBy}
-        onChange={e => setSortBy(e.target.value)}
+        onChange={(e) => setSortBy(e.target.value)}
       >
         {sortDirection.map((item, index) => (
           <SelectOption key={index} value={item}>
@@ -74,14 +76,24 @@ const SortPanel = props => {
   );
 };
 
-const mapStateToProps = state => ({
+interface StateProps {
+  cart: FoodUnit[];
+  foods: FoodUnit[];
+}
+
+interface DispatchProps {
+  applyFilterWord: (filteredData: [FoodUnit[], FoodUnit[]]) => void;
+  displayInformation: () => void;
+}
+
+const mapStateToProps = (state: State) => ({
   foods: state.foods,
-  cart: state.cart
+  cart: state.cart,
 });
 
-const mapDispatchToProps = {
-  applyFilterWord,
-  displayInformation
-};
-
+const mapDispatchToProps = (dispatch: Dispatch) => ({
+  applyFilterWord: (filteredData: [FoodUnit[], FoodUnit[]]) =>
+    dispatch(applyFilterWord(filteredData)),
+  displayInformation: () => dispatch(displayInformation()),
+});
 export default connect(mapStateToProps, mapDispatchToProps)(SortPanel);

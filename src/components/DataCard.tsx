@@ -1,5 +1,28 @@
 import React from "react";
 import styled from "styled-components";
+import { FoodUnit } from "../store/reducers/rootReducer";
+
+type Props = {
+  item: FoodUnit;
+  pickItem?: (id: number) => void;
+};
+
+const DataCard = ({ item, pickItem }: Props) => {
+  return (
+    <TextBox onClick={pickItem && (() => pickItem(item.id))}>
+      <TextField>Název: {item.image}</TextField>
+      <TextField>Cena: {item.cena.toFixed(0)}</TextField>
+      <TextField>Kalorie: {item.kalorie.toFixed(0)}</TextField>
+      <TextField>Tuky: {item.tuky.toFixed(0)}</TextField>
+      <TextField>Sacharidy: {item.sacharidy.toFixed(0)}</TextField>
+      <TextField>Vláknina: {item.vláknina.toFixed(0)}</TextField>
+      <TextField>Bílkoviny: {item.bílkoviny.toFixed(0)}</TextField>
+      <TextField>Množství: {item.množství.toFixed(0)}</TextField>
+    </TextBox>
+  );
+};
+
+export default DataCard;
 
 const TextBox = styled.div`
   display: grid;
@@ -29,18 +52,3 @@ const TextField = styled.p`
     font-size: 2rem;
   }
 `;
-
-export default function DataCard({ item, ...props }) {
-  return (
-    <TextBox onClick={() => props.pickItem(item.id)}>
-      <TextField>Název: {item.image}</TextField>
-      <TextField>Cena: {item.cena.toFixed(0)}</TextField>
-      <TextField>Kalorie: {item.kalorie.toFixed(0)}</TextField>
-      <TextField>Tuky: {item.tuky.toFixed(0)}</TextField>
-      <TextField>Sacharidy: {item.sacharidy.toFixed(0)}</TextField>
-      <TextField>Vláknina: {item.vláknina.toFixed(0)}</TextField>
-      <TextField>Bílkoviny: {item.bílkoviny.toFixed(0)}</TextField>
-      <TextField>Množství: {item.množství.toFixed(0)}</TextField>
-    </TextBox>
-  );
-}

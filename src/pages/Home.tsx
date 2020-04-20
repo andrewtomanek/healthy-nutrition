@@ -10,9 +10,9 @@ import BarBox from "../components/BarBox";
 import ItemsList from "../components/ItemsList";
 import EmptyCart from "../components/EmptyCart";
 import Footer from "../components/Footer";
+import { Dispatch } from "redux";
 import { connect } from "react-redux";
 import {
-  initInventory,
   applyFilterReset,
   applyCartRefresh,
   addToCart,
@@ -22,23 +22,11 @@ import {
   deleteFoodAction,
   deleteCartAction,
 } from "../store/actions/storageActions";
+import { FoodUnit, State } from "../store/reducers/rootReducer";
 import database from "../data/db";
 import { PageLayout, ControlsLayout } from "../styles/elements";
 
-export interface FoodUnit {
-  bílkoviny: number;
-  cena: number;
-  id: number;
-  image: string;
-  kalorie: number;
-  množství: number;
-  picked: boolean;
-  sacharidy: number;
-  tuky: number;
-  vláknina: number;
-}
-
-const Home = (props) => {
+const Home = (props: StateProps & DispatchProps) => {
   const [showFilters, setShowFilters] = useState(false);
   const [showInput, setShowInput] = useState(false);
   const [showLimit, setShowLimit] = useState(false);
@@ -112,8 +100,9 @@ const Home = (props) => {
     props.toggleFoodComplete(id);
   };
 
-  const updateNumber = (item, id) => {
-    props.updateQuantity([item, id]);
+  const updateNumber = (item: FoodUnit, id: number) => {
+    const quantityData: [FoodUnit, number] = [item, id];
+    props.updateQuantity(quantityData);
   };
 
   const removeFromStorage = (id: number) => {
@@ -196,22 +185,41 @@ const Home = (props) => {
   );
 };
 
-const mapStateToProps = (state) => ({
+interface StateProps {
+  cart: FoodUnit[];
+  foods: FoodUnit[];
+  allItemSum?: null;
+}
+
+interface DispatchProps {
+  applyFilterReset: (initialArray: FoodUnit[]) => void;
+  applyCartRefresh: (cartSession: string) => void;
+  addToCart: (item: FoodUnit) => void;
+  toggleFoodComplete: (id: number) => void;
+  updateQuantity: (quantityData: [FoodUnit, number]) => void;
+  deleteFoodAction: (id: number) => void;
+  deleteCartAction: (id: number) => void;
+  fillStorage: (item: FoodUnit) => void;
+}
+
+const mapStateToProps = (state: State) => ({
   foods: state.foods,
   cart: state.cart,
   allItemSum: state.allItemSum,
 });
 
-const mapDispatchToProps = {
-  initInventory,
-  applyFilterReset,
-  applyCartRefresh,
-  addToCart,
-  toggleFoodComplete,
-  updateQuantity,
-  deleteFoodAction,
-  deleteCartAction,
-  fillStorage,
-};
+const mapDispatchToProps = (dispatch: Dispatch) => ({
+  applyFilterReset: (initialArray: FoodUnit[]) =>
+    dispatch(applyFilterReset(initialArray)),
+  applyCartRefresh: (cartSession: string) =>
+    dispatch(applyCartRefresh(cartSession)),
+  addToCart: (item: FoodUnit) => dispatch(addToCart(item)),
+  toggleFoodComplete: (id: number) => dispatch(toggleFoodComplete(id)),
+  updateQuantity: (quantityData: [FoodUnit, number]) =>
+    dispatch(updateQuantity(quantityData)),
+  deleteFoodAction: (id: number) => dispatch(deleteFoodAction(id)),
+  deleteCartAction: (id: number) => dispatch(deleteCartAction(id)),
+  fillStorage: (item: FoodUnit) => dispatch(fillStorage(item)),
+});
 
 export default connect(mapStateToProps, mapDispatchToProps)(Home);

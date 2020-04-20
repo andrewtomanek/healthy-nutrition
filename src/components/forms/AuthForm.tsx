@@ -6,62 +6,18 @@ import { AuthContext } from "../../auth/Auth";
 import validateAuth, { ValidationErrors } from "../../auth/validateAuth";
 import styled from "styled-components";
 
-const LoginForm = styled.form`
-  display: grid;
-  grid-auto-flow: row;
-  justify-content: center;
-  align-items: center;
-  grid-gap: 2rem;
-`;
-
-const ErrorText = styled.p`
-  color: red;
-  font-size: 0.9rem;
-  font-weight: 400;
-  margin: 0;
-`;
-
-const ErrorSpan = styled.span`
-  color: red;
-  font-size: 0.9rem;
-  font-weight: 400;
-  margin: 0;
-  opacity: 0;
-`;
-
-const LoginButton = styled.button`
-  font-size: 1rem;
-  padding: 0.3rem;
-  font-weight: 700;
-  font-size: 2rem;
-  background-color: var(--green);
-  border: 0.2rem solid white;
-  color: white;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  animation: floating-text 500ms ease-in-out;
-  :disabled {
-    animation: none;
-    border: 0.2rem solid grey;
-    background-color: white;
-    color: grey;
-    cursor: not-allowed;
-  }
-  &:hover {
-    color: var(--orange);
-    border: 0.2rem solid var(--orange);
-    background-color: white;
-  }
-`;
-
 interface PropsFromState {
   register: boolean;
 }
 
-// Combine both state + dispatch props - as well as any props we want to pass - in a union type.
-type AllProps = PropsFromState & RouteComponentProps;
+type LoginObject = {
+  target: { elements: { email: { value: "" }; password: { value: "" } } };
+};
 
-const AuthForm: React.FC<AllProps> = ({ history, register }) => {
+const AuthForm = ({
+  history,
+  register,
+}: PropsFromState & RouteComponentProps) => {
   const [values, setValues] = useState({
     email: "",
     password: "",
@@ -73,7 +29,9 @@ const AuthForm: React.FC<AllProps> = ({ history, register }) => {
   const [isSubmitting, setSubmitting] = useState(false);
   const { currentUser } = useContext(AuthContext);
 
-  const logIn = async (event) => {
+  const logIn = async (
+    event: React.FormEvent<HTMLFormElement> & Partial<LoginObject>
+  ) => {
     const { email, password } = event.target.elements;
     try {
       await app.auth().signInWithEmailAndPassword(email.value, password.value);
@@ -82,7 +40,9 @@ const AuthForm: React.FC<AllProps> = ({ history, register }) => {
     }
   };
 
-  const signUp = async (event) => {
+  const signUp = async (
+    event: React.FormEvent<HTMLFormElement> & LoginObject
+  ) => {
     const { email, password } = event.target.elements;
     try {
       await app
@@ -110,7 +70,7 @@ const AuthForm: React.FC<AllProps> = ({ history, register }) => {
     }
   }, [history, currentUser]);
 
-  const handleSubmit = (event) => {
+  const handleSubmit = (event: React.FormEvent<HTMLFormElement> | any) => {
     event.preventDefault();
     setSubmitting(true);
     if (register) {
@@ -184,3 +144,51 @@ const AuthForm: React.FC<AllProps> = ({ history, register }) => {
 };
 
 export default withRouter(AuthForm);
+
+const LoginForm = styled.form`
+  display: grid;
+  grid-auto-flow: row;
+  justify-content: center;
+  align-items: center;
+  grid-gap: 2rem;
+`;
+
+const ErrorText = styled.p`
+  color: red;
+  font-size: 0.9rem;
+  font-weight: 400;
+  margin: 0;
+`;
+
+const ErrorSpan = styled.span`
+  color: red;
+  font-size: 0.9rem;
+  font-weight: 400;
+  margin: 0;
+  opacity: 0;
+`;
+
+const LoginButton = styled.button`
+  font-size: 1rem;
+  padding: 0.3rem;
+  font-weight: 700;
+  font-size: 2rem;
+  background-color: var(--green);
+  border: 0.2rem solid white;
+  color: white;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  animation: floating-text 500ms ease-in-out;
+  :disabled {
+    animation: none;
+    border: 0.2rem solid grey;
+    background-color: white;
+    color: grey;
+    cursor: not-allowed;
+  }
+  &:hover {
+    color: var(--orange);
+    border: 0.2rem solid var(--orange);
+    background-color: white;
+  }
+`;

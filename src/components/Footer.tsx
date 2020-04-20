@@ -2,6 +2,26 @@ import React from "react";
 import { StyledLink, BasicButton } from "../styles/elements";
 import styled from "styled-components";
 
+const Footer = () => {
+  const moveToTop = () => {
+    window.scrollTo(0, 0);
+  };
+
+  return (
+    <FooterContainer>
+      <FooterLayout>
+        <FooterContent>
+          <StyledLink to="/">Zdravá strava</StyledLink>
+          <UpButton onClick={moveToTop}>&#x25B2;</UpButton>
+          <FooterLink href="mailto:andrewtomanek@gmail.com">Kontakt</FooterLink>
+        </FooterContent>
+      </FooterLayout>
+    </FooterContainer>
+  );
+};
+
+export default Footer;
+
 const FooterContainer = styled.footer`
   display: grid;
   padding: 0;
@@ -48,23 +68,3 @@ export const UpButton = styled(BasicButton)`
   border-radius:  2rem 2rem 0.1rem 0.1rem;
   color:hsla(24, 70%, 50%, 1);
 `;
-
-const Footer = () => {
-  const moveToTop = () => {
-    window.scrollTo(0, 0);
-  };
-
-  return (
-    <FooterContainer>
-      <FooterLayout>
-        <FooterContent>
-          <StyledLink to="/">Zdravá strava</StyledLink>
-          <UpButton onClick={moveToTop}>&#x25B2;</UpButton>
-          <FooterLink href="mailto:andrewtomanek@gmail.com">Kontakt</FooterLink>
-        </FooterContent>
-      </FooterLayout>
-    </FooterContainer>
-  );
-};
-
-export default Footer;

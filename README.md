@@ -14,7 +14,7 @@ Calculate nutrition values of picked or defined foods.
 Pick predefined or create your own foods.<br /> Set your healthy daily calory limit.<br /> Add items to the Cart.<br /> Sum of nutrition values will be calculated and displayed in percentages and colors.<br /> Modify cart to accomplish optimal nutrition.
 
 <br />
-  <a href="https://github.com/andrewtomanek/zdrava_strava">
+  <a href="https://github.com/andrewtomanek/healthy-nutrition">
     <img src="public\cart.png" alt="Logo" width="80%" height="auto">
   </a>
 
@@ -28,6 +28,9 @@ Pick predefined or create your own foods.<br /> Set your healthy daily calory li
 - [styled-components](https://styled-components.com/)
 - [Axios](https://github.com/axios/axios)
 - [Firebase](https://firebase.google.com)
+- [TypeScript](https://www.typescriptlang.org/)
+- [Jest](https://jestjs.io/en)
+- [Enzyme](https://enzymejs.github.io/enzyme/)
 
 ## Setup
 
@@ -44,14 +47,14 @@ Pick predefined or create your own foods.<br /> Set your healthy daily calory li
 
 6. Start application: npm start
 
-7. Visit http://localhost:3000/ in your browser
+7. Visit http://localhost:9000/ in your browser
    <br />
 
 ## Contact
 
 andrewtomanek - andrewtomanek@gmail.com
 
-[https://github.com/andrewtomanek/zdrava_strava](https://github.com/andrewtomanek/zdrava_strava)
+[https://github.com/andrewtomanek/healthy-nutrition](https://github.com/andrewtomanek/healthy-nutrition)
 
 ## License
 

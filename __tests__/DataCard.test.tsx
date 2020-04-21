@@ -22,7 +22,7 @@ describe("Renders DataCard", () => {
     const wrapper = shallow(<DataCard {...props} />);
     expect(wrapper).toMatchSnapshot();
   });
-  it("renders text", () => {
+  it("renders list nodes", () => {
     const wrapper = shallow(<DataCard {...props} />);
     expect(wrapper.children()).toHaveLength(8);
   });

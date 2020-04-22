@@ -10,7 +10,7 @@ import {
   SelectOption,
 } from "../../styles/elements";
 
-const CalculatePanel = (props: StateProps & DispatchProps) => {
+export const CalculatePanel = (props: StateProps & DispatchProps) => {
   const [sumTypes] = useState([
     "bílkoviny",
     "cena",

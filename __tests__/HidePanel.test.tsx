@@ -3,13 +3,12 @@ import { shallow } from "enzyme";
 import HidePanel from "../src/components/panels/HidePanel";
 import { SwitchButton, SwitchContainer } from "../src/styles/elements";
 
-
 const toggleCards = jest.fn();
 
 const props = {
-    hideCards: true,
-    toggleCards
-  };
+  hideCards: true,
+  toggleCards,
+};
 
 describe("Renders HidePanel", () => {
   it("renders HidePanel component", () => {
@@ -23,12 +22,10 @@ describe("Renders HidePanel", () => {
 
   it("renders false button text", () => {
     const props = {
-        hideCards: false,
-        toggleCards
-      };
+      hideCards: false,
+      toggleCards,
+    };
     const wrapper = shallow(<HidePanel {...props} />);
-    expect(
-      wrapper.find(SwitchButton)
-    .text()).toEqual("↓ Zobrazit ↓");
+    expect(wrapper.find(SwitchButton).text()).toEqual("↓ Zobrazit ↓");
   });
 });

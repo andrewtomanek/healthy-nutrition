@@ -13,7 +13,7 @@ import {
   SelectOption,
 } from "../../styles/elements";
 
-const SortPanel = (props: StateProps & DispatchProps) => {
+export const SortPanel = (props: StateProps & DispatchProps) => {
   const [sortTypes] = useState([
     "bílkoviny",
     "cena",

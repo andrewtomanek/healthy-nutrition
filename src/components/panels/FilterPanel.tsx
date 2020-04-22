@@ -9,7 +9,7 @@ import { FoodUnit, State } from "../../store/reducers/rootReducer";
 import database from "../../data/db";
 import { BasicButton, ControlPanel } from "../../styles/elements";
 
-const FilterPanel = (props: StateProps & DispatchProps) => {
+export const FilterPanel = (props: StateProps & DispatchProps) => {
   const [unFiltered, setUnFiltered] = useState(database);
 
   const resetFilter = (newArray: FoodUnit[]) => {

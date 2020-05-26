@@ -70,5 +70,6 @@ const BarLabel = styled.p`
   font-weight: 900;
   color: #fff;
   background-color: transparent;
+  width:10vw;
 }
 `;

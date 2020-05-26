@@ -1,5 +1,5 @@
 const path = require("path");
-const webpack = require("webpack");
+const HtmlWebpackPlugin = require("html-webpack-plugin");
 const Dotenv = require("dotenv-webpack");
 
 module.exports = {
@@ -10,7 +10,9 @@ module.exports = {
     extensions: [".js", ".ts", ".tsx"],
   },
   devServer: {
-    port: 9000,
+    port: 5000,
+    publicPath: "/dist/",
+    contentBase: path.join(__dirname, 'dist'),
     historyApiFallback: true,
     hot: true,
   },
@@ -35,5 +37,12 @@ module.exports = {
       },
     ],
   },
-  plugins: [new webpack.HotModuleReplacementPlugin(), new Dotenv()],
+  plugins: [
+    new HtmlWebpackPlugin({
+      template: path.join(__dirname, "public", "index.html"),
+      filename: "./index.html",
+      favicon: path.join(__dirname, "public", "favicon.ico"),
+    }),
+    new Dotenv(),
+  ],
 };

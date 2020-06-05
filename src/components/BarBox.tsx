@@ -16,14 +16,16 @@ type Props = {
 const BarBox = (props: Props & StateProps & DispatchProps) => {
   const [barData, setbarData] = useState<BarData>([]);
   const [barInitValues, setBarInitValues] = useState({
-    množství: 10,
-    cena: 200,
     bílkoviny: 56,
+    cena: 200,
     kalorie: 2000,
+    množství: 10,
     sacharidy: 130,
     tuky: 70,
     vláknina: 38,
   });
+
+  console.log(props.updateItemSum);
 
   useEffect(() => {
     let oldValue = 0;
@@ -32,10 +34,10 @@ const BarBox = (props: Props & StateProps & DispatchProps) => {
         id: 0,
         image: "",
         picked: false,
-        množství: 0,
-        cena: 0,
         bílkoviny: 0,
+        cena: 0,
         kalorie: 0,
+        množství: 0,
         sacharidy: 0,
         tuky: 0,
         vláknina: 0,

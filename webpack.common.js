@@ -1,20 +1,12 @@
 const path = require("path");
+const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const Dotenv = require("dotenv-webpack");
 
 module.exports = {
-  mode: "development",
-  devtool: "eval-source-map",
   entry: path.resolve("src/index.tsx"),
   resolve: {
     extensions: [".js", ".ts", ".tsx"],
-  },
-  devServer: {
-    port: 5000,
-    publicPath: "/dist/",
-    contentBase: path.join(__dirname, 'dist'),
-    historyApiFallback: true,
-    hot: true,
   },
   output: {
     filename: "bundle.js",
@@ -43,6 +35,7 @@ module.exports = {
       filename: "./index.html",
       favicon: path.join(__dirname, "public", "favicon.ico"),
     }),
+    new CleanWebpackPlugin(),
     new Dotenv(),
   ],
 };

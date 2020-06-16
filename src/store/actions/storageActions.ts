@@ -8,7 +8,7 @@ import {
 export const initInventory = (authData: AuthObject) => {
   return {
     type: actionTypes.INIT_INVENTORY,
-    authData: authData,
+    payload: authData,
   };
 };
 
@@ -24,6 +24,7 @@ export const fetchInventoryFailed = () => {
     type: actionTypes.FETCH_INVENTORY_FAILED,
   };
 };
+
 export const saveToStore = (userData: UserObject) => {
   return {
     type: actionTypes.SAVE_INVENTORY,

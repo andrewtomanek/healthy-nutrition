@@ -25,8 +25,6 @@ const BarBox = (props: Props & StateProps & DispatchProps) => {
     vláknina: 38,
   });
 
-  console.log(props.updateItemSum);
-
   useEffect(() => {
     let oldValue = 0;
     let initCart = [

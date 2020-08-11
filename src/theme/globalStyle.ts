@@ -45,15 +45,16 @@ font-family: 'Alegreya Sans',monospace;}
 }
 
 .login__input {
-  font-size: 2rem;
+  font-size: 1.2rem;
   font-weight: 600;
   padding: 0.2rem;
   color: hsla(80, 100%, 30%, 1);
+  width: 80%;
   border: 0.3rem solid var(--green);
 }
 
 .error__input {
-  font-size: 2rem;
+  font-size: 1.2rem;
   font-weight: 600;
   padding: 0.2rem;
   color: red;
@@ -98,6 +99,21 @@ font-family: 'Alegreya Sans',monospace;}
   transform: translateX(0rem);
   transition: all 500ms ease-in-out;
 }
+
+@media all and (max-width: 736px) {
+  .login__input {
+  font-size: 1.7rem;
+  font-weight: 600;
+  padding: 0.2rem;
+}
+  }
+  @media all and (max-width: 480px) {
+    .login__input {
+  font-size: 2rem;
+  font-weight: 600;
+  padding: 0.2rem;
+}
+  }
 
 @keyframes floating-text {
   0% {

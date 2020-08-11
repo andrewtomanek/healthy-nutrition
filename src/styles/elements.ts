@@ -2,8 +2,8 @@ import { NavLink } from "react-router-dom";
 import styled from "styled-components";
 
 export const BasicButton = styled.button`
-  padding: 0.3rem 1rem;
-  font-size: 1.6rem;
+  padding: 0.2rem 1rem;
+  font-size: 1.1rem;
   font-weight: 900;
   background-color: var(--green);
   color: #fff;
@@ -15,16 +15,16 @@ export const BasicButton = styled.button`
     background-color: white;
   }
   @media all and (max-width: 1680px) {
-    font-size: 1.5rem;
+    font-size: 1.2rem;
   }
   @media all and (max-width: 980px) {
     font-size: 1.3rem;
   }
   @media all and (max-width: 736px) {
-    font-size: 1.2rem;
+    font-size: 1.4rem;
   }
   @media all and (max-width: 480px) {
-    font-size: 1.1rem;
+    font-size: 1.5rem;
   }
 `;
 
@@ -43,6 +43,45 @@ export const RedButton = styled(BasicButton)`
   &:hover {
     background-color: red;
     color: var(--green);
+  }
+`;
+
+export const NavigationList = styled.ul`
+  display: grid;
+  grid-auto-flow: column;
+  justify-content: center;
+  align-items: center;
+  grid-gap: 0.1rem 0.5rem;
+  list-style: none;
+  margin: 0;
+  padding: 0 3rem;
+`;
+
+export const NavigationLi = styled.li`
+  margin: 0 0.3rem;
+  text-decoration: none;
+`;
+
+export const NavigationLink = styled(NavLink)`
+  padding: 0.1rem 0.5rem;
+  text-decoration: none;
+  font-size: 1.2rem;
+  font-weight: 900;
+  color: white;
+  background: var(--green);
+  border-radius: 0.5rem;
+  border: 0.1rem solid white;
+  &:hover {
+    color: var(--green);
+    background-color: white;
+  }
+  &.active {
+    color: white;
+    background: hsla(0, 80%, 80%, 1);
+  }
+  @media all and (max-width: 480px) {
+    padding: 0rem 0.5rem;
+    font-size: 2rem;
   }
 `;
 

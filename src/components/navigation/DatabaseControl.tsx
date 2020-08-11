@@ -106,17 +106,18 @@ const mapDispatchToProps = (dispatch: Dispatch) => ({
 
 export default connect(mapStateToProps, mapDispatchToProps)(DatabaseControl);
 
-const DataContainer = styled.div`
+const DataContainer = styled.span`
   width: 95%;
-  display: grid;
+  display: flex;
   grid-gap: 0.1rem 0.3rem;
   grid-auto-flow: column;
   align-content: center;
   align-items: center;
-  padding: 0.2rem 0.3rem;
+  padding: 0.1rem 0.3rem;
 `;
 
 const LoginStatus = styled.p`
+  margin: 0;
   padding: 0.1rem 0.5rem;
   font-size: 1.1rem;
   font-weight: 900;

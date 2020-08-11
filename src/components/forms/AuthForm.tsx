@@ -146,11 +146,11 @@ const AuthForm = ({
 export default withRouter(AuthForm);
 
 const LoginForm = styled.form`
-  display: grid;
-  grid-auto-flow: row;
+  display: flex;
+  flex-flow: column nowrap;
   justify-content: center;
   align-items: center;
-  grid-gap: 2rem;
+  padding: 2rem 0.3rem;
 `;
 
 const ErrorText = styled.p`
@@ -169,16 +169,21 @@ const ErrorSpan = styled.span`
 `;
 
 const LoginButton = styled.button`
-  font-size: 1rem;
   padding: 0.3rem;
   font-weight: 700;
-  font-size: 2rem;
+  font-size: 1.3rem;
   background-color: var(--green);
   border: 0.2rem solid white;
   color: white;
   cursor: pointer;
   transition: all 0.3s ease;
   animation: floating-text 500ms ease-in-out;
+  @media all and (max-width: 736px) {
+    font-size: 1.7rem;
+  }
+  @media all and (max-width: 480px) {
+    font-size: 2rem;
+  }
   :disabled {
     animation: none;
     border: 0.2rem solid grey;

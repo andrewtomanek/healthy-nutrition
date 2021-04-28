@@ -63,9 +63,8 @@ export default ItemsList;
 
 const ListContainer = styled.section`
   display: grid;
-  grid-gap: 2rem 0.5rem;
+  grid-gap: 2rem 2.5rem;
   grid-template-columns: repeat(5, 1fr);
-  grid-template-rows: repeat(auto-fill, minmax(50vh, 1fr));
   align-items: center;
   align-content: space-between;
   justify-content: space-between;
@@ -74,34 +73,28 @@ const ListContainer = styled.section`
   padding: 1rem;
   max-width: 90vw;
   @media all and (max-width: 2380px) {
-    grid-gap: 1rem 0.5rem;
+    grid-gap: 1rem 1.5rem;
     grid-template-columns: repeat(4, 1fr);
-    grid-template-rows: repeat(auto-fill, minmax(50vh, 1fr));
   }
   @media all and (max-width: 1980px) {
-    grid-gap: 1rem 0.5rem;
+    grid-gap: 1rem 1.5rem;
     grid-template-columns: repeat(4, 1fr);
-    grid-template-rows: repeat(auto-fill, minmax(60vh, 1fr));
   }
   @media all and (max-width: 1680px) {
-    grid-gap: 1rem 0.5rem;
+    grid-gap: 1rem 1.5rem;
     grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: repeat(auto-fill, minmax(70vh, 1fr));
   }
   @media all and (max-width: 980px) {
-    grid-gap: 1rem 0.5rem;
+    grid-gap: 1rem 1.5rem;
     grid-template-columns: repeat(2, 1fr);
-    grid-template-rows: repeat(auto-fill, minmax(80vh, 1fr));
   }
   @media all and (max-width: 736px) {
-    grid-gap: 1rem 0.5rem;
+    grid-gap: 1rem 1.5rem;
     grid-template-columns: repeat(1, 1fr);
-    grid-template-rows: repeat(auto-fill, minmax(90vh, 1fr));
   }
   @media all and (max-width: 480px) {
     display: grid;
-    grid-gap: 1rem 0.5rem;
+    grid-gap: 1rem 1.5rem;
     grid-template-columns: 100%;
-    grid-template-rows: repeat(auto-fill, minmax(100vh, 1fr));
   }
 `;

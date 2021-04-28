@@ -4,7 +4,7 @@ const GlobalStyle = createGlobalStyle`
   --green: hsla(80, 60%, 60%, 1);
   --orange: hsla(24, 90%, 80%, 1);
   --yellow: hsla(54, 90%, 80%, 1);
-  font-size: calc(1vw + 1vh + 0.5vmin);
+  font-size: calc(1vw + 1vh + 0.2vmin);
 }
 
 html {

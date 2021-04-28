@@ -27,17 +27,15 @@ export default DataCard;
 const TextBox = styled.div`
   display: grid;
   grid-auto-flow: row;
-  align-content: center;
+  align-items: center;
   justify-content: center;
   grid-area: 1 / 1 / 1 / 1;
-  height: 100%;
-  width: 100%;
   z-index: 2;
 `;
 
 const TextField = styled.p`
   margin: 0;
-  padding: 0.3rem 1rem;
+  padding: 0.1rem 0.5rem;
   font-size: 1rem;
   font-weight: 900;
   color: #fff;

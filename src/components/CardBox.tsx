@@ -14,8 +14,6 @@ const CardContainer = styled.div`
   background-color: var(--green);
   box-shadow: 0.1rem 0.1rem 0.1rem rgba(0, 0, 0, 0.15);
   border-radius: 0.3rem;
-  height: 100%;
-  width: 100%;
 `;
 
 type Props = {

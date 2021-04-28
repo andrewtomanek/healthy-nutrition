@@ -3,7 +3,7 @@ import styled from "styled-components";
 
 export const BasicButton = styled.button`
   padding: 0.2rem 1rem;
-  font-size: 1.1rem;
+  font-size: 1rem;
   font-weight: 900;
   background-color: var(--green);
   color: #fff;
@@ -15,16 +15,16 @@ export const BasicButton = styled.button`
     background-color: white;
   }
   @media all and (max-width: 1680px) {
-    font-size: 1.2rem;
+    font-size: 1.1rem;
   }
   @media all and (max-width: 980px) {
-    font-size: 1.3rem;
+    font-size: 1.2rem;
   }
   @media all and (max-width: 736px) {
-    font-size: 1.4rem;
+    font-size: 1.3rem;
   }
   @media all and (max-width: 480px) {
-    font-size: 1.5rem;
+    font-size: 1.4rem;
   }
 `;
 
@@ -87,6 +87,7 @@ export const NavigationLink = styled(NavLink)`
 
 export const SwitchButton = styled(BasicButton)`
   border-radius: 1rem;
+  padding: 0.5rem; 1rem;
 `;
 
 export const ControlPanel = styled.div`
@@ -232,7 +233,7 @@ export const PageLayout = styled.div`
   justify-content: center;
   gap: 1rem;
   margin: 0;
-  padding: 0 2rem 0;
+  padding: 0 2rem 1rem;
   overflow: hidden;
   @media all and (max-width: 480px) {
     font-size: 1.1rem;

@@ -9,11 +9,11 @@ const CardContainer = styled.div`
   display: grid;
   grid: 2fr 1fr / 1fr;
   align-items: center;
-  align-content: space-between;
   justify-content: space-between;
-  background-color: var(--green);
   box-shadow: 0.1rem 0.1rem 0.1rem rgba(0, 0, 0, 0.15);
   border-radius: 0.3rem;
+  overflow: hidden;
+  height: 90%;
 `;
 
 type Props = {

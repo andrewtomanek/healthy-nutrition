@@ -43,6 +43,7 @@ export default SwitcherPanel;
 const SwitchPanel = styled.div`
   display: grid;
   grid-auto-flow: column;
-  justify-items: space-around;
-  padding: 0.5rem 0.3rem;
+  justify-items: space-between;
+  gap: 3rem;
+  padding: 1rem 0;
 `;

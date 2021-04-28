@@ -108,8 +108,6 @@ const ControlsContainer = styled.div`
   justify-content: center;
   grid-area: 2 / 1 / 3 / 1;
   z-index: 4;
-  height: 100%;
-  width: 100%;
   font-size: 1rem;
   font-weight: 900;
   color: #fff;

@@ -36,14 +36,13 @@ export default ImageCard;
 
 const PictureContainer = styled.div`
   grid-area: 1 / 1 / 3 / 1;
-  width: 100%;
-  height: 100%;
+  display: grid;
+  justify-content: center;
+  align-items: center;
   overflow: hidden;
 `;
 
 const PictureCard = styled.img`
-  height: 70%;
-  width: 140%;
-  transform: translateX(-20%);
+  height: 100%;
+  max-height: 45vh;
 `;
-

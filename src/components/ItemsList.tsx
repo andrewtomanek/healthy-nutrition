@@ -70,7 +70,7 @@ const ListContainer = styled.section`
   justify-content: space-between;
   background-color: var(--orange);
   border-radius: 0.5rem;
-  padding: 1rem;
+  padding: 2rem;
   max-width: 90vw;
   @media all and (max-width: 2380px) {
     grid-template-columns: repeat(4, 1fr);

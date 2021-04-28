@@ -63,7 +63,7 @@ export default ItemsList;
 
 const ListContainer = styled.section`
   display: grid;
-  grid-gap: 2rem 2.5rem;
+  grid-gap: 2rem 2rem;
   grid-template-columns: repeat(5, 1fr);
   align-items: center;
   align-content: space-between;
@@ -73,28 +73,22 @@ const ListContainer = styled.section`
   padding: 1rem;
   max-width: 90vw;
   @media all and (max-width: 2380px) {
-    grid-gap: 1rem 1.5rem;
     grid-template-columns: repeat(4, 1fr);
   }
   @media all and (max-width: 1980px) {
-    grid-gap: 1rem 1.5rem;
     grid-template-columns: repeat(4, 1fr);
   }
   @media all and (max-width: 1680px) {
-    grid-gap: 1rem 1.5rem;
     grid-template-columns: repeat(3, 1fr);
   }
   @media all and (max-width: 980px) {
-    grid-gap: 1rem 1.5rem;
     grid-template-columns: repeat(2, 1fr);
   }
   @media all and (max-width: 736px) {
-    grid-gap: 1rem 1.5rem;
     grid-template-columns: repeat(1, 1fr);
   }
   @media all and (max-width: 480px) {
     display: grid;
-    grid-gap: 1rem 1.5rem;
     grid-template-columns: 100%;
   }
 `;

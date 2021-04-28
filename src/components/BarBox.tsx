@@ -132,7 +132,6 @@ export default connect<StateProps, DispatchProps, Props, State>(
 const BarContainer = styled.div`
   margin: 0;
   padding: 0.2rem 0rem;
-  width: 95%;
   background-color: hsla(54, 60%, 70%, 1);
   border-radius: 0rem 0rem 0.3rem 0.3rem;
 `;

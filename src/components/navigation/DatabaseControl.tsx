@@ -107,7 +107,6 @@ const mapDispatchToProps = (dispatch: Dispatch) => ({
 export default connect(mapStateToProps, mapDispatchToProps)(DatabaseControl);
 
 const DataContainer = styled.span`
-  width: 95%;
   display: flex;
   grid-gap: 0.1rem 0.3rem;
   grid-auto-flow: column;

@@ -127,60 +127,62 @@ const Home = (props: StateProps & DispatchProps) => {
       mountOnEnter
       unmountOnExit
     >
-      <PageLayout>
-        <SwitcherPanel
-          cartControls={false}
-          revealFilters={revealFilters}
-          revealInput={revealInput}
-          revealLimit={revealLimit}
-        />
-        <CSSTransition
-          in={showInput}
-          timeout={300}
-          classNames="alert"
-          unmountOnExit
-        >
-          <Form />
-        </CSSTransition>
-        <CSSTransition
-          in={showFilters}
-          timeout={300}
-          classNames="alert"
-          unmountOnExit
-        >
-          <ControlsLayout>
-            <FilterPanel />
-            <SortPanel />
-          </ControlsLayout>
-        </CSSTransition>
-        <BarBox showLimit={showLimit} />
-        <HidePanel hideCards={hideCards} toggleCards={toggleCards} />
-        <CSSTransition
-          in={hideCards}
-          timeout={300}
-          classNames="alert"
-          unmountOnExit
-        >
-          {props.foods && props.foods.length > 0 ? (
-            <>
-              <ItemsList
-                foods={props.foods}
-                minusToCart={minusToCart}
-                updateNumber={updateNumber}
-                plusToCart={plusToCart}
-                moveToCart={moveToCart}
-                pickItem={pickItem}
-                removeFromStorage={removeFromStorage}
-                basicButtons
-              />
-              <MorePanel displayMore={displayMore} />
-            </>
-          ) : (
-            <EmptyCart resetFilter={resetFilter} showResetButton />
-          )}
-        </CSSTransition>
+      <>
+        <PageLayout>
+          <SwitcherPanel
+            cartControls={false}
+            revealFilters={revealFilters}
+            revealInput={revealInput}
+            revealLimit={revealLimit}
+          />
+          <CSSTransition
+            in={showInput}
+            timeout={300}
+            classNames="alert"
+            unmountOnExit
+          >
+            <Form />
+          </CSSTransition>
+          <CSSTransition
+            in={showFilters}
+            timeout={300}
+            classNames="alert"
+            unmountOnExit
+          >
+            <ControlsLayout>
+              <FilterPanel />
+              <SortPanel />
+            </ControlsLayout>
+          </CSSTransition>
+          <BarBox showLimit={showLimit} />
+          <HidePanel hideCards={hideCards} toggleCards={toggleCards} />
+          <CSSTransition
+            in={hideCards}
+            timeout={300}
+            classNames="alert"
+            unmountOnExit
+          >
+            {props.foods && props.foods.length > 0 ? (
+              <>
+                <ItemsList
+                  foods={props.foods}
+                  minusToCart={minusToCart}
+                  updateNumber={updateNumber}
+                  plusToCart={plusToCart}
+                  moveToCart={moveToCart}
+                  pickItem={pickItem}
+                  removeFromStorage={removeFromStorage}
+                  basicButtons
+                />
+                <MorePanel displayMore={displayMore} />
+              </>
+            ) : (
+              <EmptyCart resetFilter={resetFilter} showResetButton />
+            )}
+          </CSSTransition>
+        </PageLayout>
         <Footer />
-      </PageLayout>
+      </>
     </CSSTransition>
   );
 };

@@ -20,8 +20,12 @@ const SwitcherPanel = ({
     <SwitchPanel>
       {!cartControls ? (
         <>
-          <BasicButton onClick={revealFilters && (() => revealFilters())}>Vyfiltrovat</BasicButton>
-          <BasicButton onClick={revealInput&& (() => revealInput())}>Přidat</BasicButton>
+          <BasicButton onClick={revealFilters && (() => revealFilters())}>
+            Vyfiltrovat
+          </BasicButton>
+          <BasicButton onClick={revealInput && (() => revealInput())}>
+            Přidat
+          </BasicButton>
           <BasicButton onClick={() => revealLimit()}>Limit</BasicButton>
         </>
       ) : (
@@ -37,10 +41,8 @@ const SwitcherPanel = ({
 export default SwitcherPanel;
 
 const SwitchPanel = styled.div`
-  width: 94%;
   display: grid;
   grid-auto-flow: column;
   justify-items: space-around;
   padding: 0.5rem 0.3rem;
-  background: hsla(40, 80%, 70%, 1);
 `;

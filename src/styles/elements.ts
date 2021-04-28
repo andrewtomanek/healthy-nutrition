@@ -92,7 +92,6 @@ export const SwitchButton = styled(BasicButton)`
 export const ControlPanel = styled.div`
   display: grid;
   grid-auto-flow: column;
-  background: hsla(24, 90%, 60%, 1);
 `;
 
 export const SelectField = styled.select`
@@ -124,11 +123,10 @@ export const InputContainer = styled.div`
   padding: 0.4rem 0.3rem;
   background: hsla(40, 80%, 70%, 1);
   border-radius: 0.5rem;
-  width: 95%;
 `;
 
 export const SwitchContainer = styled(InputContainer)`
-  background-color: hsla(40, 80%, 70%, 1);
+  background-color: transparent;
 `;
 
 export const InputBox = styled.form`
@@ -230,10 +228,11 @@ export const StyledLink = styled(NavLink)`
 export const PageLayout = styled.div`
   display: grid;
   grid-auto-flow: row;
-  justify-items: center;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
   margin: 0;
-  padding: 0;
-  min-height: 80vh;
+  padding: 0 2rem 0;
   overflow: hidden;
   @media all and (max-width: 480px) {
     font-size: 1.1rem;
@@ -241,7 +240,6 @@ export const PageLayout = styled.div`
 `;
 
 export const ControlsLayout = styled.div`
-  width: 95%;
   display: grid;
   grid-gap: 0.1rem 0.3rem;
   grid-auto-flow: column;

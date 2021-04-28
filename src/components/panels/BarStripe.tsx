@@ -35,7 +35,6 @@ const BarContainer = styled.div`
   justify-content: center;
   grid: 1fr / 1fr;
   height: 4vh;
-  width: 100%;
   z-index: 2;
   border-bottom: 0.2rem solid white;
   overflow: hidden;
@@ -47,8 +46,7 @@ const BarTextBox = styled.div`
   align-content: center;
   justify-content: space-between;
   grid-area: 1 / 1 / 1 / 1;
-  height: 100%;
-  width: 100%;
+
   background-color: transparent;
   z-index: 2;
 `;

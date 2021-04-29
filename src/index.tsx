@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Suspense } from "react";
 import ReactDOM from "react-dom";
 import { createStore, applyMiddleware, compose } from "redux";
 import createSagaMiddleware from "redux-saga";
@@ -7,6 +7,7 @@ import rootReducer from "./store/reducers/rootReducer";
 import { watchStoreBuilder } from "./store/sagas/mainSaga";
 
 import App from "./App";
+import Loader from "./components/Loader";
 
 const composeEnhancers =
   (window["__REDUX_DEVTOOLS_EXTENSION_COMPOSE__"] as typeof compose) || compose;
@@ -21,7 +22,9 @@ sagaMiddleware.run(watchStoreBuilder);
 
 ReactDOM.render(
   <Provider store={store}>
-    <App />
+    <Suspense fallback={<Loader />}>
+      <App />
+    </Suspense>
   </Provider>,
   document.getElementById("root")
 );

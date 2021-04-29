@@ -1,12 +1,27 @@
 import React from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
-import Navigation from "./components/navigation/Navigation";
-import Login from "./pages/Login";
-import SignUp from "./pages/SignUp";
 import { AuthProvider } from "./auth/Auth";
-import Home from "./pages/Home";
-import Cart from "./pages/Cart";
 import GlobalStyle from "./theme/globalStyle";
+
+const Home = React.lazy(() => {
+  return import("./pages/Home");
+});
+
+const Cart = React.lazy(() => {
+  return import("./pages/Cart");
+});
+
+const Login = React.lazy(() => {
+  return import("./pages/Login");
+});
+
+const SignUp = React.lazy(() => {
+  return import("./pages/SignUp");
+});
+
+const Navigation = React.lazy(() => {
+  return import("./components/navigation/Navigation");
+});
 
 const App = () => {
   return (

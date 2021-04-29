@@ -17,3 +17,4 @@ package-lock.json
 dist/
 .netlify/
 __snapshots__/
+stats.json

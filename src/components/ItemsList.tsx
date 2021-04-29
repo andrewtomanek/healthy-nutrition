@@ -1,8 +1,9 @@
 import React from "react";
-import CardBox from "../components/CardBox";
-import { CSSTransition, TransitionGroup } from "react-transition-group";
-import { FoodUnit } from "../store/reducers/rootReducer";
 import styled from "styled-components";
+import { CSSTransition, TransitionGroup } from "react-transition-group";
+
+import CardBox from "../components/CardBox";
+import { FoodUnit } from "../types/shared";
 
 type Props = {
   foods: FoodUnit[];

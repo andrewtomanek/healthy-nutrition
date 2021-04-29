@@ -7,7 +7,7 @@ import { PageLayout } from "../../styles/elements";
 type Props = {
   inProp: boolean;
   animationName: string;
-  children: any;
+  children: React.ReactNode;
 };
 
 const PageWrapper = ({ inProp, animationName, children }: Props) => {

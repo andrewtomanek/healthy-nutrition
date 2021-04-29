@@ -3,7 +3,7 @@ import { CSSTransition } from "react-transition-group";
 
 type Props = {
   inProp: boolean;
-  children: any;
+  children: React.ReactNode;
 };
 
 const TransitionWrapper = ({ inProp, children }: Props) => {

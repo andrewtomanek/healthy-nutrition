@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { connect } from "react-redux";
 import { Dispatch } from "redux";
-import { FoodUnit } from "../../store/reducers/rootReducer";
+
 import { addFoodAction } from "../../store/actions/storageActions";
 import {
   InputContainer,
@@ -12,6 +12,7 @@ import {
   InputLabel,
   SubmitButton,
 } from "../../styles/elements";
+import { FoodUnit } from "../../types/shared";
 
 const CartForm = (props: DispatchProps) => {
   const [itemName, setName] = useState("");

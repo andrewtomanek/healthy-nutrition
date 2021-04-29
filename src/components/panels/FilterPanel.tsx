@@ -1,13 +1,15 @@
 import React, { useState } from "react";
 import { Dispatch } from "redux";
 import { connect } from "react-redux";
+
 import {
   applyFilterReset,
   applyFilterPicked,
 } from "../../store/actions/storageActions";
-import { FoodUnit, State } from "../../store/reducers/rootReducer";
-import database from "../../data/db";
 import { BasicButton, ControlPanel } from "../../styles/elements";
+import database from "../../data/db";
+import { State } from "../../store/reducers/rootReducer";
+import { FoodUnit } from "../../types/shared";
 
 export const FilterPanel = (props: StateProps & DispatchProps) => {
   const [unFiltered, setUnFiltered] = useState(database);

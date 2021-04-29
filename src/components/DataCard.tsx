@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
-import { FoodUnit } from "../store/reducers/rootReducer";
+
+import { FoodUnit } from "../types/shared";
 
 type Props = {
   item: FoodUnit;

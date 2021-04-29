@@ -1,22 +1,10 @@
-import * as actionTypes from "../actions/actionTypes";
-import database from "../../data/db.json";
 import { AnyAction } from "redux";
 
-export interface FoodUnit {
-  bílkoviny: number;
-  cena: number;
-  id: number;
-  image: string;
-  kalorie: number;
-  množství: number;
-  picked: boolean;
-  sacharidy: number;
-  tuky: number;
-  vláknina: number;
-}
+import * as actionTypes from "../actions/actionTypes";
+import { FoodUnit } from "../../types/shared";
+import database from "../../data/db.json";
 
 export type BarData = [string, number, number][];
-
 export interface State {
   cart: FoodUnit[];
   foods: FoodUnit[];

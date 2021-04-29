@@ -6,9 +6,10 @@ export interface ValidationErrors {
     | null;
 }
 
-
-
-export default function validateAuth(values:{email: string, password: string}) {
+export default function validateAuth(values: {
+  email: string;
+  password: string;
+}) {
   let errors: ValidationErrors = { email: null, password: null };
   // Email Errors
   if (!values.email) {

@@ -1,8 +1,11 @@
 import React, { useState } from "react";
 import { connect } from "react-redux";
 import { Dispatch } from "redux";
+
 import { applycalculateSum } from "../../store/actions/storageActions";
-import { FoodUnit, State } from "../../store/reducers/rootReducer";
+import { State } from "../../store/reducers/rootReducer";
+import { FoodUnit } from "../../types/shared";
+
 import {
   BasicButton,
   ControlPanel,

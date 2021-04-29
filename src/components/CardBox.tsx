@@ -1,9 +1,10 @@
 import React from "react";
+import styled from "styled-components";
+
 import DataCard from "./DataCard";
 import ImageCard from "./ImageCard";
 import ButtonPanel from "./panels/ButtonPanel";
-import { FoodUnit } from "../store/reducers/rootReducer";
-import styled from "styled-components";
+import { FoodUnit } from "../types/shared";
 
 const CardContainer = styled.div`
   display: grid;

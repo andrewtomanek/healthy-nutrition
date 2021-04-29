@@ -3,8 +3,8 @@ import app from "./base";
 
 export const AuthContext = React.createContext<any>(null);
 
-export const AuthProvider: React.FC<{}>  = ({ children }) => {
-  const [currentUser, setCurrentUser] = useState<any>(null);
+export const AuthProvider: React.FC<{}> = ({ children }) => {
+  const [currentUser, setCurrentUser] = useState<unknown | null>(null);
 
   useEffect(() => {
     app.auth().onAuthStateChanged(setCurrentUser);
@@ -13,7 +13,7 @@ export const AuthProvider: React.FC<{}>  = ({ children }) => {
   return (
     <AuthContext.Provider
       value={{
-        currentUser
+        currentUser,
       }}
     >
       {children}

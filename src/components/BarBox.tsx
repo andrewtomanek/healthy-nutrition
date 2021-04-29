@@ -1,13 +1,15 @@
 import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
 import { Dispatch } from "redux";
+import styled from "styled-components";
+
 import { updateCalculateSum } from "../store/actions/storageActions";
 import FormLimit from "./forms/FormLimit";
 import BarStripe from "./panels/BarStripe";
-import { CSSTransition } from "react-transition-group";
-import { FoodUnit, State, BarData } from "../store/reducers/rootReducer";
+import TransitionWrapper from "../components/Layout/TransitionWrapper";
+import { State, BarData } from "../store/reducers/rootReducer";
+import { FoodUnit } from "../types/shared";
 import { InputNumbers } from "./forms/FormLimit";
-import styled from "styled-components";
 
 type Props = {
   showLimit: boolean;
@@ -87,15 +89,9 @@ const BarBox = (props: Props & StateProps & DispatchProps) => {
 
   return (
     <BarContainer>
-      <CSSTransition
-        in={props.showLimit}
-        timeout={300}
-        classNames="alert"
-        unmountOnExit
-      >
+      <TransitionWrapper inProp={props.showLimit}>
         <FormLimit updateBarValues={updateBarValues} />
-      </CSSTransition>
-
+      </TransitionWrapper>
       {barData.map((item, index) => (
         <BarStripe item={item} key={index} />
       ))}

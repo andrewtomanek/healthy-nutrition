@@ -1,19 +1,20 @@
-import React, { useContext} from "react";
-import { Route, Redirect,RouteComponentProps } from "react-router-dom";
-import { AuthContext } from "./Auth";
+import React, { useContext } from "react";
+import { Route, Redirect, RouteComponentProps } from "react-router-dom";
 
-interface PropsFromState {
-    component: React.ElementType
-}
+import { AuthContext } from "./Auth";
+import { PropsFromState } from "../types/shared";
 
 type AllProps = PropsFromState & RouteComponentProps;
 
-const PrivateRoute : React.FC<AllProps> = ({ component: RouteComponent, ...rest }) => {
-  const {currentUser} = useContext(AuthContext);
+const PrivateRoute: React.FC<AllProps> = ({
+  component: RouteComponent,
+  ...rest
+}) => {
+  const { currentUser } = useContext(AuthContext);
   return (
     <Route
       {...rest}
-      render={routeProps =>
+      render={(routeProps) =>
         !!currentUser ? (
           <RouteComponent {...routeProps} />
         ) : (
@@ -24,5 +25,4 @@ const PrivateRoute : React.FC<AllProps> = ({ component: RouteComponent, ...rest 
   );
 };
 
-
-export default PrivateRoute
+export default PrivateRoute;

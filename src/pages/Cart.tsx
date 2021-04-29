@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from "react";
+import { Dispatch } from "redux";
+import { connect } from "react-redux";
+
 import SwitcherPanel from "../components/panels/SwitcherPanel";
 import ItemsList from "../components/ItemsList";
 import BarBox from "../components/BarBox";
 import EmptyCart from "../components/EmptyCart";
 import PageWrapper from "../components/Layout/PageWrapper";
-import { Dispatch } from "redux";
-import { connect } from "react-redux";
 import {
   addToStorage,
   toggleCartComplete,
@@ -14,7 +15,8 @@ import {
   applyFilterReset,
   applyCartRefresh,
 } from "../store/actions/storageActions";
-import { FoodUnit, State } from "../store/reducers/rootReducer";
+import { State } from "../store/reducers/rootReducer";
+import { FoodUnit } from "../types/shared";
 import database from "../data/db";
 
 const Cart = (props: StateProps & DispatchProps) => {

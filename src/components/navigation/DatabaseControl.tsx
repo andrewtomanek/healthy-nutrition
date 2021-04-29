@@ -1,25 +1,18 @@
 import React, { useEffect, useState, useContext } from "react";
 import { connect } from "react-redux";
 import { Dispatch } from "redux";
+import styled from "styled-components";
+
 import { initInventory, saveToStore } from "../../store/actions/storageActions";
-import { FoodUnit, State } from "../../store/reducers/rootReducer";
+import { State } from "../../store/reducers/rootReducer";
 import { AuthContext } from "../../auth/Auth";
 import app from "../../auth/base";
 import { AuthButton } from "../../styles/elements";
-import styled from "styled-components";
+import { FoodUnit, UserObject } from "../../types/shared";
 
 export interface AuthObject {
   token: string;
   uid: string;
-}
-
-export interface UserObject {
-  token: string;
-  email: string;
-  uid: string;
-  cart: FoodUnit[];
-  foods: FoodUnit[];
-  allItemSum?: null;
 }
 
 const DatabaseControl = (props: StateProps & DispatchProps) => {

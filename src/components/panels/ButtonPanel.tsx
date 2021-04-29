@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
-import { FoodUnit } from "../../store/reducers/rootReducer";
+import { FoodUnit } from "../../types/shared";
 import { BasicButton } from "../../styles/elements";
 
 type Props = {
@@ -35,9 +35,9 @@ const ButtonPanel = ({
     setOldItem(item);
   }, [item]);
 
-  const handleInput = (e: any) => {
-    let currentValue = e.target.value;
-    setQuantity(e.target.value);
+  const handleInput = (e: React.FormEvent<HTMLInputElement>) => {
+    let currentValue = +e.currentTarget.value;
+    setQuantity(currentValue);
     let newItem = {
       ...item,
       picked: true,

@@ -1,9 +1,6 @@
 import * as actionTypes from "./actionTypes";
-import { FoodUnit } from "../reducers/rootReducer";
-import {
-  AuthObject,
-  UserObject,
-} from "../../components/navigation/DatabaseControl";
+import { FoodUnit, UserObject } from "../../types/shared";
+import { AuthObject } from "../../components/navigation/DatabaseControl";
 
 export const initInventory = (authData: AuthObject) => {
   return {

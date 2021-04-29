@@ -17,7 +17,9 @@ import {
   deleteFoodAction,
   deleteCartAction,
 } from "../store/actions/storageActions";
-import { FoodUnit, State } from "../store/reducers/rootReducer";
+import { State } from "../store/reducers/rootReducer";
+import { FoodUnit } from "../types/shared";
+
 import database from "../data/db";
 const ItemsList = React.lazy(() => {
   return import("../components/ItemsList");

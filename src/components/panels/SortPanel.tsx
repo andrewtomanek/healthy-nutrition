@@ -1,17 +1,19 @@
 import React, { useState } from "react";
 import { Dispatch } from "redux";
 import { connect } from "react-redux";
+
 import {
   applyFilterWord,
   displayInformation,
 } from "../../store/actions/storageActions";
-import { FoodUnit, State } from "../../store/reducers/rootReducer";
 import {
   BasicButton,
   ControlPanel,
   SelectField,
   SelectOption,
 } from "../../styles/elements";
+import { State } from "../../store/reducers/rootReducer";
+import { FoodUnit } from "../../types/shared";
 
 export const SortPanel = (props: StateProps & DispatchProps) => {
   const [sortTypes] = useState([
@@ -96,4 +98,5 @@ const mapDispatchToProps = (dispatch: Dispatch) => ({
     dispatch(applyFilterWord(filteredData)),
   displayInformation: () => dispatch(displayInformation()),
 });
+
 export default connect(mapStateToProps, mapDispatchToProps)(SortPanel);

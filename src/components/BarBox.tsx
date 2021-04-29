@@ -130,7 +130,10 @@ export default connect<StateProps, DispatchProps, Props, State>(
 )(BarBox);
 
 const BarContainer = styled.div`
+  display: grid;
+  align-items: center;
   padding: 1rem;
+  border-radius: 1rem;
+  gap: 0.5rem;
   background-color: hsla(54, 60%, 70%, 1);
-  border-radius: 0rem 0rem 0.3rem 0.3rem;
 `;

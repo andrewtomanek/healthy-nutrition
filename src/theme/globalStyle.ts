@@ -15,6 +15,7 @@ html {
 
 body {
   background: var(--yellow);
+  background: linear-gradient(135deg, hsla(24, 90%, 95%, 1) 20%, hsla(54, 90%, 95%, 1) 50%, hsla(80, 90%, 95%, 1) 80%);
   margin: 0;
   padding: 0;
   font-family: 'Alegreya Sans SC',monospace;

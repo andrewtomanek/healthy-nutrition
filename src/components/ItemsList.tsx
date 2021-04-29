@@ -68,7 +68,7 @@ const ListContainer = styled.section`
   align-items: center;
   align-content: space-between;
   justify-content: space-between;
-  background-color: var(--orange);
+  background-color: hsla(24, 90%, 90%, 1);
   border-radius: 0.5rem;
   padding: 2rem;
   max-width: 90vw;

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import { FoodUnit } from "../../store/reducers/rootReducer";
-import { BasicButton, GreenButton, RedButton } from "../../styles/elements";
+import { BasicButton } from "../../styles/elements";
 
 type Props = {
   item: FoodUnit;
@@ -57,27 +57,27 @@ const ButtonPanel = ({
       style={{ gridTemplateRows: basicButtons ? "1fr 1fr" : "1fr" }}
     >
       {basicButtons ? (
-        <BasicButton onClick={moveToCart && (() => moveToCart(item))}>
+        <SquareButton onClick={moveToCart && (() => moveToCart(item))}>
           {"\u{1F6D2}"}
-        </BasicButton>
+        </SquareButton>
       ) : (
-        <BasicButton onClick={moveToStorage && (() => moveToStorage(item))}>
+        <SquareButton onClick={moveToStorage && (() => moveToStorage(item))}>
           {"\u{1F5D1}"}
-        </BasicButton>
+        </SquareButton>
       )}
-      <BasicButton onClick={pickItem && (() => pickItem(item.id))}>
+      <SquareButton onClick={pickItem && (() => pickItem(item.id))}>
         {"\u{2714}"}
-      </BasicButton>
+      </SquareButton>
       {basicButtons ? (
-        <BasicButton
+        <SquareButton
           onClick={removeFromStorage && (() => removeFromStorage(item.id))}
         >
           {"\u{274C}"}
-        </BasicButton>
+        </SquareButton>
       ) : (
-        <BasicButton onClick={removeItem && (() => removeItem(item.id))}>
+        <SquareButton onClick={removeItem && (() => removeItem(item.id))}>
           {"\u{274C}"}
-        </BasicButton>
+        </SquareButton>
       )}
       {basicButtons && (
         <>
@@ -101,21 +101,47 @@ const ButtonPanel = ({
 
 export default ButtonPanel;
 
+const SquareButton = styled(BasicButton)`
+  border-radius: 0;
+`;
+
+const GreenButton = styled(BasicButton)`
+  background-color: var(--green);
+  color: hsla(24, 70%, 50%, 1);
+  border-radius: 0;
+  &:hover {
+    color: var(--green);
+    background-color: hsla(24, 70%, 50%, 1);
+  }
+`;
+
+const RedButton = styled(BasicButton)`
+  background-color: var(--green);
+  color: red;
+  border-radius: 0;
+  &:hover {
+    background-color: red;
+    color: var(--green);
+  }
+`;
+
 const ControlsContainer = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
-  align-content: end;
+  grid-template-rows: 1fr 1fr;
+  align-content: center;
   justify-content: center;
   grid-area: 2 / 1 / 3 / 1;
   z-index: 4;
   font-size: 1rem;
   font-weight: 900;
+  padding: 0.1rem 0.3rem;
+  gap: 0.1rem 0.3rem;
   color: #fff;
 `;
 
 const UnitInput = styled.input`
-  width: 80%;
-  margin: 0;
+  width: 75%;
   padding: 0.1rem 0.3rem;
   font-size: 1rem;
   font-weight: 600;

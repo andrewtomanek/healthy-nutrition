@@ -29,7 +29,7 @@ const TextBox = styled.div`
   grid-auto-flow: row;
   align-items: center;
   justify-content: center;
-  grid-area: 1 / 1 / 1 / 1;
+  grid-area: 1 / 1 / 3 / 1;
   z-index: 2;
 `;
 

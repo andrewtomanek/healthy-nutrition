@@ -108,11 +108,11 @@ export default connect(mapStateToProps, mapDispatchToProps)(DatabaseControl);
 
 const DataContainer = styled.span`
   display: flex;
-  grid-gap: 0.1rem 0.3rem;
+  grid-gap: 1rem 3rem;
   grid-auto-flow: column;
   align-content: center;
   align-items: center;
-  padding: 0.1rem 0.3rem;
+  padding: 1rem 2rem;
 `;
 
 const LoginStatus = styled.p`

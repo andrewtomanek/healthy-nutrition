@@ -37,6 +37,7 @@ const BarContainer = styled.div`
   height: 4vh;
   z-index: 2;
   border-bottom: 0.2rem solid white;
+  border-radius: 1rem;
   overflow: hidden;
 `;
 

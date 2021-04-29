@@ -29,7 +29,6 @@ const EmptyContainer = styled.div`
   border-radius: 1rem;
   padding: 1rem;
   min-width: 90vw;
-  min-height: 20vh;
 `;
 
 const EmptyText = styled.p`
@@ -40,5 +39,4 @@ const EmptyText = styled.p`
   border-radius: 1rem;
   padding: 1rem;
   min-width: 90vw;
-  min-height: 20vh;
 `;

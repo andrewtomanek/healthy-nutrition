@@ -11,9 +11,9 @@ const CardContainer = styled.div`
   align-items: center;
   justify-content: space-between;
   box-shadow: 0.1rem 0.1rem 0.1rem rgba(0, 0, 0, 0.15);
+  background: var(--yellow);
   border-radius: 0.3rem;
   overflow: hidden;
-  height: 90%;
 `;
 
 type Props = {

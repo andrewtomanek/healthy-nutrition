@@ -3,6 +3,7 @@ import styled from "styled-components";
 
 export const BasicButton = styled.button`
   padding: 0.2rem 1rem;
+  border-radius: 1rem;
   font-size: 1rem;
   font-weight: 900;
   background-color: var(--green);
@@ -28,24 +29,6 @@ export const BasicButton = styled.button`
   }
 `;
 
-export const GreenButton = styled(BasicButton)`
-  background-color: var(--green);
-  color: hsla(24, 70%, 50%, 1);
-  &:hover {
-    color: var(--green);
-    background-color: hsla(24, 70%, 50%, 1);
-  }
-`;
-
-export const RedButton = styled(BasicButton)`
-  background-color: var(--green);
-  color: red;
-  &:hover {
-    background-color: red;
-    color: var(--green);
-  }
-`;
-
 export const NavigationList = styled.ul`
   display: grid;
   grid-auto-flow: column;
@@ -53,8 +36,6 @@ export const NavigationList = styled.ul`
   align-items: center;
   grid-gap: 0.1rem 0.5rem;
   list-style: none;
-  margin: 0;
-  padding: 0 3rem;
 `;
 
 export const NavigationLi = styled.li`
@@ -93,6 +74,9 @@ export const SwitchButton = styled(BasicButton)`
 export const ControlPanel = styled.div`
   display: grid;
   grid-auto-flow: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
 `;
 
 export const SelectField = styled.select`
@@ -138,7 +122,8 @@ export const InputBox = styled.form`
   align-items: center;
   align-content: space-around;
   justify-content: center;
-  padding: 0.1rem 0.3rem;
+  padding: 1rem 2rem;
+  gap: 0.5rem 0.3rem;
 `;
 
 export const InputField = styled.input`
@@ -244,15 +229,15 @@ export const ControlsLayout = styled.div`
   display: grid;
   grid-gap: 0.1rem 0.3rem;
   grid-auto-flow: column;
-  justify-items: space-around;
-  padding: 0.2rem 0.3rem;
-  background-color: hsla(40, 90%, 50%, 1);
+  justify-items: space-between;
+  padding: 1rem 2rem;
+  background-color: hsla(40, 80%, 70%, 1);
+  border-radius: 1rem;
+
   @media all and (max-width: 736px) {
     grid-auto-flow: row;
-    justify-items: space-around;
   }
   @media all and (max-width: 480px) {
     grid-auto-flow: row;
-    justify-items: space-around;
   }
 `;

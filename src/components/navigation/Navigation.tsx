@@ -35,13 +35,11 @@ export default Navigation;
 
 const MainNavigation = styled.nav`
   display: grid;
-  grid-gap: 0.3rem 0.5rem;
   grid-auto-flow: column;
   justify-content: space-between;
   align-items: center;
-  width: 100%;
   background: hsla(24, 90%, 60%, 1);
-  padding: 0.4rem 0.5rem;
+  padding: 0rem 1rem;
   @media all and (max-width: 980px) {
     grid-auto-flow: row;
     padding: 0.1rem 0.5rem;

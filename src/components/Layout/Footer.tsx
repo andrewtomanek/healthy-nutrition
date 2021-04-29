@@ -1,5 +1,5 @@
 import React from "react";
-import { StyledLink, BasicButton } from "../styles/elements";
+import { StyledLink, BasicButton } from "../../styles/elements";
 import styled from "styled-components";
 
 const Footer = () => {
@@ -65,6 +65,6 @@ const FooterLink = styled.a`
 
 export const UpButton = styled(BasicButton)`
   border: solid 0.2rem white;
-  border-radius:  2rem 2rem 0.1rem 0.1rem;
-  color:hsla(24, 70%, 50%, 1);
+  border-radius: 2rem 2rem 0.1rem 0.1rem;
+  color: hsla(24, 70%, 50%, 1);
 `;

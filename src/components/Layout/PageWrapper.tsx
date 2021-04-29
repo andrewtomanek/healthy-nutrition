@@ -1,8 +1,8 @@
 import React from "react";
 import { CSSTransition } from "react-transition-group";
 
-import Footer from "../components/Footer";
-import { PageLayout } from "../styles/elements";
+import Footer from "./Footer";
+import { PageLayout } from "../../styles/elements";
 
 type Props = {
   inProp: boolean;

@@ -3,7 +3,7 @@ import SwitcherPanel from "../components/panels/SwitcherPanel";
 import ItemsList from "../components/ItemsList";
 import BarBox from "../components/BarBox";
 import EmptyCart from "../components/EmptyCart";
-import PageWrapper from "../components/PageWrapper";
+import PageWrapper from "../components/Layout/PageWrapper";
 import { Dispatch } from "redux";
 import { connect } from "react-redux";
 import {

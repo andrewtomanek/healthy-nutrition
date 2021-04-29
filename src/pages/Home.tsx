@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import { CSSTransition } from "react-transition-group";
 import Form from "../components/forms/Form";
 import SwitcherPanel from "../components/panels/SwitcherPanel";
 import SortPanel from "../components/panels/SortPanel";
@@ -8,7 +7,8 @@ import MorePanel from "../components/panels/MorePanel";
 import HidePanel from "../components/panels/HidePanel";
 import BarBox from "../components/BarBox";
 import EmptyCart from "../components/EmptyCart";
-import PageWrapper from "../components/PageWrapper";
+import PageWrapper from "../components/Layout/PageWrapper";
+import TransitionWrapper from "../components/Layout/TransitionWrapper";
 import { Dispatch } from "redux";
 import { connect } from "react-redux";
 import {
@@ -128,33 +128,18 @@ const Home = (props: StateProps & DispatchProps) => {
         revealInput={revealInput}
         revealLimit={revealLimit}
       />
-      <CSSTransition
-        in={showInput}
-        timeout={300}
-        classNames="alert"
-        unmountOnExit
-      >
+      <TransitionWrapper inProp={showInput}>
         <Form />
-      </CSSTransition>
-      <CSSTransition
-        in={showFilters}
-        timeout={300}
-        classNames="alert"
-        unmountOnExit
-      >
+      </TransitionWrapper>
+      <TransitionWrapper inProp={showFilters}>
         <ControlsLayout>
           <FilterPanel />
           <SortPanel />
         </ControlsLayout>
-      </CSSTransition>
+      </TransitionWrapper>
       <BarBox showLimit={showLimit} />
       <HidePanel hideCards={hideCards} toggleCards={toggleCards} />
-      <CSSTransition
-        in={hideCards}
-        timeout={300}
-        classNames="alert"
-        unmountOnExit
-      >
+      <TransitionWrapper inProp={hideCards}>
         {props.foods && props.foods.length > 0 ? (
           <>
             <ItemsList
@@ -172,7 +157,7 @@ const Home = (props: StateProps & DispatchProps) => {
         ) : (
           <EmptyCart resetFilter={resetFilter} showResetButton />
         )}
-      </CSSTransition>
+      </TransitionWrapper>
     </PageWrapper>
   );
 };

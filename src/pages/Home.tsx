@@ -7,9 +7,8 @@ import FilterPanel from "../components/panels/FilterPanel";
 import MorePanel from "../components/panels/MorePanel";
 import HidePanel from "../components/panels/HidePanel";
 import BarBox from "../components/BarBox";
-import ItemsList from "../components/ItemsList";
 import EmptyCart from "../components/EmptyCart";
-import Footer from "../components/Footer";
+import PageWrapper from "../components/PageWrapper";
 import { Dispatch } from "redux";
 import { connect } from "react-redux";
 import {
@@ -24,7 +23,10 @@ import {
 } from "../store/actions/storageActions";
 import { FoodUnit, State } from "../store/reducers/rootReducer";
 import database from "../data/db";
-import { PageLayout, ControlsLayout } from "../styles/elements";
+import { ControlsLayout } from "../styles/elements";
+const ItemsList = React.lazy(() => {
+  return import("../components/ItemsList");
+});
 
 const Home = (props: StateProps & DispatchProps) => {
   const [showFilters, setShowFilters] = useState(false);
@@ -119,71 +121,59 @@ const Home = (props: StateProps & DispatchProps) => {
   };
 
   return (
-    <CSSTransition
-      component={null}
-      in={inProp}
-      timeout={500}
-      classNames="anim-right"
-      mountOnEnter
-      unmountOnExit
-    >
-      <>
-        <PageLayout>
-          <SwitcherPanel
-            cartControls={false}
-            revealFilters={revealFilters}
-            revealInput={revealInput}
-            revealLimit={revealLimit}
-          />
-          <CSSTransition
-            in={showInput}
-            timeout={300}
-            classNames="alert"
-            unmountOnExit
-          >
-            <Form />
-          </CSSTransition>
-          <CSSTransition
-            in={showFilters}
-            timeout={300}
-            classNames="alert"
-            unmountOnExit
-          >
-            <ControlsLayout>
-              <FilterPanel />
-              <SortPanel />
-            </ControlsLayout>
-          </CSSTransition>
-          <BarBox showLimit={showLimit} />
-          <HidePanel hideCards={hideCards} toggleCards={toggleCards} />
-          <CSSTransition
-            in={hideCards}
-            timeout={300}
-            classNames="alert"
-            unmountOnExit
-          >
-            {props.foods && props.foods.length > 0 ? (
-              <>
-                <ItemsList
-                  foods={props.foods}
-                  minusToCart={minusToCart}
-                  updateNumber={updateNumber}
-                  plusToCart={plusToCart}
-                  moveToCart={moveToCart}
-                  pickItem={pickItem}
-                  removeFromStorage={removeFromStorage}
-                  basicButtons
-                />
-                <MorePanel displayMore={displayMore} />
-              </>
-            ) : (
-              <EmptyCart resetFilter={resetFilter} showResetButton />
-            )}
-          </CSSTransition>
-        </PageLayout>
-        <Footer />
-      </>
-    </CSSTransition>
+    <PageWrapper inProp={inProp} animationName={"anim-right"}>
+      <SwitcherPanel
+        cartControls={false}
+        revealFilters={revealFilters}
+        revealInput={revealInput}
+        revealLimit={revealLimit}
+      />
+      <CSSTransition
+        in={showInput}
+        timeout={300}
+        classNames="alert"
+        unmountOnExit
+      >
+        <Form />
+      </CSSTransition>
+      <CSSTransition
+        in={showFilters}
+        timeout={300}
+        classNames="alert"
+        unmountOnExit
+      >
+        <ControlsLayout>
+          <FilterPanel />
+          <SortPanel />
+        </ControlsLayout>
+      </CSSTransition>
+      <BarBox showLimit={showLimit} />
+      <HidePanel hideCards={hideCards} toggleCards={toggleCards} />
+      <CSSTransition
+        in={hideCards}
+        timeout={300}
+        classNames="alert"
+        unmountOnExit
+      >
+        {props.foods && props.foods.length > 0 ? (
+          <>
+            <ItemsList
+              foods={props.foods}
+              minusToCart={minusToCart}
+              updateNumber={updateNumber}
+              plusToCart={plusToCart}
+              moveToCart={moveToCart}
+              pickItem={pickItem}
+              removeFromStorage={removeFromStorage}
+              basicButtons
+            />
+            <MorePanel displayMore={displayMore} />
+          </>
+        ) : (
+          <EmptyCart resetFilter={resetFilter} showResetButton />
+        )}
+      </CSSTransition>
+    </PageWrapper>
   );
 };
 

@@ -3,7 +3,7 @@ import SwitcherPanel from "../components/panels/SwitcherPanel";
 import ItemsList from "../components/ItemsList";
 import BarBox from "../components/BarBox";
 import EmptyCart from "../components/EmptyCart";
-import Footer from "../components/Footer";
+import PageWrapper from "../components/PageWrapper";
 import { Dispatch } from "redux";
 import { connect } from "react-redux";
 import {
@@ -16,8 +16,6 @@ import {
 } from "../store/actions/storageActions";
 import { FoodUnit, State } from "../store/reducers/rootReducer";
 import database from "../data/db";
-import { CSSTransition } from "react-transition-group";
-import { PageLayout } from "../styles/elements";
 
 const Cart = (props: StateProps & DispatchProps) => {
   const [showLimit, setShowLimit] = useState(false);
@@ -63,31 +61,21 @@ const Cart = (props: StateProps & DispatchProps) => {
   };
 
   return (
-    <CSSTransition
-      component={null}
-      in={inProp}
-      timeout={500}
-      classNames="anim-left"
-      mountOnEnter
-      unmountOnExit
-    >
-      <PageLayout>
-        <SwitcherPanel revealLimit={revealLimit} cartControls />
-        <BarBox showLimit={showLimit} />
-        {props.cart.length > 0 ? (
-          <ItemsList
-            foods={props.cart}
-            moveToStorage={moveToStorage}
-            removeItem={removeItem}
-            pickItem={pickItem}
-            basicButtons={false}
-          />
-        ) : (
-          <EmptyCart showResetButton={false} />
-        )}
-        <Footer />
-      </PageLayout>
-    </CSSTransition>
+    <PageWrapper inProp={inProp} animationName={"anim-left"}>
+      <SwitcherPanel revealLimit={revealLimit} cartControls />
+      <BarBox showLimit={showLimit} />
+      {props.cart.length > 0 ? (
+        <ItemsList
+          foods={props.cart}
+          moveToStorage={moveToStorage}
+          removeItem={removeItem}
+          pickItem={pickItem}
+          basicButtons={false}
+        />
+      ) : (
+        <EmptyCart showResetButton={false} />
+      )}
+    </PageWrapper>
   );
 };
 

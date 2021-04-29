@@ -1,13 +1,9 @@
 import React, { useState, useEffect } from "react";
-import Form from "../components/forms/Form";
 import SwitcherPanel from "../components/panels/SwitcherPanel";
-import SortPanel from "../components/panels/SortPanel";
-import FilterPanel from "../components/panels/FilterPanel";
 import MorePanel from "../components/panels/MorePanel";
-import HidePanel from "../components/panels/HidePanel";
-import BarBox from "../components/BarBox";
 import EmptyCart from "../components/EmptyCart";
 import PageWrapper from "../components/Layout/PageWrapper";
+import PanelWrapper from "../components/Layout/PanelWrapper";
 import TransitionWrapper from "../components/Layout/TransitionWrapper";
 import { Dispatch } from "redux";
 import { connect } from "react-redux";
@@ -23,7 +19,6 @@ import {
 } from "../store/actions/storageActions";
 import { FoodUnit, State } from "../store/reducers/rootReducer";
 import database from "../data/db";
-import { ControlsLayout } from "../styles/elements";
 const ItemsList = React.lazy(() => {
   return import("../components/ItemsList");
 });
@@ -128,17 +123,13 @@ const Home = (props: StateProps & DispatchProps) => {
         revealInput={revealInput}
         revealLimit={revealLimit}
       />
-      <TransitionWrapper inProp={showInput}>
-        <Form />
-      </TransitionWrapper>
-      <TransitionWrapper inProp={showFilters}>
-        <ControlsLayout>
-          <FilterPanel />
-          <SortPanel />
-        </ControlsLayout>
-      </TransitionWrapper>
-      <BarBox showLimit={showLimit} />
-      <HidePanel hideCards={hideCards} toggleCards={toggleCards} />
+      <PanelWrapper
+        showInput={showInput}
+        showFilters={showFilters}
+        showLimit={showLimit}
+        hideCards={hideCards}
+        toggleCards={toggleCards}
+      />
       <TransitionWrapper inProp={hideCards}>
         {props.foods && props.foods.length > 0 ? (
           <>

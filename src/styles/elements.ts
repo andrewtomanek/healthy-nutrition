@@ -134,6 +134,7 @@ export const InputField = styled.input`
   text-align: center;
   color: hsla(70, 30%, 30%, 1);
   background-color: #fff;
+  width: 100%;
 `;
 
 export const InputTextField = styled.input`
@@ -159,7 +160,6 @@ export const InputCheckBox = styled.input`
 `;
 
 export const InputLabel = styled.label`
-  height: 100%;
   margin: 0;
   padding: 0.1rem 0.3rem;
   font-size: 1rem;

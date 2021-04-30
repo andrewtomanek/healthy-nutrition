@@ -84,6 +84,7 @@ export const SelectField = styled.select`
   height: 100%;
   width: 100%;
   padding: 0.2rem 0.3rem;
+  border-radius: 1rem;
   font-size: 1rem;
   font-weight: 900;
   background-color: var(--green);
@@ -127,35 +128,35 @@ export const InputBox = styled.form`
 `;
 
 export const InputField = styled.input`
-  margin: 0;
   padding: 0.1rem 0.3rem;
   font-size: 1rem;
   font-weight: 600;
   text-align: center;
   color: hsla(70, 30%, 30%, 1);
   background-color: #fff;
+  border-radius: 1rem;
   width: 100%;
 `;
 
 export const InputTextField = styled.input`
   grid-column-start: 2;
   grid-column-end: 4;
-  margin: 0;
   padding: 0.1rem 0.3rem;
   font-size: 1rem;
   font-weight: 600;
   color: hsla(70, 30%, 30%, 1);
   background-color: #fff;
+  border-radius: 1rem;
   width: 50%;
 `;
 
 export const InputCheckBox = styled.input`
-  margin: 0;
   padding: 0.1rem 0.3rem;
   font-size: 1rem;
   font-weight: 600;
   color: hsla(70, 30%, 30%, 1);
   background-color: #fff;
+  border-radius: 1rem;
   width: 50%;
 `;
 
@@ -174,6 +175,7 @@ export const SubmitButton = styled.button`
   padding: 0.3rem 1rem;
   font-size: 1rem;
   font-weight: 900;
+  border-radius: 1rem;
   background-color: var(--green);
   color: #fff;
   cursor: pointer;

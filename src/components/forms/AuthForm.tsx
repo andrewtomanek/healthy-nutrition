@@ -151,6 +151,7 @@ const LoginForm = styled.form`
   justify-content: center;
   align-items: center;
   padding: 2rem 0.3rem;
+  min-height: 80vh;
 `;
 
 const ErrorText = styled.p`

@@ -6,7 +6,7 @@ import {
   NavigationLink,
   AuthButton,
 } from "../../styles/elements";
-import app from "../../auth/base";
+import app from "../../firebase/firebase";
 
 const AuthControl = () => {
   const { currentUser } = useContext(AuthContext);

@@ -12,4 +12,6 @@ const app = firebase.initializeApp({
   messagingSenderId: process.env.REACT_APP_FIREBASE_SENDER_ID,
 });
 
-export default app;
+const storage = firebase.storage();
+
+export { storage, app as default };

@@ -6,7 +6,7 @@ import styled from "styled-components";
 import { initInventory, saveToStore } from "../../store/actions/storageActions";
 import { State } from "../../store/reducers/rootReducer";
 import { AuthContext } from "../../auth/Auth";
-import app from "../../auth/base";
+import app from "../../firebase/firebase";
 import { AuthButton } from "../../styles/elements";
 import { FoodUnit, UserObject } from "../../types/shared";
 

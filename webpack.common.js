@@ -1,4 +1,7 @@
 const path = require("path");
+const BundleAnalyzerPlugin = require("webpack-bundle-analyzer")
+  .BundleAnalyzerPlugin;
+
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const Dotenv = require("dotenv-webpack");
@@ -35,6 +38,7 @@ module.exports = {
       filename: "./index.html",
       favicon: path.join(__dirname, "public", "favicon.ico"),
     }),
+    new BundleAnalyzerPlugin(),
     new CleanWebpackPlugin(),
     new Dotenv(),
   ],

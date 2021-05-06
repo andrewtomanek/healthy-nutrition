@@ -47,4 +47,7 @@ const SwitchPanel = styled.div`
   justify-content: center;
   gap: 3rem;
   padding: 1rem 0 0;
+  @media all and (max-width: 480px) {
+    gap: 1rem;
+  }
 `;

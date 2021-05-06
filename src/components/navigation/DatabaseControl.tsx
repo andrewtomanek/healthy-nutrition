@@ -118,6 +118,6 @@ const LoginStatus = styled.p`
   border: 0.2rem solid var(--green);
   @media all and (max-width: 480px) {
     padding: 0rem 0.5rem;
-    font-size: 2rem;
+    font-size: 3rem;
   }
 `;

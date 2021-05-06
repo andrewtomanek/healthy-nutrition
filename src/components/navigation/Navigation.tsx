@@ -60,6 +60,7 @@ const MainNavigation = styled.nav<IProps>`
   }
   @media all and (max-width: 480px) {
     padding: 1rem 0.5rem;
+    background: none;
   }
 `;
 
@@ -99,7 +100,7 @@ export const NavigationList = styled.ul<IProps>`
 export const Burger = styled.button`
   display: none;
   padding: 0.1rem 0.5rem;
-  font-size: 1.2rem;
+  font-size: 1.5rem;
   font-weight: 900;
   color: white;
   background: var(--green);
@@ -109,5 +110,8 @@ export const Burger = styled.button`
   @media all and (max-width: 480px) {
     display: block;
     z-index: 19;
+    position: absolute;
+    top: 1%;
+    right: 1%;
   }
 `;

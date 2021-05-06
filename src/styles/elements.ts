@@ -55,7 +55,7 @@ export const NavigationLink = styled(NavLink)`
     background: hsla(0, 80%, 80%, 1);
   }
   @media all and (max-width: 480px) {
-    font-size: 2rem;
+    font-size: 3rem;
   }
 `;
 

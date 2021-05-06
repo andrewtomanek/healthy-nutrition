@@ -28,11 +28,11 @@ const LoaderContainer = styled.section`
 
 const LoaderBall = styled.section`
   display: inline-block;
-  margin: auto 0.25rem;
-  height: 0.75rem;
-  width: 0.75rem;
-  border-radius: 0.375rem;
-  background: #06c;
+  margin: auto 2rem;
+  height: 5rem;
+  width: 5rem;
+  border-radius: 100%;
+  background: hsla(80, 50%, 50%, 1);
   animation: bulging 2s infinite ease-in-out;
   @media all and (max-width: 480px) {
     margin: 0;

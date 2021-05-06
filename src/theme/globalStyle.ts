@@ -45,24 +45,6 @@ font-family: 'Alegreya Sans',monospace;}
   opacity: 0;
 }
 
-.login__input {
-  font-size: 1.2rem;
-  font-weight: 600;
-  padding: 0.2rem;
-  color: hsla(80, 100%, 30%, 1);
-  width: 80%;
-  border: 0.3rem solid var(--green);
-}
-
-.error__input {
-  font-size: 1.2rem;
-  font-weight: 600;
-  padding: 0.2rem;
-  color: red;
-  border: 0.3rem solid red;
-  background-color: #ffc9aa;
-}
-
 .alert-enter {
   opacity: 0;
   transform: scale(0.9);

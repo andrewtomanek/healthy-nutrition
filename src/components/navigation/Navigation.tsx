@@ -64,7 +64,7 @@ const MainNavigation = styled.nav<IProps>`
   }
 `;
 
-export const NavigationList = styled.ul<IProps>`
+const NavigationList = styled.ul<IProps>`
   display: grid;
   grid-auto-flow: column;
   justify-content: center;
@@ -97,7 +97,7 @@ export const NavigationList = styled.ul<IProps>`
   }
 `;
 
-export const Burger = styled.button`
+const Burger = styled.button`
   display: none;
   padding: 0.1rem 0.5rem;
   font-size: 1.5rem;

@@ -1,11 +1,11 @@
 import React, { useState, useCallback, useContext, useEffect } from "react";
-import app from "../../firebase/firebase";
 import { withRouter } from "react-router";
 import { RouteComponentProps } from "react-router-dom";
+import styled, { css } from "styled-components";
+
+import app from "../../firebase/firebase";
 import { AuthContext } from "../../auth/Auth";
 import validateAuth, { ValidationErrors } from "../../auth/validateAuth";
-import styled from "styled-components";
-
 interface PropsFromState {
   register: boolean;
 }
@@ -13,6 +13,10 @@ interface PropsFromState {
 type LoginObject = {
   target: { elements: { email: { value: "" }; password: { value: "" } } };
 };
+
+interface IProps {
+  inputErrors: any;
+}
 
 const AuthForm = ({
   history,
@@ -99,28 +103,30 @@ const AuthForm = ({
 
   return (
     <LoginForm onSubmit={handleSubmit}>
-      <input
+      <InputLabel htmlFor="email">Email</InputLabel>
+      <EmailInput
         onChange={handleChange}
         onBlur={handleBlur}
         name="email"
         value={values.email}
-        className={(errors.email && "error__input") || "login__input"}
+        inputErrors={errors.email}
         autoComplete="off"
-        placeholder="E-mail"
+        placeholder="nick@email.com"
       />
       {errors.email ? (
         <ErrorText>{errors.email}</ErrorText>
       ) : (
         <ErrorSpan>noErrors</ErrorSpan>
       )}
-      <input
+      <InputLabel htmlFor="password">Password</InputLabel>
+      <PassInput
         onChange={handleChange}
         onBlur={handleBlur}
         value={values.password}
-        className={(errors.password && "error__input") || "login__input"}
+        inputErrors={errors.password}
         name="password"
         type="password"
-        placeholder="Heslo"
+        placeholder="long-password"
       />
       {errors.password ? (
         <ErrorText>{errors.password}</ErrorText>
@@ -154,6 +160,52 @@ const LoginForm = styled.form`
   min-height: 80vh;
 `;
 
+const EmailInput = styled.input<IProps>`
+  font-size: 1.2rem;
+  font-weight: 600;
+  padding: 0.2rem;
+  color: hsla(80, 100%, 30%, 1);
+  width: 80%;
+  border: 0.3rem solid var(--green);
+
+  @media all and (max-width: 480px) {
+    font-size: 2rem;
+  }
+  ${({ inputErrors }) =>
+    inputErrors &&
+    css`
+      font-size: 1.2rem;
+      font-weight: 600;
+      padding: 0.2rem;
+      color: red;
+      border: 0.3rem solid red;
+      background-color: #ffc9aa;
+    `}
+`;
+
+const PassInput = styled.input<IProps>`
+  font-size: 1.2rem;
+  font-weight: 600;
+  padding: 0.2rem;
+  color: hsla(80, 100%, 30%, 1);
+  width: 80%;
+  border: 0.3rem solid var(--green);
+
+  @media all and (max-width: 480px) {
+    font-size: 2rem;
+  }
+  ${({ inputErrors }) =>
+    inputErrors &&
+    css`
+      font-size: 1.2rem;
+      font-weight: 600;
+      padding: 0.2rem;
+      color: red;
+      border: 0.3rem solid red;
+      background-color: #ffc9aa;
+    `}
+`;
+
 const ErrorText = styled.p`
   color: red;
   font-size: 0.9rem;
@@ -169,12 +221,21 @@ const ErrorSpan = styled.span`
   opacity: 0;
 `;
 
+const InputLabel = styled.label`
+  font-size: 1.2rem;
+  font-weight: 600;
+  padding: 0.2rem;
+  color: hsla(80, 70%, 30%, 1);
+  width: 80%;
+`;
+
 const LoginButton = styled.button`
   padding: 0.3rem;
   font-weight: 700;
   font-size: 1.3rem;
   background-color: var(--green);
   border: 0.2rem solid white;
+  border-radius: 1rem;
   color: white;
   cursor: pointer;
   transition: all 0.3s ease;

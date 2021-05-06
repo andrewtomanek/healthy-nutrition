@@ -7,7 +7,7 @@ import { initInventory, saveToStore } from "../../store/actions/storageActions";
 import { State } from "../../store/reducers/rootReducer";
 import { AuthContext } from "../../auth/Auth";
 import app from "../../firebase/firebase";
-import { AuthButton } from "../../styles/elements";
+import { AuthButton, NavigationLi } from "../../styles/elements";
 import { FoodUnit, UserObject } from "../../types/shared";
 
 export interface AuthObject {
@@ -60,18 +60,26 @@ const DatabaseControl = (props: StateProps & DispatchProps) => {
     props.saveToStore(userData);
   };
   return (
-    <DataContainer>
+    <>
       {currentUser &&
       props.foods &&
       props.cart.length > 0 &&
       props.foods.length > 0 ? (
-        <AuthButton onClick={() => saveData()}>Uložit</AuthButton>
+        <NavigationLi>
+          <AuthButton onClick={() => saveData()}>Uložit</AuthButton>{" "}
+        </NavigationLi>
       ) : null}{" "}
       {currentUser ? (
-        <AuthButton onClick={() => fetchData()}>Nahrát</AuthButton>
+        <NavigationLi>
+          <AuthButton onClick={() => fetchData()}>Nahrát</AuthButton>{" "}
+        </NavigationLi>
       ) : null}
-      {currentUser && <LoginStatus>{currentUser.email}</LoginStatus>}
-    </DataContainer>
+      {currentUser && (
+        <NavigationLi>
+          <LoginStatus>{currentUser.email}</LoginStatus>{" "}
+        </NavigationLi>
+      )}
+    </>
   );
 };
 
@@ -98,15 +106,6 @@ const mapDispatchToProps = (dispatch: Dispatch) => ({
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(DatabaseControl);
-
-const DataContainer = styled.span`
-  display: flex;
-  grid-gap: 1rem 3rem;
-  grid-auto-flow: column;
-  align-content: center;
-  align-items: center;
-  padding: 1rem 2rem;
-`;
 
 const LoginStatus = styled.p`
   margin: 0;

@@ -29,22 +29,16 @@ export const BasicButton = styled.button`
   }
 `;
 
-export const NavigationList = styled.ul`
-  display: grid;
-  grid-auto-flow: column;
-  justify-content: center;
-  align-items: center;
-  grid-gap: 0.1rem 0.5rem;
-  list-style: none;
-`;
-
 export const NavigationLi = styled.li`
   margin: 0 0.3rem;
   text-decoration: none;
+  @media all and (max-width: 480px) {
+    margin: 2rem 0.3rem;
+  }
 `;
 
 export const NavigationLink = styled(NavLink)`
-  padding: 0.1rem 0.5rem;
+  padding: 0.3rem 0.6rem;
   text-decoration: none;
   font-size: 1.2rem;
   font-weight: 900;
@@ -62,7 +56,7 @@ export const NavigationLink = styled(NavLink)`
   }
   @media all and (max-width: 480px) {
     padding: 0rem 0.5rem;
-    font-size: 2rem;
+    font-size: 3rem;
   }
 `;
 
@@ -197,7 +191,7 @@ export const AuthButton = styled.button`
   }
   @media all and (max-width: 480px) {
     padding: 0rem 0.5rem;
-    font-size: 2rem;
+    font-size: 3rem;
   }
 `;
 

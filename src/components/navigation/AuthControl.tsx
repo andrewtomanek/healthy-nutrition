@@ -1,7 +1,6 @@
 import React, { useContext } from "react";
 import { AuthContext } from "../../auth/Auth";
 import {
-  NavigationList,
   NavigationLi,
   NavigationLink,
   AuthButton,
@@ -13,7 +12,7 @@ const AuthControl = () => {
   if (currentUser) {
   }
   return (
-    <NavigationList>
+    <>
       {!currentUser ? (
         <React.Fragment>
           {" "}
@@ -29,7 +28,7 @@ const AuthControl = () => {
           <AuthButton onClick={() => app.auth().signOut()}>Odhlásit</AuthButton>{" "}
         </NavigationLi>
       )}
-    </NavigationList>
+    </>
   );
 };
 

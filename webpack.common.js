@@ -33,13 +33,13 @@ module.exports = {
     ],
   },
   plugins: [
+    new CleanWebpackPlugin(),
     new HtmlWebpackPlugin({
       template: path.join(__dirname, "src", "index.html"),
       filename: "./index.html",
       favicon: path.join(__dirname, "public", "favicon.ico"),
     }),
     new BundleAnalyzerPlugin(),
-    new CleanWebpackPlugin(),
     new Dotenv(),
   ],
 };

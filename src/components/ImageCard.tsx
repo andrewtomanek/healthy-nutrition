@@ -53,5 +53,5 @@ const PictureContainer = styled.div`
 
 const PictureCard = styled.img`
   height: 100%;
-  max-height: 45vh;
+  max-height: 55vh;
 `;

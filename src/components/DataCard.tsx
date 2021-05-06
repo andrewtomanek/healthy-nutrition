@@ -26,11 +26,13 @@ const DataCard = ({ item, pickItem }: Props) => {
 export default DataCard;
 
 const TextBox = styled.div`
+  place-self: start center;
   display: grid;
   grid-auto-flow: row;
   align-items: center;
   justify-content: center;
   grid-area: 1 / 1 / 3 / 1;
+  margin: 1rem;
   z-index: 2;
 `;
 

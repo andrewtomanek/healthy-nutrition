@@ -1,11 +1,10 @@
 import React, { useContext, useState } from "react";
-import { NavLink } from "react-router-dom";
 import styled, { css } from "styled-components";
 
 import DatabaseControl from "./DatabaseControl";
 import AuthControl from "./AuthControl";
 import { AuthContext } from "../../auth/Auth";
-import { NavigationLi } from "../../styles/elements";
+import { NavigationLi, NavigationLink } from "../../styles/elements";
 
 interface IProps {
   isOpen?: boolean;
@@ -25,10 +24,14 @@ const Navigation = () => {
       </Burger>
       <NavigationList isOpen={isOpen} onClick={() => setIsOpen(!isOpen)}>
         <NavigationLi>
-          <NavigationLink to="/">Domů</NavigationLink>
+          <NavigationLink to="/" activeClassName="is-active" exact={true}>
+            Domů
+          </NavigationLink>
         </NavigationLi>{" "}
         <NavigationLi>
-          <NavigationLink to="/cart">Košík</NavigationLink>
+          <NavigationLink to="/cart" activeClassName="is-active">
+            Košík
+          </NavigationLink>
         </NavigationLi>{" "}
         <DatabaseControl />
         <AuthControl />
@@ -90,28 +93,6 @@ export const NavigationList = styled.ul<IProps>`
         z-index: 9;
         background-color: hsla(80, 100%, 30%, 1);
       `}
-  }
-`;
-
-export const NavigationLink = styled(NavLink)`
-  padding: 0.3rem 0.6rem;
-  text-decoration: none;
-  font-size: 1.2rem;
-  font-weight: 900;
-  color: white;
-  background: var(--green);
-  border-radius: 0.5rem;
-  border: 0.1rem solid white;
-  &:hover {
-    color: var(--green);
-    background-color: white;
-  }
-  &.active {
-    color: white;
-    background: hsla(0, 80%, 80%, 1);
-  }
-  @media all and (max-width: 480px) {
-    font-size: 2rem;
   }
 `;
 

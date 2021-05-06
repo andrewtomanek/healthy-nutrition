@@ -129,19 +129,19 @@ const ControlsContainer = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   grid-template-rows: 1fr 1fr;
-  align-content: center;
+  align-items: center;
   justify-content: center;
   grid-area: 2 / 1 / 3 / 1;
   z-index: 4;
   font-size: 1rem;
   font-weight: 900;
-  padding: 0.1rem 0.3rem;
-  gap: 0.1rem 0.3rem;
+  padding: 0.5rem;
+  gap: 1rem 0.5rem;
   color: #fff;
 `;
 
 const UnitInput = styled.input`
-  width: 75%;
+  width: 80%;
   padding: 0.1rem 0.3rem;
   font-size: 1rem;
   font-weight: 600;

@@ -46,5 +46,5 @@ const SwitchPanel = styled.div`
   align-items: center;
   justify-content: center;
   gap: 3rem;
-  padding: 1rem 0;
+  padding: 1rem 0 0;
 `;

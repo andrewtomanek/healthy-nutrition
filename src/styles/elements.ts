@@ -50,13 +50,12 @@ export const NavigationLink = styled(NavLink)`
     color: var(--green);
     background-color: white;
   }
-  &.active {
+  &.is-active {
     color: white;
     background: hsla(0, 80%, 80%, 1);
   }
   @media all and (max-width: 480px) {
-    padding: 0rem 0.5rem;
-    font-size: 3rem;
+    font-size: 2rem;
   }
 `;
 

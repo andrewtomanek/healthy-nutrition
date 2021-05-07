@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
+
 import { FoodUnit } from "../../types/shared";
 import { BasicButton } from "../../styles/elements";
+import { createItemValues } from "../../utils/BarCalculations";
 
 type Props = {
   item: FoodUnit;
@@ -38,17 +40,9 @@ const ButtonPanel = ({
   const handleInput = (e: React.FormEvent<HTMLInputElement>) => {
     let currentValue = +e.currentTarget.value;
     setQuantity(currentValue);
-    let newItem = {
-      ...item,
-      picked: true,
-      cena: +((oldItem.cena / oldItem.množství) * currentValue),
-      kalorie: +((oldItem.kalorie / oldItem.množství) * currentValue),
-      tuky: +((oldItem.tuky / oldItem.množství) * currentValue),
-      sacharidy: +((oldItem.sacharidy / oldItem.množství) * currentValue),
-      vláknina: +((oldItem.vláknina / oldItem.množství) * currentValue),
-      bílkoviny: +((oldItem.bílkoviny / oldItem.množství) * currentValue),
-      množství: +currentValue,
-    };
+
+    const newItem = createItemValues(currentValue, item, oldItem);
+
     if (updateNumber) updateNumber(newItem, item.id);
   };
 

@@ -213,8 +213,10 @@ export const PageLayout = styled.div`
   justify-content: center;
   gap: 1rem;
   margin: 0;
-  padding: 0 2rem 1rem;
+  padding: 0 2rem 0rem;
   overflow: hidden;
+  min-width: 80vw;
+  min-height: 90vh;
   @media all and (max-width: 480px) {
     font-size: 1.1rem;
   }

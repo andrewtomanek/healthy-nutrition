@@ -10,6 +10,7 @@ import TransitionWrapper from "../components/Layout/TransitionWrapper";
 import { State, BarData } from "../store/reducers/rootReducer";
 import { FoodUnit } from "../types/shared";
 import { InputNumbers } from "./forms/FormLimit";
+import { calculateCart } from "../utils/BarCalculations";
 
 type Props = {
   showLimit: boolean;
@@ -28,47 +29,7 @@ const BarBox = (props: Props & StateProps & DispatchProps) => {
   });
 
   useEffect(() => {
-    let oldValue = 0;
-    let initCart = [
-      {
-        id: 0,
-        image: "",
-        picked: false,
-        bílkoviny: 0,
-        cena: 0,
-        kalorie: 0,
-        množství: 0,
-        sacharidy: 0,
-        tuky: 0,
-        vláknina: 0,
-      },
-    ];
-    let map = new Map();
-    let set = new Set();
-    if (props.cart.length > 0) {
-      initCart = props.cart;
-    }
-    for (let item of initCart) {
-      for (let itemEntry of Object.entries(item)) {
-        if (
-          typeof itemEntry[1] === "number" &&
-          typeof itemEntry[1] !== "boolean" &&
-          itemEntry[0] !== "id"
-        ) {
-          set.add(itemEntry[0]);
-          for (let key of set.keys()) {
-            oldValue = map.get(key) || 0;
-            if (key === itemEntry[0]) {
-              map.set(key, itemEntry[1] + oldValue);
-            }
-          }
-        }
-      }
-    }
-    let mapEntriesArray: Array<[string, number]> = [];
-    for (let entry of map.entries()) {
-      mapEntriesArray.push(entry);
-    }
+    const mapEntriesArray: Array<[string, number]> = calculateCart(props.cart);
     props.updateCalculateSum(mapEntriesArray);
   }, [props.cart, barInitValues]);
 
@@ -132,4 +93,5 @@ const BarContainer = styled.div`
   border-radius: 1rem;
   gap: 0.5rem;
   background-color: hsla(54, 60%, 70%, 1);
+  min-width: 90vw;
 `;

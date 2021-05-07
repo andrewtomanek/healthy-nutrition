@@ -163,10 +163,11 @@ const LoginForm = styled.form`
 const EmailInput = styled.input<IProps>`
   font-size: 1.2rem;
   font-weight: 600;
-  padding: 0.2rem;
+  padding: 0.2rem 0.5rem;
   color: hsla(80, 100%, 30%, 1);
   width: 80%;
   border: 0.3rem solid var(--green);
+  border-radius: 1rem;
 
   @media all and (max-width: 480px) {
     font-size: 2rem;
@@ -174,9 +175,6 @@ const EmailInput = styled.input<IProps>`
   ${({ inputErrors }) =>
     inputErrors &&
     css`
-      font-size: 1.2rem;
-      font-weight: 600;
-      padding: 0.2rem;
       color: red;
       border: 0.3rem solid red;
       background-color: #ffc9aa;
@@ -186,10 +184,11 @@ const EmailInput = styled.input<IProps>`
 const PassInput = styled.input<IProps>`
   font-size: 1.2rem;
   font-weight: 600;
-  padding: 0.2rem;
+  padding: 0.2rem 0.5rem;
   color: hsla(80, 100%, 30%, 1);
   width: 80%;
   border: 0.3rem solid var(--green);
+  border-radius: 1rem;
 
   @media all and (max-width: 480px) {
     font-size: 2rem;
@@ -197,9 +196,6 @@ const PassInput = styled.input<IProps>`
   ${({ inputErrors }) =>
     inputErrors &&
     css`
-      font-size: 1.2rem;
-      font-weight: 600;
-      padding: 0.2rem;
       color: red;
       border: 0.3rem solid red;
       background-color: #ffc9aa;

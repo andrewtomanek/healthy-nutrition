@@ -9,7 +9,7 @@ const axiosApi = async (
 ): Promise<AxiosResponse> => {
   const config: AxiosRequestConfig = {
     method,
-    url: baseUrl + url,
+    url: baseUrl + "/" + url,
     data,
   };
 

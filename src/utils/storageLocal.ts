@@ -1,4 +1,4 @@
-import database from "../data/db.json";
+import database from "../data/db";
 
 export const getInventory = () => {
   let inventory: string | null = localStorage.getItem("inventory");

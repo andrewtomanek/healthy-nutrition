@@ -17,6 +17,14 @@ const Navigation = () => {
   if (currentUser) {
   }
 
+  if (isOpen) {
+    document.body.style.position = "fixed";
+    document.body.style.top = `-${window.scrollY}px`;
+  } else {
+    document.body.style.position = "";
+    document.body.style.top = "";
+  }
+
   return (
     <MainNavigation isOpen={isOpen}>
       <Burger onClick={() => setIsOpen(!isOpen)}>
@@ -92,7 +100,7 @@ const NavigationList = styled.ul<IProps>`
         opacity: 1;
         transition: all 0.5s ease;
         z-index: 9;
-        background-color: hsla(80, 100%, 30%, 1);
+        background-color: hsla(24, 70%, 60%, 1);
       `}
   }
 `;
@@ -111,7 +119,6 @@ const Burger = styled.button`
     display: block;
     z-index: 19;
     position: absolute;
-    top: 1%;
     right: 1%;
   }
 `;

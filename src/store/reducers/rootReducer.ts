@@ -20,28 +20,30 @@ const initialState: State = {
 };
 
 const reducer = (state = initialState, action: AnyAction) => {
+  const payload = action.payload;
+
   switch (action.type) {
     case actionTypes.SET_INVENTORY:
       return {
         ...state,
-        foods: action.payload.foods,
-        cart: action.payload.cart,
+        foods: payload.foods,
+        cart: payload.cart,
       };
     case actionTypes.FETCH_INVENTORY_FAILED:
       return {
         ...state,
-        foods: action.payload,
+        foods: payload,
       };
     case actionTypes.SAVE_INVENTORY_START:
       return {
         ...state,
-        foods: action.payload,
+        foods: payload,
       };
     case actionTypes.SAVE_INVENTORY_SUCCESS:
       return {
         ...state,
-        foods: action.payload.foods,
-        cart: action.payload.cart,
+        foods: payload.foods,
+        cart: payload.cart,
       };
     case actionTypes.SAVE_INVENTORY_FAIL:
       return {
@@ -50,79 +52,79 @@ const reducer = (state = initialState, action: AnyAction) => {
     case actionTypes.FILL_STORAGE:
       return {
         ...state,
-        foods: [...state.foods, action.payload],
+        foods: [...state.foods, payload],
       };
     case actionTypes.ADD_FOOD:
       return {
         ...state,
-        foods: [...state.foods, action.payload],
+        foods: [...state.foods, payload],
       };
     case actionTypes.ADD_TO_CART:
       return {
         ...state,
-        cart: [...state.cart, action.payload],
+        cart: [...state.cart, payload],
       };
     case actionTypes.ADD_TO_STORAGE:
       return {
         ...state,
-        foods: [...state.foods, action.payload],
+        foods: [...state.foods, payload],
       };
     case actionTypes.TOGGLE_FOOD:
       return {
         ...state,
         foods: state.foods.map((food) =>
-          food.id === action.payload ? { ...food, picked: !food.picked } : food
+          food.id === payload ? { ...food, picked: !food.picked } : food
         ),
       };
     case actionTypes.UPDATE__QUANTITY:
       return {
         ...state,
         foods: state.foods.map((item) =>
-          item.id === action.payload[1] ? action.payload[0] : item
+          item.id === payload[1] ? payload[0] : item
         ),
       };
     case actionTypes.DELETE_FOOD:
       return {
         ...state,
-        foods: state.foods.filter((food) => food.id !== action.payload),
+        foods: state.foods.filter((food) => food.id !== payload),
       };
     case actionTypes.TOGGLE_CART:
       return {
         ...state,
         cart: state.cart.map((food) =>
-          food.id === action.payload ? { ...food, picked: !food.picked } : food
+          food.id === payload ? { ...food, picked: !food.picked } : food
         ),
       };
     case actionTypes.DELETE_CART:
       return {
         ...state,
-        cart: state.cart.filter((food) => food.id !== action.payload),
+        cart: state.cart.filter((food) => food.id !== payload),
       };
     case actionTypes.DELETE_STORAGE:
       return {
         ...state,
-        cart: state.cart.filter((food) => food.id !== action.payload),
+        cart: state.cart.filter((food) => food.id !== payload),
       };
     case actionTypes.APPLY_FILTER_RESET:
       return {
         ...state,
-        foods: [...action.payload],
+        foods: [...payload],
       };
     case actionTypes.APPLY_CART_REFRESH:
       return {
         ...state,
-        cart: [...action.payload],
+        cart: [...payload],
       };
     case actionTypes.APPLY_FILTER_PICKED:
       return {
         ...state,
-        foods: state.foods.filter((food) => food.picked === action.payload),
+        foods: state.foods.filter((food) => food.picked === payload),
       };
     case actionTypes.APPLY_FILTER_WORD:
       return {
         ...state,
-        foods: [...action.payload[0]],
-        cart: [...action.payload[1]],
+        foods: [...payload[0]],
+        cart: [...payload[1]],
       };
     case actionTypes.DISPLAY_INFO:
       return {
@@ -137,12 +139,12 @@ const reducer = (state = initialState, action: AnyAction) => {
     case actionTypes.APPLY_CALCULATE_SUM:
       return {
         ...state,
-        allItemSum: action.payload,
+        allItemSum: payload,
       };
     case actionTypes.UPDATE_CALCULATE_SUM:
       return {
         ...state,
-        updateItemSum: action.payload,
+        updateItemSum: payload,
       };
     default:
       return state;

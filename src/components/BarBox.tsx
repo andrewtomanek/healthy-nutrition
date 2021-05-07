@@ -6,6 +6,7 @@ import styled from "styled-components";
 import { updateCalculateSum } from "../store/actions/storageActions";
 import FormLimit from "./forms/FormLimit";
 import BarStripe from "./panels/BarStripe";
+import HidePanel from "./panels/HidePanel";
 import TransitionWrapper from "../components/Layout/TransitionWrapper";
 import { State, BarData } from "../store/reducers/rootReducer";
 import { FoodUnit } from "../types/shared";
@@ -18,6 +19,7 @@ type Props = {
 
 const BarBox = (props: Props & StateProps & DispatchProps) => {
   const [barData, setbarData] = useState<BarData>([]);
+  const [hideCards, setHideCards] = useState(true);
   const [barInitValues, setBarInitValues] = useState({
     bílkoviny: 56,
     cena: 200,
@@ -48,14 +50,23 @@ const BarBox = (props: Props & StateProps & DispatchProps) => {
     setBarInitValues(initObject);
   };
 
+  const toggleCards = () => {
+    setHideCards(!hideCards);
+  };
+
   return (
     <BarContainer>
-      <TransitionWrapper inProp={props.showLimit}>
-        <FormLimit updateBarValues={updateBarValues} />
-      </TransitionWrapper>
-      {barData.map((item, index) => (
-        <BarStripe item={item} key={index} />
-      ))}
+      {hideCards && (
+        <>
+          <TransitionWrapper inProp={props.showLimit}>
+            <FormLimit updateBarValues={updateBarValues} />
+          </TransitionWrapper>
+          {barData.map((item, index) => (
+            <BarStripe item={item} key={index} />
+          ))}
+        </>
+      )}
+      <HidePanel hideCards={hideCards} toggleCards={toggleCards} />
     </BarContainer>
   );
 };

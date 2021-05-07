@@ -36,7 +36,8 @@ const BarContainer = styled.div`
   grid: 1fr / 1fr;
   height: 4vh;
   z-index: 2;
-  border-bottom: 0.2rem solid white;
+  border-top: 0.1rem solid white;
+  border-bottom: 0.3rem solid white;
   border-radius: 1rem;
   overflow: hidden;
 `;

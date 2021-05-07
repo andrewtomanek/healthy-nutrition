@@ -220,12 +220,14 @@ const ErrorSpan = styled.span`
 const InputLabel = styled.label`
   font-size: 1.2rem;
   font-weight: 600;
+  margin: 0.2rem;
   padding: 0.2rem;
   color: hsla(80, 70%, 30%, 1);
   width: 80%;
 `;
 
 const LoginButton = styled.button`
+  margin: 2rem;
   padding: 0.3rem;
   font-weight: 700;
   font-size: 1.3rem;

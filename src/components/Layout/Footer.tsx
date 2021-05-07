@@ -29,6 +29,7 @@ const FooterContainer = styled.footer`
   padding: 0rem 0rem;
   background-color: var(--green);
   width: 100%;
+  min-width: 90vw;
 `;
 
 const FooterLayout = styled.div`

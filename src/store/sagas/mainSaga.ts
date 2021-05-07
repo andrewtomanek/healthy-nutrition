@@ -1,7 +1,7 @@
 import { put, takeEvery, takeLatest } from "redux-saga/effects";
-import axios from "axios";
 import * as actions from "../actions";
 import * as actionTypes from "../actions/actionTypes";
+import axiosApi from "../../api/axiosApi";
 export interface ResponseGenerator {
   config?: any;
   data?: any;
@@ -26,8 +26,9 @@ export function* initInventorySaga(action: SagaAction) {
     action.payload.uid +
     '"';
   try {
-    const response: ResponseGenerator = yield axios.get(
-      "https://strava-b193a.firebaseio.com/storage.json" + queryParams
+    const response: ResponseGenerator = yield axiosApi(
+      "get",
+      "storage.json" + queryParams
     );
     yield put(actions.setInventory(response.data[action.payload.uid]));
   } catch (error) {
@@ -37,8 +38,9 @@ export function* initInventorySaga(action: SagaAction) {
 
 export function* purchaseStoreSaga(action: SagaAction) {
   try {
-    const response: ResponseGenerator = yield axios.put(
-      `https://strava-b193a.firebaseio.com/storage/${action.payload.uid}.json?auth=${action.payload.token}`,
+    const response: ResponseGenerator = yield axiosApi(
+      "put",
+      `storage/${action.payload.uid}.json?auth=${action.payload.token}`,
       action.payload
     );
     yield put(actions.saveToStoreSuccess(response.data));

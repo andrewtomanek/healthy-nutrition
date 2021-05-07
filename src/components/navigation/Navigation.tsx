@@ -17,7 +17,7 @@ const Navigation = () => {
   if (currentUser) {
   }
 
-  if (isOpen) {
+  if (isOpen && document.body.clientWidth < 500) {
     document.body.style.position = "fixed";
     document.body.style.top = `-${window.scrollY}px`;
   } else {
@@ -118,7 +118,8 @@ const Burger = styled.button`
   @media all and (max-width: 480px) {
     display: block;
     z-index: 19;
-    position: absolute;
+    position: fixed;
     right: 1%;
+    top: 1%;
   }
 `;

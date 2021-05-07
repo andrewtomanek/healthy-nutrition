@@ -2,7 +2,7 @@ import { AnyAction } from "redux";
 
 import * as actionTypes from "../actions/actionTypes";
 import { FoodUnit } from "../../types/shared";
-import database from "../../data/db.json";
+import { getInventory, getCart } from "../../utils/storageLocal";
 
 export type BarData = [string, number, number][];
 export interface State {
@@ -12,29 +12,9 @@ export interface State {
   updateItemSum: BarData;
 }
 
-let inventory = localStorage.getItem("inventory");
-let cartSession = localStorage.getItem("cart");
-
-let initialArray;
-if (inventory) {
-  initialArray = JSON.parse(inventory);
-} else {
-  initialArray = [];
-  for (let i = 0; i < 5; i++) {
-    initialArray.push(database[i]);
-  }
-}
-
-let initialCart;
-if (cartSession) {
-  initialCart = JSON.parse(cartSession);
-} else {
-  initialCart = [];
-}
-
 const initialState: State = {
-  foods: initialArray,
-  cart: initialCart,
+  foods: getInventory(),
+  cart: getCart(),
   allItemSum: null,
   updateItemSum: [],
 };

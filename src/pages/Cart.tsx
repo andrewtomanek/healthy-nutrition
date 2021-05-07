@@ -7,6 +7,8 @@ import ItemsList from "../components/ItemsList";
 import BarBox from "../components/BarBox";
 import EmptyCart from "../components/EmptyCart";
 import PageWrapper from "../components/Layout/PageWrapper";
+import TransitionWrapper from "../components/Layout/TransitionWrapper";
+import HidePanel from "../components/panels/HidePanel";
 import {
   addToStorage,
   toggleCartComplete,
@@ -21,6 +23,8 @@ import database from "../data/db";
 
 const Cart = (props: StateProps & DispatchProps) => {
   const [showLimit, setShowLimit] = useState(false);
+  const [displayElement, setDisplayElement] = useState(true);
+
   const [inProp, setInProp] = useState(false);
 
   useEffect(() => {
@@ -62,21 +66,35 @@ const Cart = (props: StateProps & DispatchProps) => {
     props.deleteCartAction(id);
   };
 
+  const toggleElement = () => {
+    setDisplayElement(!displayElement);
+  };
+
   return (
     <PageWrapper inProp={inProp} animationName={"anim-left"}>
-      <SwitcherPanel revealLimit={revealLimit} cartControls />
-      <BarBox showLimit={showLimit} />
-      {props.cart.length > 0 ? (
-        <ItemsList
-          foods={props.cart}
-          moveToStorage={moveToStorage}
-          removeItem={removeItem}
-          pickItem={pickItem}
-          basicButtons={false}
+      <>
+        <TransitionWrapper inProp={displayElement}>
+          <>
+            <SwitcherPanel revealLimit={revealLimit} cartControls />
+            <BarBox showLimit={showLimit} />
+            {props.cart.length > 0 ? (
+              <ItemsList
+                foods={props.cart}
+                moveToStorage={moveToStorage}
+                removeItem={removeItem}
+                pickItem={pickItem}
+                basicButtons={false}
+              />
+            ) : (
+              <EmptyCart showResetButton={false} />
+            )}
+          </>
+        </TransitionWrapper>
+        <HidePanel
+          displayElement={displayElement}
+          toggleElement={toggleElement}
         />
-      ) : (
-        <EmptyCart showResetButton={false} />
-      )}
+      </>
     </PageWrapper>
   );
 };

@@ -2,15 +2,15 @@ import React from "react";
 import { SwitchButton, SwitchContainer } from "../../styles/elements";
 
 type Props = {
-  hideCards: boolean;
-  toggleCards: () => void;
+  displayElement: boolean;
+  toggleElement: () => void;
 };
 
-const HidePanel = ({ hideCards, toggleCards }: Props) => {
+const HidePanel = ({ displayElement, toggleElement }: Props) => {
   return (
     <SwitchContainer>
-      <SwitchButton onClick={toggleCards}>
-        {hideCards
+      <SwitchButton onClick={toggleElement}>
+        {displayElement
           ? "\u{02191} Skrýt \u{02191}"
           : "\u{02193} Zobrazit \u{02193}"}
       </SwitchButton>

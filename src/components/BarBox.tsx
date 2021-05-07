@@ -19,7 +19,7 @@ type Props = {
 
 const BarBox = (props: Props & StateProps & DispatchProps) => {
   const [barData, setbarData] = useState<BarData>([]);
-  const [hideCards, setHideCards] = useState(true);
+  const [displayElement, setDisplayElement] = useState(true);
   const [barInitValues, setBarInitValues] = useState({
     bílkoviny: 56,
     cena: 200,
@@ -50,13 +50,13 @@ const BarBox = (props: Props & StateProps & DispatchProps) => {
     setBarInitValues(initObject);
   };
 
-  const toggleCards = () => {
-    setHideCards(!hideCards);
+  const toggleElement = () => {
+    setDisplayElement(!displayElement);
   };
 
   return (
     <BarContainer>
-      {hideCards && (
+      {displayElement && (
         <>
           <TransitionWrapper inProp={props.showLimit}>
             <FormLimit updateBarValues={updateBarValues} />
@@ -66,7 +66,10 @@ const BarBox = (props: Props & StateProps & DispatchProps) => {
           ))}
         </>
       )}
-      <HidePanel hideCards={hideCards} toggleCards={toggleCards} />
+      <HidePanel
+        displayElement={displayElement}
+        toggleElement={toggleElement}
+      />
     </BarContainer>
   );
 };

@@ -1,12 +1,14 @@
 import React, { useState, useEffect } from "react";
+import { Dispatch } from "redux";
+import { connect } from "react-redux";
+
 import SwitcherPanel from "../components/panels/SwitcherPanel";
 import MorePanel from "../components/panels/MorePanel";
+import HidePanel from "../components/panels/HidePanel";
 import EmptyCart from "../components/EmptyCart";
 import PageWrapper from "../components/Layout/PageWrapper";
 import PanelWrapper from "../components/Layout/PanelWrapper";
 import TransitionWrapper from "../components/Layout/TransitionWrapper";
-import { Dispatch } from "redux";
-import { connect } from "react-redux";
 import {
   applyFilterReset,
   applyCartRefresh,
@@ -19,8 +21,8 @@ import {
 } from "../store/actions/storageActions";
 import { State } from "../store/reducers/rootReducer";
 import { FoodUnit } from "../types/shared";
-
 import database from "../data/db";
+
 const ItemsList = React.lazy(() => {
   return import("../components/ItemsList");
 });
@@ -29,7 +31,7 @@ const Home = (props: StateProps & DispatchProps) => {
   const [showFilters, setShowFilters] = useState(false);
   const [showInput, setShowInput] = useState(false);
   const [showLimit, setShowLimit] = useState(false);
-  const [hideCards, setHideCards] = useState(true);
+  const [displayElement, setDisplayElement] = useState(true);
   const [inProp, setInProp] = useState(false);
   let [dataIndex, setDataIndex] = useState(4);
 
@@ -78,8 +80,8 @@ const Home = (props: StateProps & DispatchProps) => {
     setShowLimit(!showLimit);
   };
 
-  const toggleCards = () => {
-    setHideCards(!hideCards);
+  const toggleElement = () => {
+    setDisplayElement(!displayElement);
   };
 
   const minusToCart = (id: number) => {
@@ -129,28 +131,32 @@ const Home = (props: StateProps & DispatchProps) => {
         showInput={showInput}
         showFilters={showFilters}
         showLimit={showLimit}
-        hideCards={hideCards}
-        toggleCards={toggleCards}
       />
-      <TransitionWrapper inProp={hideCards}>
-        {props.foods && props.foods.length > 0 ? (
-          <>
-            <ItemsList
-              foods={props.foods}
-              minusToCart={minusToCart}
-              updateNumber={updateNumber}
-              plusToCart={plusToCart}
-              moveToCart={moveToCart}
-              pickItem={pickItem}
-              removeFromStorage={removeFromStorage}
-              basicButtons
-            />
-            <MorePanel displayMore={displayMore} />
-          </>
-        ) : (
-          <EmptyCart resetFilter={resetFilter} showResetButton />
-        )}
-      </TransitionWrapper>
+      <>
+        <TransitionWrapper inProp={displayElement}>
+          {props.foods && props.foods.length > 0 ? (
+            <>
+              <ItemsList
+                foods={props.foods}
+                minusToCart={minusToCart}
+                updateNumber={updateNumber}
+                plusToCart={plusToCart}
+                moveToCart={moveToCart}
+                pickItem={pickItem}
+                removeFromStorage={removeFromStorage}
+                basicButtons
+              />
+              <MorePanel displayMore={displayMore} />
+            </>
+          ) : (
+            <EmptyCart resetFilter={resetFilter} showResetButton />
+          )}
+        </TransitionWrapper>
+        <HidePanel
+          displayElement={displayElement}
+          toggleElement={toggleElement}
+        />
+      </>
     </PageWrapper>
   );
 };

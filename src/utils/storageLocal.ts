@@ -1,10 +1,10 @@
 import database from "../data/db.json";
 
 export const getInventory = () => {
-  let inventory = localStorage.getItem("inventory");
+  let inventory: string | null = localStorage.getItem("inventory");
 
   let initialArray;
-  if (inventory) {
+  if (inventory != undefined && inventory.length > 10) {
     initialArray = JSON.parse(inventory);
   } else {
     initialArray = [];

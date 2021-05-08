@@ -3,8 +3,8 @@ import { withRouter } from "react-router";
 import { RouteComponentProps } from "react-router-dom";
 import styled, { css } from "styled-components";
 
-import app from "../../firebase/firebase";
 import { AuthContext } from "../../auth/Auth";
+import { firebaseLogIn, firebaseSignUp } from "../../api/firebaseApi";
 import validateAuth, { ValidationErrors } from "../../auth/validateAuth";
 interface PropsFromState {
   register: boolean;
@@ -36,25 +36,13 @@ const AuthForm = ({
   const logIn = async (
     event: React.FormEvent<HTMLFormElement> & Partial<LoginObject>
   ) => {
-    const { email, password } = event.target.elements;
-    try {
-      await app.auth().signInWithEmailAndPassword(email.value, password.value);
-    } catch (error) {
-      alert(error);
-    }
+    firebaseLogIn(event.target.elements);
   };
 
   const signUp = async (
     event: React.FormEvent<HTMLFormElement> & LoginObject
   ) => {
-    const { email, password } = event.target.elements;
-    try {
-      await app
-        .auth()
-        .createUserWithEmailAndPassword(email.value, password.value);
-    } catch (error) {
-      alert(error);
-    }
+    firebaseSignUp(event.target.elements);
   };
 
   useEffect(() => {

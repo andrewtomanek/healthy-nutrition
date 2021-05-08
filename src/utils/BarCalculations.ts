@@ -50,15 +50,25 @@ export const createItemValues = (
   item: FoodUnit,
   oldItem: FoodUnit
 ) => {
+  const oldAmount = oldItem.množství;
+
+  const multiplyValues = (
+    oldValue: number,
+    amount: number,
+    currentValue: number
+  ) => {
+    return +((+oldValue.toPrecision(3) / amount) * currentValue);
+  };
+
   return {
     ...item,
     picked: true,
-    cena: +((oldItem.cena / oldItem.množství) * currentValue),
-    kalorie: +((oldItem.kalorie / oldItem.množství) * currentValue),
-    tuky: +((oldItem.tuky / oldItem.množství) * currentValue),
-    sacharidy: +((oldItem.sacharidy / oldItem.množství) * currentValue),
-    vláknina: +((oldItem.vláknina / oldItem.množství) * currentValue),
-    bílkoviny: +((oldItem.bílkoviny / oldItem.množství) * currentValue),
+    cena: multiplyValues(oldItem.cena, oldAmount, currentValue),
+    kalorie: multiplyValues(oldItem.kalorie, oldAmount, currentValue),
+    tuky: multiplyValues(oldItem.tuky, oldAmount, currentValue),
+    sacharidy: multiplyValues(oldItem.sacharidy, oldAmount, currentValue),
+    vláknina: multiplyValues(oldItem.vláknina, oldAmount, currentValue),
+    bílkoviny: multiplyValues(oldItem.bílkoviny, oldAmount, currentValue),
     množství: +currentValue,
   };
 };

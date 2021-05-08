@@ -4,8 +4,7 @@ import { Dispatch } from "redux";
 
 import { applycalculateSum } from "../../store/actions/storageActions";
 import { State } from "../../store/reducers/rootReducer";
-import { FoodUnit } from "../../types/shared";
-
+import { FoodUnit, ValueNames } from "../../types/shared";
 import {
   BasicButton,
   ControlPanel,
@@ -14,15 +13,7 @@ import {
 } from "../../styles/elements";
 
 export const CalculatePanel = (props: StateProps & DispatchProps) => {
-  const [sumTypes] = useState([
-    "bílkoviny",
-    "cena",
-    "kalorie",
-    "množství",
-    "sacharidy",
-    "tuky",
-    "vláknina",
-  ]);
+  const sumTypes = Object.values(ValueNames);
   const [selectedSumType, setSelectedSumType] = useState("bílkoviny");
   const [sumResult, setSumResult] = useState(0);
 

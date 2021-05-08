@@ -28,3 +28,13 @@ export interface AuthObject {
   token: string;
   uid: string;
 }
+
+export enum ValueNames {
+  PROTEIN = "bílkoviny",
+  PRICE = "cena",
+  CALORIES = "kalorie",
+  AMOUNT = "množství",
+  CARBS = "sacharidy",
+  FAT = "tuky",
+  FIBER = "vláknina",
+}

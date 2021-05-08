@@ -13,19 +13,11 @@ import {
   SelectOption,
 } from "../../styles/elements";
 import { State } from "../../store/reducers/rootReducer";
-import { FoodUnit } from "../../types/shared";
+import { FoodUnit, ValueNames } from "../../types/shared";
 import { filterItems } from "../../utils/filterSorting";
 
 export const SortPanel = (props: StateProps & DispatchProps) => {
-  const [sortTypes] = useState([
-    "bílkoviny",
-    "cena",
-    "kalorie",
-    "množství",
-    "sacharidy",
-    "tuky",
-    "vláknina",
-  ]);
+  const sortTypes = Object.values(ValueNames);
   const [sortDirection] = useState(["Nejnižší", "Nejvyšší"]);
   const [selectedSortType, setSortString] = useState("kalorie");
   const [selectedSortBy, setSortBy] = useState("Nejvyšší");

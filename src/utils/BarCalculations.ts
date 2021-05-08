@@ -2,26 +2,28 @@ import { FoodUnit } from "../types/shared";
 
 export const calculateCart = (cartContent: FoodUnit[]) => {
   let oldValue = 0;
-  let initCart = [
-    {
-      id: 0,
-      image: "",
-      picked: false,
-      bílkoviny: 0,
-      cena: 0,
-      kalorie: 0,
-      množství: 0,
-      sacharidy: 0,
-      tuky: 0,
-      vláknina: 0,
-    },
-  ];
+  let newCart = null;
+  const emtyItem = {
+    id: 0,
+    image: "",
+    picked: false,
+    bílkoviny: 0,
+    cena: 0,
+    kalorie: 0,
+    množství: 0,
+    sacharidy: 0,
+    tuky: 0,
+    vláknina: 0,
+  };
+  const initCart = [emtyItem];
   let map = new Map();
   let set = new Set();
   if (cartContent.length > 0) {
-    initCart = cartContent;
+    newCart = cartContent;
+  } else {
+    newCart = initCart;
   }
-  for (let item of initCart) {
+  for (let item of newCart) {
     for (let itemEntry of Object.entries(item)) {
       if (
         typeof itemEntry[1] === "number" &&
@@ -38,11 +40,7 @@ export const calculateCart = (cartContent: FoodUnit[]) => {
       }
     }
   }
-  let mapEntriesArray = [];
-  for (let entry of map.entries()) {
-    mapEntriesArray.push(entry);
-  }
-  return mapEntriesArray;
+  return [...map.entries()];
 };
 
 export const createItemValues = (

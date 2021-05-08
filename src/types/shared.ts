@@ -23,3 +23,8 @@ export interface UserObject {
   foods: FoodUnit[];
   allItemSum?: null;
 }
+
+export interface AuthObject {
+  token: string;
+  uid: string;
+}

@@ -14,6 +14,7 @@ import {
 } from "../../styles/elements";
 import { State } from "../../store/reducers/rootReducer";
 import { FoodUnit } from "../../types/shared";
+import { filterItems } from "../../utils/filterSorting";
 
 export const SortPanel = (props: StateProps & DispatchProps) => {
   const [sortTypes] = useState([
@@ -30,24 +31,13 @@ export const SortPanel = (props: StateProps & DispatchProps) => {
   const [selectedSortBy, setSortBy] = useState("Nejvyšší");
 
   const selectFilter = () => {
-    let foodArray: FoodUnit[] = [];
-    let cartArray: FoodUnit[] = [];
-    if (selectedSortBy === "Nejnižší") {
-      foodArray = props.foods.sort((a: FoodUnit, b: FoodUnit) =>
-        a[selectedSortType] > b[selectedSortType] ? 1 : -1
-      );
-      cartArray = props.cart.sort((a: FoodUnit, b: FoodUnit) =>
-        a[selectedSortType] > b[selectedSortType] ? 1 : -1
-      );
-    } else if (selectedSortBy === "Nejvyšší") {
-      foodArray = props.foods.sort((a: FoodUnit, b: FoodUnit) =>
-        a[selectedSortType] < b[selectedSortType] ? 1 : -1
-      );
-      cartArray = props.cart.sort((a: FoodUnit, b: FoodUnit) =>
-        a[selectedSortType] < b[selectedSortType] ? 1 : -1
-      );
-    }
-    props.applyFilterWord([foodArray, cartArray]);
+    const filteredData: any = filterItems(
+      props.foods,
+      props.cart,
+      selectedSortType,
+      selectedSortBy
+    );
+    props.applyFilterWord(filteredData);
   };
 
   return (

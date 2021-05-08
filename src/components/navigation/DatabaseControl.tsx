@@ -8,20 +8,15 @@ import { State } from "../../store/reducers/rootReducer";
 import { AuthContext } from "../../auth/Auth";
 import app from "../../firebase/firebase";
 import { AuthButton, NavigationLi } from "../../styles/elements";
-import { FoodUnit, UserObject } from "../../types/shared";
-
-export interface AuthObject {
-  token: string;
-  uid: string;
-}
+import { FoodUnit, UserObject, AuthObject } from "../../types/shared";
 
 const DatabaseControl = (props: StateProps & DispatchProps) => {
   const [currentToken, setCurrentToken] = useState("");
   const [currentUid, setCurrentUid] = useState("");
   useEffect(() => {
-    app.auth().onAuthStateChanged(function (user) {
+    app.auth().onAuthStateChanged((user) => {
       if (user) {
-        user.getIdToken().then(function (idToken) {
+        user.getIdToken().then((idToken) => {
           setCurrentToken(idToken);
         });
         setCurrentUid(user.uid);

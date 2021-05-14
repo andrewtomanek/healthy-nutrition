@@ -2,7 +2,7 @@ import React from "react";
 import { shallow } from "enzyme";
 import { CalculatePanel } from "../src/components/panels/CalculatePanel";
 
-const applycalculateSum = jest.fn();
+const applyCalculateSum = jest.fn();
 
 const props = {
   foods: [
@@ -57,7 +57,7 @@ const props = {
       vláknina: 1.9,
     },
   ],
-  applycalculateSum,
+  applyCalculateSum,
 };
 
 describe("Renders CalculatePanel", () => {

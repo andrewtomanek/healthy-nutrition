@@ -10,6 +10,7 @@ export interface State {
   foods: FoodUnit[];
   allItemSum?: null;
   updateItemSum: BarData;
+  errors?: null;
 }
 
 const initialState: State = {
@@ -17,6 +18,7 @@ const initialState: State = {
   cart: getCart(),
   allItemSum: null,
   updateItemSum: [],
+  errors: null,
 };
 
 const reducer = (state = initialState, action: AnyAction) => {
@@ -32,7 +34,7 @@ const reducer = (state = initialState, action: AnyAction) => {
     case actionTypes.FETCH_INVENTORY_FAILED:
       return {
         ...state,
-        foods: payload,
+        errors: payload,
       };
     case actionTypes.SAVE_INVENTORY_START:
       return {
@@ -48,6 +50,7 @@ const reducer = (state = initialState, action: AnyAction) => {
     case actionTypes.SAVE_INVENTORY_FAIL:
       return {
         ...state,
+        errors: payload,
       };
     case actionTypes.FILL_STORAGE:
       return {

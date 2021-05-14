@@ -15,9 +15,10 @@ export const setInventory = (uid: string) => {
   };
 };
 
-export const fetchInventoryFailed = () => {
+export const fetchInventoryFailed = (error: {}) => {
   return {
     type: actionTypes.FETCH_INVENTORY_FAILED,
+    payload: error,
   };
 };
 
@@ -145,7 +146,7 @@ export const displayInformation = () => {
   };
 };
 
-export const applycalculateSum = (sum: number) => {
+export const applyCalculateSum = (sum: number) => {
   return {
     type: actionTypes.APPLY_CALCULATE_SUM,
     payload: sum,

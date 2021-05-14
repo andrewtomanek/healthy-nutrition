@@ -20,6 +20,7 @@ body {
   padding: 0;
   min-width: 100vw;
   font-family: 'Alegreya Sans SC',monospace;
+  overflow-x: hidden;
 }
 
 button {

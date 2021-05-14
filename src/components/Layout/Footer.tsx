@@ -26,7 +26,6 @@ const FooterContainer = styled.footer`
   display: grid;
   padding: 0;
   min-height: 10vh;
-  padding: 0rem 0rem;
   background-color: var(--green);
   width: 100%;
   min-width: 90vw;

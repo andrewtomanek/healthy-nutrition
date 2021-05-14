@@ -20,10 +20,10 @@ const PageWrapper = ({ inProp, animationName, children }: Props) => {
       mountOnEnter
       unmountOnExit
     >
-      <PageLayout>
-        {children}
+      <>
+        <PageLayout>{children}</PageLayout>
         <Footer />
-      </PageLayout>
+      </>
     </CSSTransition>
   );
 };

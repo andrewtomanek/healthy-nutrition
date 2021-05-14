@@ -73,10 +73,10 @@ const Cart = (props: StateProps & DispatchProps) => {
   return (
     <PageWrapper inProp={inProp} animationName={"anim-left"}>
       <>
+        <SwitcherPanel revealLimit={revealLimit} cartControls />
+        <BarBox showLimit={showLimit} />
         <TransitionWrapper inProp={displayElement}>
           <>
-            <SwitcherPanel revealLimit={revealLimit} cartControls />
-            <BarBox showLimit={showLimit} />
             {props.cart.length > 0 ? (
               <ItemsList
                 foods={props.cart}

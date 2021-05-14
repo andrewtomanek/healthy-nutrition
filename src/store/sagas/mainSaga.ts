@@ -32,7 +32,8 @@ export function* initInventorySaga(action: SagaAction) {
     );
     yield put(actions.setInventory(response.data[action.payload.uid]));
   } catch (error) {
-    yield put(actions.fetchInventoryFailed());
+    console.error(error);
+    yield put(actions.fetchInventoryFailed(error));
   }
 }
 
@@ -45,6 +46,7 @@ export function* purchaseStoreSaga(action: SagaAction) {
     );
     yield put(actions.saveToStoreSuccess(response.data));
   } catch (error) {
+    console.error(error);
     yield put(actions.saveToStoreFail(error));
   }
 }

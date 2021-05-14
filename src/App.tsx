@@ -26,20 +26,18 @@ const Navigation = React.lazy(() => {
 
 const App = () => {
   return (
-    <>
+    <AuthProvider>
       <GlobalStyle />
-      <AuthProvider>
-        <BrowserRouter>
-          <Navigation />
-          <Switch>
-            <Route path="/" component={Home} exact />
-            <Route path="/cart" component={Cart} exact />
-            <Route exact path="/login" component={Login} />
-            <Route exact path="/signup" component={SignUp} />
-          </Switch>
-        </BrowserRouter>
-      </AuthProvider>
-    </>
+      <BrowserRouter>
+        <Navigation />
+        <Switch>
+          <Route path="/" component={Home} exact />
+          <Route path="/cart" component={Cart} exact />
+          <Route exact path="/login" component={Login} />
+          <Route exact path="/signup" component={SignUp} />
+        </Switch>
+      </BrowserRouter>
+    </AuthProvider>
   );
 };
 

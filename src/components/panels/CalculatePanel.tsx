@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { connect } from "react-redux";
 import { Dispatch } from "redux";
 
-import { applycalculateSum } from "../../store/actions/storageActions";
+import { applyCalculateSum } from "../../store/actions/storageActions";
 import { State } from "../../store/reducers/rootReducer";
 import { FoodUnit, ValueNames } from "../../types/shared";
 import {
@@ -25,7 +25,7 @@ export const CalculatePanel = (props: StateProps & DispatchProps) => {
     }
 
     setSumResult(sum);
-    props.applycalculateSum(sum);
+    props.applyCalculateSum(sum);
   };
 
   return (
@@ -54,7 +54,7 @@ interface StateProps {
 }
 
 interface DispatchProps {
-  applycalculateSum: (sum: number) => void;
+  applyCalculateSum: (sum: number) => void;
 }
 
 const mapStateToProps = (state: State) => ({
@@ -64,7 +64,7 @@ const mapStateToProps = (state: State) => ({
 });
 
 const mapDispatchToProps = (dispatch: Dispatch) => ({
-  applycalculateSum: (sum: number) => dispatch(applycalculateSum(sum)),
+  applyCalculateSum: (sum: number) => dispatch(applyCalculateSum(sum)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(CalculatePanel);

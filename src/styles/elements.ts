@@ -213,7 +213,7 @@ export const PageLayout = styled.div`
   justify-content: center;
   gap: 1rem;
   margin: 0;
-  padding: 0 2rem 0rem;
+  padding: 0 2rem 1rem;
   overflow: hidden;
   min-width: 80vw;
   min-height: 90vh;

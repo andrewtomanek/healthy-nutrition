@@ -18,6 +18,6 @@ export {
   applyFilterPicked,
   applyFilterWord,
   displayInformation,
-  applycalculateSum,
-  updateCalculateSum
+  applyCalculateSum,
+  updateCalculateSum,
 } from "./storageActions";
